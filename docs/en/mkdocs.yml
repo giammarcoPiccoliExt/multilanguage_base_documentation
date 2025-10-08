@@ -1,0 +1,77 @@
+use_directory_urls: false
+
+site_name: SCMP Docs
+site_author: Leonardo SPA
+
+nav:
+
+- "<span class='ms-Icon ms-Icon--WaitlistConfirm'></span> Installazione e deploy": Getting started.md
+- "<span class='ms-Icon ms-Icon--AuthenticatorApp'></span> Authentication": Authentication.md
+- "<span class='ms-Icon ms-Icon--ModelingView'></span> Tenant Management": Gestione Tenant.md
+- "<span class='ms-Icon ms-Icon--Admin'></span> Administration": Administration.md
+- "<span class='ms-Icon ms-Icon--ViewDashboard'></span> Dashboard": Dashboard.md
+- "<span class='ms-Icon ms-Icon--OpenFolderHorizontal'></span> Inventory": Inventory.md
+- "<span class='ms-Icon ms-Icon--AreaChart'></span> Monitoring": Monitoring.md
+- "<span class='ms-Icon ms-Icon--AzureKeyVault'></span> Security": Security.md
+- "<span class='ms-Icon ms-Icon--AddToShoppingList'></span> Catalog": Catalog.md
+- "<span class='ms-Icon ms-Icon--Money'></span> Costs & Usage": Costs e Usage.md
+- "<span class='ms-Icon ms-Icon--BranchFork2'></span> Provisioning": Provisioning.md
+- "<span class='ms-Icon ms-Icon--Lifesaver'></span> Backup & Disaster Recovery": Backup Disaster Recovery.md
+- "<span class='ms-Icon ms-Icon--SecondaryNav'></span> Shared Features": Funzionalità condivise.md
+- "<span class='ms-Icon ms-Icon--ReservationOrders'></span> Service Detail Design": Service Detail Design.md
+- "<span class='ms-Icon ms-Icon--AzureAPIManagement'></span> REST API":
+  - "Finops": api/finopsAPI.md
+  - "Provisioning": api/provisioningAPI.md
+  - "Inventory / Catalog": api/rmAPI.md
+  - "Abstraction Layer": api/absAPI.md
+  - "Report manager": api/rmreportAPI.md
+  - "Cost": api/rmcostsAPI.md
+  - "Monitoring": api/rmmonitoringAPI.md
+  - "Security": api/rmsecurityAPI.md
+  - "Services": api/rmserviceAPI.md
+  - "SIEM": api/siemAPI.md
+  - "Taxonomy Manager": api/txmAPI.md
+  - "Tenant Manager": api/tenantAPI.md
+  - "Service detail design": api/api.md
+- "<span class='ms-Icon ms-Icon--PDF'></span> Versione PDF completa": SCMP_SUM.pdf
+
+# Configuration
+theme:
+  name: material
+  custom_dir: docs/personalization
+  logo: logo.png
+  language: it
+
+extra_css:
+- personalization/eng-standard-theme.css
+- personalization/toc.css
+- personalization/fabric.min.css
+
+extra_javascript:
+- personalization/toc.js
+
+# Customization
+extra:
+  version:
+    provider: mike
+  navigation:
+    collapse: true
+  media_dir: 'images/media'
+  alternate:
+  - name: Italiano
+    link: /it/
+    lang: it
+  - name: English
+    link: /en/
+    lang: en
+plugins:
+- search
+- render_swagger:
+    css: personalization/swagger-ui.css
+- print-site
+
+markdown_extensions:
+- markdown_captions
+- admonition
+- pymdownx.details
+- pymdownx.superfences
