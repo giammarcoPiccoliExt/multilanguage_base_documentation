@@ -85,12 +85,12 @@ jobs:
         echo "new_version=$nuova_versione" >> $GITHUB_OUTPUT
 
     - name: Generate mkdocs configs (EN + ITA)
-      run: python preConfiguration/build_config.py
+      run: python preConfiguration/build/build_config.py
 
     - name: Prepare PDF templates
       run: |
         mkdir -p documentation/pdfGeneration
-        python preConfiguration/pdf_config.py
+        python preConfiguration/pdf/pdf_config.py
 
     # ----------------------------
     # 🟢 BUILD + PDF ITALIANO
@@ -102,7 +102,7 @@ jobs:
     - name: Renumber figcaptions IT
       if: env.RUN_BUILD_DOCS == 'true'
       run: |
-        if [ -f generated/ita/print_page.html ]; then python preConfiguration/figureEnumerator.py generated/ita/print_page.html; else echo "print_page.html (IT) non trovato"; fi
+  if [ -f generated/ita/print_page.html ]; then python preConfiguration/build/figureEnumerator.py generated/ita/print_page.html; else echo "print_page.html (IT) non trovato"; fi
 
     - name: Install wkhtmltopdf
       run: |
@@ -145,7 +145,7 @@ jobs:
     - name: Renumber figcaptions EN
       if: env.RUN_BUILD_DOCS == 'true'
       run: |
-        if [ -f generated/en/print_page.html ]; then python preConfiguration/figureEnumerator.py generated/en/print_page.html; else echo "print_page.html (EN) non trovato"; fi
+  if [ -f generated/en/print_page.html ]; then python preConfiguration/build/figureEnumerator.py generated/en/print_page.html; else echo "print_page.html (EN) non trovato"; fi
 
     - name: Generate PDF EN
       if: env.RUN_GENERATE_PDF == 'true'
@@ -238,7 +238,7 @@ jobs:
         fi
 
     - name: Optimize images
-      run: python preConfiguration/image_resizier.py
+      run: python preConfiguration/build/image_resizier.py
 
     # ----------------------------
     # � DEPLOY (MIKE) PREBUILT
