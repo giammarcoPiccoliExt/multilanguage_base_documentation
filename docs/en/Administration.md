@@ -19,13 +19,13 @@ Within the functionality will be possible:
 
 To access the Administration feature, at the top left click on the bento button. After that, click on “Administration”
 
-_
+![Access to Administration functionality](images/extract/media/image42.png)
 
 At this point, the user finds himself within the tab page “Cloud Systems”, where we can view general information about subsystems, such as the reference provider and the date of creation of the subsystem and is also indicated with a red check if the system is on-premise type.
 
 We can note that in the list there are "folders", subsystem containers, clicking at the "fresh" on the folder line we can view the subsystems inside and their information
 
-_
+![List of subsystems and folders](images/extract/media/270125001.png)
 
 In addition, for each subsystem a status is available, represented by a colored “led”:
 
@@ -45,38 +45,38 @@ To view the outcome of these operations, click on the subsystem line and inside 
 
 In addition to the amount of operations and their outcome, scrolling down you can view the list and its details by clicking the "cold" at the time of the operation concerned.
 
-_
+![About cron-job](images/extract/media/image55.png)
 
 ##### View, edit and delete a subsystem
 
 To view the data of a Cloud Provider, within the list, click on the kebab menu at the Cloud Provider of Interest and click on “Show”.
 
-_
+![Access to the Cloud Provider in display mode](images/extract/media/image43.png)
 
 On this page you can view the configuration of the Provider
 
-_
+![Subsystem in display mode](images/extract/media/image44.png)
 
 If the provider is of “ON-PREMISE” type under the configuration will be visible a table showing the usable capabilities on the system and the list of resources already present in the subsystem
 
-_
+![On-Premise machine list](images/extract/media/image45.png)
 
 To return to the Cloud Provider page, click on the “Close” button.
 
 To change the data of a Cloud Provider, within the list, click on the kebab menu at a Cloud Provider, and click on “Edit”
 
-_
+![Cloud Provider access in edit mode](images/extract/media/image46.png)
 
 This is done, the user will find himself inside the Cloud Provider page in "edit" mode, which allows you to change the data.
 
 To return to the Cloud Provider page, click on the “Save” button on the left.
 At this point, you will find yourself on the Cloud Provider page.
 
-_
+![Start for deleting a Cloud Provider](images/extract/media/image47.png)
 
 To delete a Cloud Provider, within the list, click on the kebab menu at a Cloud Provider, and click on “Delete”
 
-_
+![Cloud Provider Deletion Confirmation](images/extract/media/image48.png)
 
 Done that, a modal will appear where you need to click on the “Remove” button
 
@@ -97,22 +97,22 @@ Providers using this feature are:
 
 To change the model, click the “three points” button at a subsystem and select the “Cost model” item.
 
-_
+![Access to subsystem cost model](images/extract/media/image49.png)
 
 On the model page we find a first generic section where you can configure the fields:
 
 - Currency: the reference currency to be used for the subsystem.
 - Discount/Surcharge: a discount or recharge rate to be applied to customer costs.
 
-_
+![Cost model](images/extract/media/270125002.png)
 
 After clicking the “Add rate” button will open a modal in which, after choosing a metric (specific for the provider) and the relative unit of measurement to be used, the price will be inserted to all the elements of the subsystem, finally click the “Save” button to confirm the insertion.
 
-_
+![Selection of the metric to be presed](images/extract/media/image51.png)
 
 To confirm the change to the model after entering all costs for each type of component available, click the “Apply” button below.
 
-_
+![Complete cost model](images/extract/media/image52.png)
 
 ##### **Manual cost update**
 
@@ -120,17 +120,17 @@ The user is given the possibility to carry out a manual updating of the costs in
 
 To request the update of a single subsystem click the “three points” button on the subsystem line and select the “Refresh Cost” entry
 
-_
+![Manual cost update](images/extract/media/image53.png)
 
 Within the modal we can indicate for how many days, starting from today's date, the costs of the selected subsystem must be repaid and confirmed. After confirming, we can go to the “ cron-job info” section to confirm the operations.
 
 You can also request the upgrade of costs for the whole tenant: by clicking first on the “hamburger menu” button available on the top left and selecting the “refresh cost”, the activity will be distributed on all subsystems available on the page
 
-_
+![Update of costs on all tenant](images/extract/media/image54.png)
 
 Once you select a cost recovery you can indicate the number of days to recover and selecting the box "Reset the cost" the SCMP will first perform a data cleaning (of its selected range) and then refresh
 
-_
+![Configuration of refresh costs](images/extract/media/20250604001.png)
 
 ##### Cost recovery and calculation process
 
@@ -218,7 +218,7 @@ Below the specific details for subsystem type
 
 To insert a new subsystem inside the portal, click on the “menu” available at the top right and select “+ Add new cloud provider”
 
-_
+![Adding a new Cloud Provider](images/extract/media/image56.png)
 
 The user displays the basic data of the subsystem to be entered, explained below.
 
@@ -230,7 +230,7 @@ Within the creation page we can see 3 fields:
 - Type: indicates the type of cloud provider to which the subsystem belongs.
 - Version: the subsystem provider version to install.
 
-_
+![General parameters of a subsystem](images/extract/media/image57.png)
 
 After selecting the type and version of the system, the mask is updated to display the specific parameters according to the selected provider, since each of them manages authentication and resources differently.
 
@@ -246,7 +246,7 @@ The “Close” button that allows to cancel the insertion of a new subsystem.
 
 The “Test Connection” key serves to carry out a connection test using the parameters inserted, in case of errors the system returns an error message that indicates “Error: Unauthorized system” and the button becomes red, otherwise the button will become green and you can save the subsystem using the “Save” button.
 
-_
+![Connection buttons](images/extract/media/image58.png)
 
 On the rescue, the SCMP will communicate to the module that manages that type of provider, to load inside our bus (Kafka) all items related to inventory, metrics, costs and security elements.
 
@@ -269,7 +269,7 @@ Enabled features:
 
 The specific parameters of the Amazon Web Services subsystem are shown in the table:
 
-_
+![Amazon Web Services configuration mask](images/extract/media/image59.png)
 
 The mandatory parameters are indicated with \*
 
@@ -389,7 +389,7 @@ Enabled features:
 
 The specific parameters of the Azure subsystem to be inserted are shown in the table:
 
-_
+![Azure configuration mask](images/extract/media/image60.png)
 
 The mandatory parameters are indicated with \*
 
@@ -432,7 +432,7 @@ Enabled features:
 
 The specific parameters of the AzureStack subsystem to be inserted are shown in the table:
 
-_
+![AzureStack configuration mask](images/extract/media/image61.png)
 
 The mandatory parameters are indicated with \*
 
@@ -466,7 +466,7 @@ Enabled features:
 
 The specific parameters of the AzureStack HCI subsystem to be inserted are shown in the table:
 
-_
+![AzureStack HCI configuration mask](images/extract/media/image62.png)
 
 The mandatory parameters are indicated with \*
 
@@ -498,7 +498,7 @@ Enabled features:
 
 The specific parameters of the AzureStack Hybrid cloud subsystem to be inserted are shown in the table:
 
-_
+![AzureStack Hybrid cloud configuration mask](images/extract/media/image63.png)
 
 The mandatory parameters are indicated with \*
 
@@ -532,7 +532,7 @@ Enabled features:
 
 The specific parameters of the Google Cloud subsystem to be inserted are displayed in the table.
 
-_
+![Edge configuration mask](images/extract/media/image64.png)
 
 The mandatory parameters are indicated with \*
 
@@ -590,7 +590,7 @@ Recovery of catalog items
 
 The specific parameters of the Google Cloud subsystem to be inserted are displayed in the table, the “Service account” field can be inserted both automatically and manually as described in the paragraph.
 
-_
+![Google configuration mask](images/extract/media/image65.png)
 
 The mandatory parameters (available below the service account section).
 
@@ -616,7 +616,7 @@ The mandatory parameters (available below the service account section).
     
     This distinction is necessary to prevent APIs Azure respond with a 429 error related to the large number of requests made, in addition to using the methods described above, it is necessary that the Azure system be correctly configured and the utilities inserted have all the necessary permits
     
-    _
+    ![Uploading the configuration file](images/extract/media/image66.png)
     
     By uploading the file the form is automatically completed with the necessary parameters, but it is also possible to insert them manually (yellow panel present in the image), following the table, all fields are mandatory:
     
@@ -699,7 +699,7 @@ Enabled features:
 
 The specific parameters of the Kubernetes subsystem to be inserted are shown in the table
 
-_
+![Kubernetes configuration mask](images/extract/media/image67.png)
 
 The mandatory parameters are indicated with \*
 
@@ -763,7 +763,7 @@ Enabled features:
 
 The specific parameters of the OpenShift subsystem to be inserted are shown in the table:
 
-_
+![OpenShift configuration mask](images/extract/media/image68.png)
 
 The mandatory parameters are indicated with \*
 
@@ -809,7 +809,7 @@ Enabled features:
 
 The specific parameters of the Oracle subsystem to be inserted are shown in the table:
 
-_
+![Oracle configuration mask](images/extract/media/image69.png)
 
 The mandatory parameters are indicated with \*
 
@@ -898,7 +898,7 @@ Enabled features:
 
 The specific parameters of the OracleExAcc subsystem to be inserted are shown in the table:
 
-_
+![OracleExAcc configuration mask](images/extract/media/image70.png)
 
 The mandatory parameters are indicated with \*
 
@@ -925,7 +925,7 @@ Enabled features:
 
 The specific parameters of the VCloudDirector subsystem to be inserted are shown in the table
 
-_
+![VCloudDirector configuration mask](images/extract/media/image71.png)
 
 The mandatory parameters are indicated with \*
 
@@ -955,7 +955,7 @@ Enabled features:
 
 The specific parameters of the VMWare subsystem to be inserted are shown in the table:
 
-_
+![VMWare configuration mask](images/extract/media/image72.png)
 
 The mandatory parameters are indicated with \*
 
@@ -984,11 +984,11 @@ During the creation of a provider by selecting the type “Azure” we can notic
 
 - A confirmation box to indicate to the SCMP if the provider is a “Folder”.
 
-_
+![Folder option Azure](images/extract/media/image73.png)
 
 The specific parameters of the Azure subsystem to be inserted are shown in the following table:
 
-_
+![Azure Folder configuration mask](images/extract/media/image74.png)
 
 The mandatory parameters are indicated with \*
 
@@ -1011,7 +1011,7 @@ During the creation of a provider by selecting the type “Google Cloud” we ca
 1. A confirmation box to indicate to the SCMP if the provider is a “Folder”.
 2. A box where, by clicking inside it will be possible, through the windows file selection window insert the “JSON” type file exported directly from the Google console.
 
-_
+![Specific parameters of Google Cloud](images/extract/media/image75.png)
 
 The specific parameters of the Google Folder to be inserted are displayed in the table:
 
@@ -1043,30 +1043,30 @@ The specific parameters of the Google Folder to be inserted are displayed in the
     
     After setting up a “Folder” system it will be displayed both in the cloud provider list, and in the folder page.
     
-    _
+    ![View folders](images/extract/media/image76.png)
     
     From the “Cloud System” page of the “Administration” module, click the tab “Folders” on the top right where the list of folders configured in the tenant will be displayed.
     
     Within the page you can do the same editing and deletion of folders on the “Cloud Provider” page.
     
-    _
+    ![Access to Folders](images/extract/media/image77.png)
     
     By accessing a “Folder” in “View” mode by scrolling down on the page we can view the list of subsystems in the provider and the related status information:
     
     - In green we can see a properly configured subsystem in the provider and that the SCMP automatically inserts into the system and will be visible in the “Cloud Providers” section and in all SCMP features.
     - In red we can see an incorrectly configured subsystem that, after the appropriate changes from the “Google Cloud” console, can be accepted by the SCMP.
     
-    _
+    ![Subsystem View of Folder](images/extract/media/image78.png)
     
 ### SIEM
 
 The user can create a SIEM-type provider, by clicking on the tab that depicts a shield, placed in the top bar, d0opo having logged in to the page “Cloud SIEMs”, on the top right, click on the burger menu and then click on “Attach a SIEM”
 
-_
+![Creating to SIEM cloud provider](images/extract/media/image79.png)
 
 Within the “Add SIEM” page, fill out all fields of the “General properties” section. After doing this, fill out all fields of the section “SIEM’s properties” following the table:
 
-_
+![Filling the form to create a SIEM provider](images/extract/media/image80.png)
 
 The mandatory parameters are indicated with \*
 
@@ -1087,31 +1087,31 @@ Finally, at the bottom right, click on the “Save” button. After that, a popu
 To view a SIEM, at a said one, click on the kebab menu and then click on “Show” . At this point, the user finds himself within the “Show SIEM” page where you can view but do not change the data. After viewing the data, at the bottom right, click on the “Close” button.
 This is done, the user finds himself within the SIEM list.
 
-_
+![Access to SIEM in display mode](images/extract/media/image81.png)
 
-_
+![SIEM in display mode](images/extract/media/image82.png)
 
 To change a SIEM, at a said one, click on the kebab menu and then click on “Edit” . At this point, you will find yourself inside the “Edit SIEM” page where you can change the fields.
 
 After changing the fields of interest, at the bottom right, click on the “Update” button. This is done, a popup of the SIEM changed and the user is found in the SIEM list.
 
-_
+![Access to SIEM in edit mode](images/extract/media/image83.png)
 
-_
-_
+![](images/extract/media/image84.png)
+![SIEM in edit mode](images/extract/media/image85.png)
 
 To delete a SIEM, at a said one, click on the kebab menu and then click on “Delete” . At this point a modal appears where you need to click on the “Remove” button.
 
-_
+![Option to delete to "Delete" SIEM](images/extract/media/image86.png)
 
-_
+![Confirmation to eliminate to SIEM](images/extract/media/image87.png)
 
 ### Secrets Managers
 
 The user can create a secret manager by clicking on the tab depicting a padlock, placed in the top bar, as shown in the figure
 
 After accessing the “Secret Manager” page, at the top right, click on the burger menu and then click on “Add a secret manager”
-_
+![Adding a new Secret Manager](images/extract/media/image88.png)
 
 Here is an example of form in the case of adding a Secret Manager from the Azure provider (selectable from the dropdown “Type” at the top of the page).
 
@@ -1121,7 +1121,7 @@ After entering all the parameters required, at the bottom, click the “Save” 
 
 The specific parameters for an Azure key vault to be inserted are displayed in the table:
 
-_
+![Azure key vault configuration mask](images/extract/media/image89.png)
 
 The mandatory parameters are indicated with \*
 
@@ -1140,7 +1140,7 @@ Table 25 – Specific fields Azure key vault
 
 The specific parameters of the Google Secret Manager to be inserted are displayed in the following table:
 
-_
+![Google Secret Manager configuration mask](images/extract/media/image90.png)
 
 The mandatory parameters are indicated with \*
 
@@ -1168,11 +1168,11 @@ You can manually insert the parameters in the “service_account.json” file if
 
 You can view the data of a Secret Manager, within the list, by clicking on the kebab menu at a manager, and then on “Show”.
 
-_
+![Access to the manager in display mode](images/extract/media/image91.png)
 
 On this page you can view the configuration of the Provider .
 
-_
+![manager in display mode](images/extract/media/image92.png)
 
 To return to the Secret Manager page, on the bottom left, click on the “Close” button.
 
@@ -1180,15 +1180,15 @@ At this point, you will find yourself on the Secret Manager page.
 
 To change the data of a Secret Manager within the list, click on the kebab menu at a Cloud Provider, and click on “Edit”.
 
-_
+![Access manager in edit mode](images/extract/media/image93.png)
 
 This is done, you will find yourself within the Cloud Provider page in edit mode where you can change your data. To return to the Cloud Provider page, click on the “Save” button on the left. At this point, you will find yourself on the Cloud Provider page.
 
 To delete a "Secret manager", within the list, click on the kebab menu at a Secret Manager, and click on "Delete" .
-_
+![Start for deletion of a Secret Manager](images/extract/media/image94.png)
 
 Done that, a modal will appear where you need to click on the “Remove” button
-_
+![Confirm elimination of the Secret Manager](images/extract/media/image95.png)
 
 At this point, the Secret Manager will no longer be present within the list and the asset removal flow will be launched on the resource-manager.
 
@@ -1200,11 +1200,11 @@ To access this feature you need to select the “CommVault” tab available at t
 
 We will return to the page that contains the list of all configured “CommVault” and clicking on the menu on the right you can add a new CommVault
 
-_
+![Access to CommVault](images/extract/media/image96.png)
 
 On this page, after entering the login credentials (ip address, user and password) we can click on the “Test connection” button to confirm the correct insertion of the data and then confirm insertion via the “Save” button.
 
-_
+![Connecting to a CommVault](images/extract/media/image97.png)
 
 ### Confidential computing
 
@@ -1214,8 +1214,8 @@ To access this feature you need to select the “Confidential computing” tab a
 
 We will return to the page that contains the list of all the services of “Remote attestation” configured and clicking on the menu on the right you can add a new connection .
 
-_
+![Access to Confidential Computing](images/extract/media/image98.png)
 
 On this page, after entering the login credentials (ip address, user and password) we can click on the “Test connection” button to confirm the correct insertion of the data and then confirm insertion via the “Save” button.
 
-_
+![Creation of connection to a “Remote Attestation” service](images/extract/media/image99.png)

@@ -51,19 +51,15 @@ class ArgosBackend(TranslationBackend):
 class Extraction:
     code_blocks: List[str]
     inline_codes: List[str]
-    images: List[str]
 
 # Patterns
 CODE_BLOCK_RE = re.compile(r"```.*?```", re.DOTALL)
 INLINE_CODE_RE = re.compile(r"`[^`\n]+`")
-# avoid matching image syntax (![alt](url)) as link
-LINK_RE = re.compile(r'(?<!!)\[([^\]]+)\]\(([^)]+)\)')
-IMG_MD_RE = re.compile(r"!\[([^\]]*)\]\(([^)]+)\)")
+LINK_RE = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
 DIRECTIVE_RE = re.compile(r"^(?:--8<--|!!swagger[^\n]*|:::\s*.*|!!!\s+.*)$", re.IGNORECASE)
 TABLE_LINE_RE = re.compile(r"^\s*\|.*\|\s*$")
 PLACE_CODE_BLOCK = "__CODE_BLOCK_{i}__"
 PLACE_INLINE_CODE = "__INLINE_CODE_{i}__"
-PLACE_IMAGE = "__IMG_{i}__"
 HEADING_RE = re.compile(r'^\s{0,3}(#{1,6})(\s+)(.*)$')
 MUSIC_NOTES = set(['♪','♫','♩','♬','♭','♯'])
 ONLY_HASHES_RE = re.compile(r'^#{3,}\s*$')
@@ -82,22 +78,13 @@ def extract_protected(md: str) -> Tuple[str, Extraction]:
         inl.append(m.group(0))
         return PLACE_INLINE_CODE.format(i=i)
     tmp2 = INLINE_CODE_RE.sub(ril, tmp)
-    imgs: List[str] = []
-    def rim(m):
-        i = len(imgs)
-        imgs.append(m.group(0))
-        return PLACE_IMAGE.format(i=i)
-    tmp3 = IMG_MD_RE.sub(rim, tmp2)
-    return tmp3, Extraction(cb, inl, imgs)
+    return tmp2, Extraction(cb, inl)
 
 
 def restore_protected(processed: str, ex: Extraction) -> str:
     # restore inline codes first (they were replaced after code blocks)
     for i, v in enumerate(ex.inline_codes):
         processed = processed.replace(PLACE_INLINE_CODE.format(i=i), v)
-    # restore images
-    for i, v in enumerate(ex.images):
-        processed = processed.replace(PLACE_IMAGE.format(i=i), v)
     for i, v in enumerate(ex.code_blocks):
         processed = processed.replace(PLACE_CODE_BLOCK.format(i=i), v)
     return processed
@@ -111,8 +98,7 @@ def sanitize_line(orig: str, trans: str) -> str:
     # If translation is a placeholder for protected content, keep it but preserve indentation
     placeholder_prefix = PLACE_CODE_BLOCK.split('{')[0]
     inline_placeholder_prefix = PLACE_INLINE_CODE.split('{')[0]
-    image_placeholder_prefix = PLACE_IMAGE.split('{')[0]
-    if trans_core.startswith(placeholder_prefix) or trans_core.startswith(inline_placeholder_prefix) or trans_core.startswith(image_placeholder_prefix):
+    if trans_core.startswith(placeholder_prefix) or trans_core.startswith(inline_placeholder_prefix):
         return leading + trans_core
     # Only-hashes lines: keep original if original had alnum characters
     if ONLY_HASHES_RE.match(trans_core):
