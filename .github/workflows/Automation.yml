@@ -87,7 +87,7 @@ jobs:
     - name: Generate mkdocs configs (EN + ITA)
       run: python preConfiguration/build/build_config.py
 
-    - name: Prepare PDF templates
+    - name: Prepare PDF template
       run: |
         mkdir -p documentation/pdfGeneration
         python preConfiguration/pdf/pdf_config.py
