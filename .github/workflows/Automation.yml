@@ -102,7 +102,11 @@ jobs:
     - name: Renumber figcaptions IT
       if: env.RUN_BUILD_DOCS == 'true'
       run: |
-  if [ -f generated/ita/print_page.html ]; then python preConfiguration/build/figureEnumerator.py generated/ita/print_page.html; else echo "print_page.html (IT) non trovato"; fi
+        if [ -f generated/ita/print_page.html ]; then \
+          python preConfiguration/build/figureEnumerator.py generated/ita/print_page.html; \
+        else \
+          echo "print_page.html (IT) non trovato"; \
+        fi
 
     - name: Install wkhtmltopdf
       run: |
@@ -145,7 +149,11 @@ jobs:
     - name: Renumber figcaptions EN
       if: env.RUN_BUILD_DOCS == 'true'
       run: |
-  if [ -f generated/en/print_page.html ]; then python preConfiguration/build/figureEnumerator.py generated/en/print_page.html; else echo "print_page.html (EN) non trovato"; fi
+        if [ -f generated/en/print_page.html ]; then \
+          python preConfiguration/build/figureEnumerator.py generated/en/print_page.html; \
+        else \
+          echo "print_page.html (EN) non trovato"; \
+        fi
 
     - name: Generate PDF EN
       if: env.RUN_GENERATE_PDF == 'true'
@@ -240,7 +248,7 @@ jobs:
     - name: Optimize images
       run: python preConfiguration/build/image_resizier.py
 
-     # ----------------------------
+    # ----------------------------
     # 🔹 DEPLOY PREBUILT SU GH-PAGES (Senza Mike)
     # ----------------------------
     - name: Deploy prebuilt to gh-pages
