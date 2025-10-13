@@ -116,7 +116,7 @@ jobs:
     - name: Generate PDF IT
       if: env.RUN_GENERATE_PDF == 'true'
       run: |
-        if [ -f generated/ita/print_page.html ]; then \
+        if [ -f generated/ita/print_page/index.html ]; then \
         wkhtmltopdf \
           --enable-local-file-access \
           --enable-javascript \
@@ -149,7 +149,7 @@ jobs:
     - name: Renumber figcaptions EN
       if: env.RUN_BUILD_DOCS == 'true'
       run: |
-        if [ -f generated/en/print_page.html ]; then \
+        if [ -f generated/en/print_page/index.html ]; then \
           python preConfiguration/build/figureEnumerator.py generated/en/print_page.html; \
         else \
           echo "print_page.html (EN) non trovato"; \
