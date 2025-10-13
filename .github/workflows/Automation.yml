@@ -245,7 +245,7 @@ jobs:
           echo "⚠️ Directory includes/swagger non presente, nulla da copiare";
         fi
 
-    - name: Optimize images
+    - name: Optimize images2
       run: python preConfiguration/build/image_resizier.py
 
     # ----------------------------
