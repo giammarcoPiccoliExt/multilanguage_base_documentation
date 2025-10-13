@@ -158,7 +158,7 @@ jobs:
     - name: Generate PDF EN
       if: env.RUN_GENERATE_PDF == 'true'
       run: |
-        if [ -f generated/en/print_page.html ]; then \
+        if [ -f generated/en/print_page/index.html ]; then \
         wkhtmltopdf \
           --enable-local-file-access \
           --enable-javascript \
