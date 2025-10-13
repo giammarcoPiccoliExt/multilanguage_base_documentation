@@ -102,8 +102,8 @@ jobs:
     - name: Renumber figcaptions IT
       if: env.RUN_BUILD_DOCS == 'true'
       run: |
-        if [ -f generated/ita/print_page.html ]; then \
-          python preConfiguration/build/figureEnumerator.py generated/ita/print_page.html; \
+        if [ -f generated/ita/print_page/index.html ]; then \
+          python preConfiguration/build/figureEnumerator.py generated/ita/print_page/index.html; \
         else \
           echo "print_page.html (IT) non trovato"; \
         fi
@@ -150,7 +150,7 @@ jobs:
       if: env.RUN_BUILD_DOCS == 'true'
       run: |
         if [ -f generated/en/print_page/index.html ]; then \
-          python preConfiguration/build/figureEnumerator.py generated/en/print_page.html; \
+          python preConfiguration/build/figureEnumerator.py generated/en/print_page/index.html; \
         else \
           echo "print_page.html (EN) non trovato"; \
         fi
