@@ -1,48 +1,49 @@
 trigger:
   branches:
     include:
-    - gh-pages
+      - gh-pages
 
 resources:
   repositories:
-  - repository: templates
-    type: git
-    name: 'ENG - Standard/ENG - Standard'
-    ref: 'refs/heads/debug/minio'
+    - repository: templates
+      type: git
+      name: 'ENG - Standard/ENG - Standard'
+      ref: 'refs/heads/debug/minio'
+
 variables:
-- group: 'mfe-var-group'
-- name: vmImageName
-  value: 'ubuntu-latest'
+  - group: 'mfe-var-group'
+
 
 stages:
-- stage: Prepare
-  jobs:
-  - job: Read
-    displayName: 'Checkout latest version'
-    pool:  
-      'UiPath'
-    steps:
-    - script: |
-        LATEST_VERSION=$(readlink latest)
-        echo "##vso[task.setvariable variable=latestVersion]$LATEST_VERSION"
-        echo "$LATEST_VERSION"
-        # Update build number
-        echo "##vso[build.updatebuildnumber]$LATEST_VERSION"
-      displayName: 'Read latest version'
-      name: printvar
+  - stage: Prepare
+    jobs:
+      - job: Read
+        displayName: 'Checkout latest version'
+        pool:  'UiPath'
 
-    #upload to artifact
-    - publish: $(System.DefaultWorkingDirectory)/$(latestVersion)
-      artifact: latest
+        steps:
+          - checkout: self
 
-- template: templates/deploy/minio.yml@templates
-  parameters:
-    dependsOn: 'Prepare'
-    environment: 'Minio_Test'
-    minioEndpoint: '$(MINIOENDPOINT)'
-    minioUsername: '$(MINIOUSER)'
-    minioPassword: '$(MINIOPASS)'
-    bucket: 'docs'
-    deleteBeforeUpload: 'true'
-    folder: 'latest'
+          # 🔹 Script compatibile con Windows CMD
+          - script: |
+              for /f %%i in ('type latest') do set LATEST_VERSION=%%i
+              echo Latest version is %LATEST_VERSION%
+              echo ##vso[task.setvariable variable=latestVersion]%LATEST_VERSION%
+              echo ##vso[build.updatebuildnumber]%LATEST_VERSION%
+            displayName: 'Read latest version'
+            name: printvar
 
+          # 🔹 Upload dell’artifact
+          - publish: '$(System.DefaultWorkingDirectory)\$(latestVersion)'
+            artifact: latest
+
+  - template: templates/deploy/minio.yml@templates
+    parameters:
+      dependsOn: 'Prepare'
+      environment: 'Minio_Test'
+      minioEndpoint: '$(MINIOENDPOINT)'
+      minioUsername: '$(MINIOUSER)'
+      minioPassword: '$(MINIOPASS)'
+      bucket: 'docs'
+      deleteBeforeUpload: 'true'
+      folder: 'latest'
