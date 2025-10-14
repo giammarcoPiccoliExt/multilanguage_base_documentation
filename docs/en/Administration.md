@@ -6,6 +6,7 @@ The providers included within this feature will be used by the system to retriev
 
 Within the functionality will be possible:
 
+
 - Configure the cloud providers that can be used in the Reference Tenant.
 - Configure the folders of the various providers.
 - Configure SIEM Clouds from various providers.
