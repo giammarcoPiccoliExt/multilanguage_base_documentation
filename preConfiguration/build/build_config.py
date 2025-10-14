@@ -21,41 +21,18 @@ template_path = os.path.join(BASE_DIR, 'mkdocs-template.yml.j2')
 with open(template_path, encoding='utf-8') as f:
     template = Template(f.read())
 
-# Configurazioni per le lingue
-languages = {
-    "it": {
-        "path": "config/ita/mkdocs.yml",
-        "site_name": config["site_name"],
-        "language_code": "it",
-        "docs_dir": "../../docs/ita",
-        "site_dir": "../../generated/ita",
-        "alternate_link": "/ita/",
-        "search_lang": "it"
-    },
-    "en": {
-        "path": "config/en/mkdocs.yml",
-        "site_name": config["site_name"] + " (EN)",
-        "language_code": "en", 
-        "docs_dir": "../../docs/en",
-        "site_dir": "../../generated/en",
-        "alternate_link": "/en/",
-        "search_lang": "en"
-    }
-}
+# Configurazioni per le lingue - ora caricate dal config.json
+languages = config["languages"]
 
 # Genera mkdocs.yml per ogni lingua
 for lang_code, lang_config in languages.items():
-    # Prepara le variabili per il template
-    template_vars = config.copy()
+    # Usa direttamente la configurazione della lingua dal JSON
+    # che ora contiene tutto: titoli, autori, contatti, headerFooterPdf
+    template_vars = lang_config.copy()
     template_vars.update({
         "nav_yaml": nav_yaml,
-        "language_code": lang_config["language_code"],
-        "docs_dir": lang_config["docs_dir"],
-        "site_dir": lang_config["site_dir"],
-        "site_name": lang_config["site_name"],
         "alternate_link_it": languages["it"]["alternate_link"],
-        "alternate_link_en": languages["en"]["alternate_link"],
-        "search_lang": lang_config["search_lang"]
+        "alternate_link_en": languages["en"]["alternate_link"]
     })
     
     # Genera il contenuto dal template

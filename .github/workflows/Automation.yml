@@ -1,4 +1,4 @@
-name: Automatic doc update (EN + ITA)
+name: Automatic doc update (EN + IT)
 
 on:
   push:
@@ -93,7 +93,7 @@ jobs:
         echo "new_version=$nuova_versione" >> $GITHUB_ENV
         echo "new_version=$nuova_versione" >> $GITHUB_OUTPUT
 
-    - name: Generate mkdocs configs (EN + ITA)
+    - name: Generate mkdocs configs (EN + IT)
       run: python preConfiguration/build/build_config.py
     - name: Prepare PDF template
       run: |
@@ -105,13 +105,13 @@ jobs:
     # ----------------------------
     - name: Build documentation IT
       if: env.RUN_BUILD_DOCS == 'true'
-      run: mkdocs build -f config/ita/mkdocs.yml
+      run: mkdocs build -f config/it/mkdocs.yml
 
     - name: Renumber figcaptions IT
       if: env.RUN_BUILD_DOCS == 'true'
       run: |
-        if [ -f generated/ita/print_page/index.html ]; then \
-          python preConfiguration/build/figureEnumerator.py generated/ita/print_page/index.html; \
+        if [ -f generated/it/print_page/index.html ]; then \
+          python preConfiguration/build/figureEnumerator.py generated/it/print_page/index.html; \
         else \
           echo "print_page.html (IT) non trovato"; \
         fi
@@ -124,7 +124,7 @@ jobs:
     - name: Generate PDF IT
       if: env.RUN_GENERATE_PDF == 'true'
       run: |
-        if [ -f generated/ita/print_page/index.html ]; then \
+        if [ -f generated/it/print_page/index.html ]; then \
         wkhtmltopdf \
           --enable-local-file-access \
           --enable-javascript \
@@ -143,7 +143,7 @@ jobs:
           --margin-left 19.138 \
           --margin-right 13 \
           "file://$(pwd)/documentation/pdfGeneration/pdf-firstPage.html" \
-          "file://$(pwd)/generated/ita/print_page/index.html" \
+          "file://$(pwd)/generated/it/print_page/index.html" \
           "$(pwd)/generated/SCMP_SUM_it.pdf"; \
         else echo "print_page.html IT non generato"; fi
 
@@ -236,19 +236,19 @@ jobs:
         done
         echo "📁 Swagger specs centralizzati in includes/swagger"
 
-    - name: Copy all swagger artifacts into docs (EN + ITA) before build
+    - name: Copy all swagger artifacts into docs (EN + IT) before build
       if: env.RUN_SWAGGER == 'true'
       run: |
         if [ -d includes/swagger ]; then
           echo "➡️ Copying swagger artifacts from includes/swagger to docs/<lang>/swagger"
-          for LANG in en ita; do \
+          for LANG in en it; do \
             mkdir -p docs/$LANG/swagger; \
             # Copy everything (json, md, yaml, images, etc.)
             cp -a includes/swagger/. docs/$LANG/swagger/ 2>/dev/null || true; \
           done; \
           echo "✅ Copiati tutti i file swagger in docs/<lang>/swagger"; \
           ls -1 docs/en/swagger || true; \
-          ls -1 docs/ita/swagger || true; \
+          ls -1 docs/it/swagger || true; \
         else
           echo "⚠️ Directory includes/swagger non presente, nulla da copiare";
         fi

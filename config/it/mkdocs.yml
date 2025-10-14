@@ -1,13 +1,13 @@
-site_name: 'Super Project Documentation (EN)'
-docs_dir: '../../docs/en' # Where to find the markdown files
-site_dir: '../../generated/en' # Where to put the HTML files
+site_name: 'Documentazione Super Progetto'
+docs_dir: '../../docs/it' # Where to find the markdown files
+site_dir: '../../generated/it' # Where to put the HTML files
 
 theme:
   name: material
   custom_dir: '../../overrides/' # This is where the customization of the theme lives
   logo: assets/images/logo.png # The logo is shared by all languages
   favicon: assets/images/favicon.ico # The favicon is shared by all languages
-  language: en # The build's language
+  language: it # The build's language
 
 extra_css:
 - assets/stylesheets/eng-standard-theme.css # CSS is shared by all languages
@@ -31,7 +31,7 @@ extra:
 
 plugins:
 - search:
-    lang: en # Set language for search
+    lang: it # Set language for search
 - render_swagger:
     css: personalization/swagger-ui.css # Correctly indented plugin config
 - print-site # mkdocs-print-site-plugin
