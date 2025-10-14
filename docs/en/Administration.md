@@ -22,7 +22,7 @@ To access the Administration feature, at the top left click on the bento button.
 ![Access to Administration functionality](images/extract/media/image42.png)
 
 At this point, the user finds himself within the tab page “Cloud Systems”, where we can view general information about subsystems, such as the reference provider and the date of creation of the subsystem and is also indicated with a red check if the system is on-premise type.
-
+2
 We can note that in the list there are "folders", subsystem containers, clicking at the "fresh" on the folder line we can view the subsystems inside and their information
 
 ![List of subsystems and folders](images/extract/media/270125001.png)
