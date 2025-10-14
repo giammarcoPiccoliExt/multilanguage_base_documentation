@@ -19,8 +19,8 @@ stages:
   jobs:
   - job: Read
     displayName: 'Checkout latest version'
-    pool:
-      vmImage: $(vmImageName)
+    pool:  
+      'UiPath'
     steps:
     - script: |
         LATEST_VERSION=$(readlink latest)
@@ -45,3 +45,4 @@ stages:
     bucket: 'docs'
     deleteBeforeUpload: 'true'
     folder: 'latest'
+
