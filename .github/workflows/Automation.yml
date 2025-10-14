@@ -63,8 +63,17 @@ jobs:
       if: env.RUN_VERSIONING == 'true'
       id: versioning
       run: |
-        latest_version=$(readlink latest)
-        echo "Latest version: $latest_version"
+        # Gestisci il caso quando 'latest' non esiste o non è un symlink
+        if [ -L latest ]; then
+          latest_version=$(readlink latest)
+          echo "Latest version from symlink: $latest_version"
+        elif [ -f latest ]; then
+          latest_version=$(cat latest)
+          echo "Latest version from file: $latest_version"
+        else
+          latest_version="7.10.0"
+          echo "No latest found, starting from: $latest_version"
+        fi
 
         anno=7
         last_mese=$(echo "$latest_version" | awk -F. '{print $2}')
@@ -276,8 +285,9 @@ jobs:
         # Copia tutto da generated/ nella cartella versione
         cp -a $GITHUB_WORKSPACE/generated/. "$VERSION_DIR/"
 
-        # Aggiorna il file latest con il numero della versione
-        echo "$new_version" > latest
+        # Crea/aggiorna il symlink latest
+        rm -f latest
+        ln -s "$new_version" latest
 
         # Commit & push
         git add .
