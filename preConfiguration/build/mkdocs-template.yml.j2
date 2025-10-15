@@ -8,7 +8,11 @@ theme:
     logo: assets/images/logo.png                     # The logo is shared by all languages
     favicon: assets/images/favicon.ico               # The favicon is shared by all languages
     language: {{ language_code }}                    # The build's language
-
+    features:
+    - navigation.instant
+    - navigation.top
+    - search.highlight
+    - search.suggest
 extra_css:
   - assets/stylesheets/eng-standard-theme.css                   # CSS is shared by all languages
   - assets/stylesheets/fabric.min.css 
