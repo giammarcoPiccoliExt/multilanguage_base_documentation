@@ -64,6 +64,25 @@
         {% include "partials/search.html" %}
       {% endif %}
       
+      <!-- Language Switcher -->
+      <div class="md-header__option">
+        <div class="md-select">
+          <button class="md-select__button md-icon" id="language-switcher" title="Switch Language">
+            {% include ".icons/material/translate.svg" %}
+          </button>
+          <div class="md-select__inner" id="language-menu" style="display: none;">
+            <div class="md-select__list">
+              <a href="#" class="md-select__item" id="switch-to-it">
+                <span class="md-select__text">🇮🇹 Italiano</span>
+              </a>
+              <a href="#" class="md-select__item" id="switch-to-en">
+                <span class="md-select__text">🇬🇧 English</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
       <!-- Repository information -->
       {% if config.repo_url %}
         <div class="md-header__source">
