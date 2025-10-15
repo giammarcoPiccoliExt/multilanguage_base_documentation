@@ -31,7 +31,6 @@ nav:
 - Developers: developers/index.md
 - Administration: Administration.md
 
-
 markdown_extensions:
   - markdown_captions
   - admonition

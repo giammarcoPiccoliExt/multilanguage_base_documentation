@@ -13,6 +13,7 @@
       "site_dir": "../../generated/it",
       "alternate_link": "/it/",
       "search_lang": "it",
+      "nav_config_file": "nav_config_it.yml",
       
       "titoli": {
         "titolo1": "Digital Security",
@@ -88,6 +89,7 @@
       "site_dir": "../../generated/en",
       "alternate_link": "/en/",
       "search_lang": "en",
+      "nav_config_file": "nav_config_en.yml",
       
       "titoli": {
         "titolo1": "Digital Security",

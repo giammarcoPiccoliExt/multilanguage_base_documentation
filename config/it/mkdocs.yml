@@ -27,9 +27,9 @@ plugins:
   - print-site                                      # mkdocs-print-site-plugin
 
 nav:
-- Home: index.md
-- Developers: developers/index.md
-- Administration: Administration.md
+- Home: index.html
+- Sviluppatori: developers/index.html
+- Amministrazione: Administration/index.html
 
 
 markdown_extensions:

@@ -11,11 +11,6 @@ config_path = os.path.join(BASE_DIR, 'config.json')
 with open(config_path, encoding='utf-8') as f:
     config = json.load(f)
 
-# Carica nav da nav.yml e converti in stringa YAML
-nav_path = os.path.join(BASE_DIR, 'nav_config.yml')
-with open(nav_path, encoding='utf-8') as f:
-    nav_yaml = f.read()
-
 # Carica il template
 template_path = os.path.join(BASE_DIR, 'mkdocs-template.yml.j2')
 with open(template_path, encoding='utf-8') as f:
@@ -26,6 +21,12 @@ languages = config["languages"]
 
 # Genera mkdocs.yml per ogni lingua
 for lang_code, lang_config in languages.items():
+    # Carica il file di navigazione specifico per la lingua
+    nav_file = lang_config["nav_config_file"]
+    nav_path = os.path.join(BASE_DIR, nav_file)
+    with open(nav_path, encoding='utf-8') as f:
+        nav_yaml = f.read()
+    
     # Usa direttamente la configurazione della lingua dal JSON
     # che ora contiene tutto: titoli, autori, contatti, headerFooterPdf
     template_vars = lang_config.copy()
