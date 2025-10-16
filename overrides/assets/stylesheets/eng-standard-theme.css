@@ -390,3 +390,16 @@ RICERCA - STILI SEARCH RESULT
 .md-search-result__more summary:hover {
     color: #ffab66 !important;
 }
+
+/* ===================================================
+FOOTER - NASCONDE "MADE WITH MKDOCS"
+=================================================== */
+/* Nasconde completamente il footer di MkDocs */
+.md-footer-meta {
+    display: none !important;
+}
+
+/* Alternativa: nasconde solo il testo "Made with MkDocs" */
+.md-footer-meta__inner a[href*="mkdocs"] {
+    display: none !important;
+}
