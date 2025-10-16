@@ -144,7 +144,7 @@ jobs:
           --margin-right 13 \
           "file://$(pwd)/documentation/pdfGeneration/pdf-firstPage.html" \
           "file://$(pwd)/generated/it/print_page/index.html" \
-          "$(pwd)/generated/SCMP_SUM_it.pdf"; \
+          "$(pwd)/generated/it/SCMP_SUM_it.pdf"; \
         else echo "print_page.html IT non generato"; fi
 
     # ----------------------------
@@ -186,7 +186,7 @@ jobs:
           --margin-right 13 \
           "file://$(pwd)/documentation/pdfGeneration/pdf-firstPage.html" \
           "file://$(pwd)/generated/en/print_page/index.html" \
-          "$(pwd)/generated/SCMP_SUM_en.pdf"; \
+          "$(pwd)/generated/en/SCMP_SUM_en.pdf"; \
         else echo "print_page.html EN non generato"; fi
 
     # ----------------------------
