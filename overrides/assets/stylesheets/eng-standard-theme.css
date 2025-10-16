@@ -375,3 +375,18 @@ figcaption::before {
   .no-print {
     display: none !important;
   }
+
+/* ===================================================
+RICERCA - STILI SEARCH RESULT
+=================================================== */
+/* Assicura che il testo dei risultati di ricerca sia visibile */
+.md-search-result__more,
+.md-search-result__more summary,
+.md-search-result__more summary div {
+    color: #ffffffde !important;
+}
+
+/* Hover state per il "more results" */
+.md-search-result__more summary:hover {
+    color: #ffab66 !important;
+}
