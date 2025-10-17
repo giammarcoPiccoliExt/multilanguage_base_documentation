@@ -1,0 +1,3511 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../developers/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>Administration - Super Project Documentation (EN)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/print-site.css">
+    
+      <link rel="stylesheet" href="../css/print-site-material.css">
+    
+      <link rel="stylesheet" href="../assets/stylesheets/eng-standard-theme.css">
+    
+      <link rel="stylesheet" href="../assets/stylesheets/fabric.min.css">
+    
+      <link rel="stylesheet" href="../assets/stylesheets/toc.css">
+    
+      <link rel="stylesheet" href="../assets/stylesheets/language-switcher.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#administration" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Super Project Documentation (EN)" class="md-header__button md-logo" aria-label="Super Project Documentation (EN)" data-md-component="logo">
+      
+  <img src="../assets/images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Super Project Documentation (EN)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Administration
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Super Project Documentation (EN)" class="md-nav__button md-logo" aria-label="Super Project Documentation (EN)" data-md-component="logo">
+      
+  <img src="../assets/images/logo.png" alt="logo">
+
+    </a>
+    Super Project Documentation (EN)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Developers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Administration
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Administration
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#providersubsystems" class="md-nav__link">
+    <span class="md-ellipsis">
+      provider/subsystems
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="provider/subsystems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-of-subsystems" class="md-nav__link">
+    <span class="md-ellipsis">
+      List of subsystems
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="List of subsystems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#information-on-subsystem-cron-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      ** Information on subsystem cron-job**
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#view-edit-and-delete-a-subsystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      View, edit and delete a subsystem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#on-premise-provider-cost-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      On-Premise provider cost model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manual-cost-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manual cost update
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cost-recovery-and-calculation-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cost recovery and calculation process
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cost recovery and calculation process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cost-recovery-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cost recovery structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recovery-and-calculation-of-customer-costs-for-the-azure-provider" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recovery and calculation of customer costs for the Azure provider
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recovery-and-calculation-of-customer-costs-for-the-aws-provider" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recovery and calculation of customer costs for the AWS provider
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recovery-and-calculation-of-customer-costs-for-the-google-provider" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recovery and calculation of customer costs for the Google provider
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recovery-and-calculation-of-customer-costs-for-oracle-oracleexacc-providers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recovery and calculation of customer costs for Oracle, OracleEXAcc providers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customer-cost-recovery-and-calculation-for-kubernetes-openshift-vclouddirector-vmware-red-hat-edge-providers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customer cost recovery and calculation for Kubernetes, OpenShift, vcloudDirector , VMWare, Red Hat Edge providers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-new-subsystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating new subsystem
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating new subsystem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters-shared-between-providers" class="md-nav__link">
+    <span class="md-ellipsis">
+      *Parameters shared between providers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verification-of-connection-and-rescue-shared-between-providers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verification of connection and rescue, shared between providers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-web-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      *Amazon Web Services
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#azure-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      ** Azure parameters**
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#azurestack-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      ** AzureStack parameters**
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameters* &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; * &gt; &gt; &gt; &gt; * &gt; &gt; * &gt; * &gt; * &gt; * &gt; &gt; * &gt; &gt; &gt; * &gt; &gt; * &gt; * &gt; * &gt; * &gt; &gt; &gt; &gt; &gt; &gt; &gt; * * * * &gt; &gt; * * &gt; * * &gt; &gt; &gt; * * &gt; &gt; &gt; * * &gt; &gt; &gt; &gt; &gt; &gt; * &gt; * * * * * &gt; * * * * * * &gt; * * * * * * * * * * * * * * &gt; * * * * * * * * * &gt; * * * * * * * * * * * * * * * * &gt; * &gt; &gt; &gt; * * * * * * * * * * * &gt; &gt; * * * &gt; * * * * * * &gt; * &gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#azurestack-hybrid-clouda" class="md-nav__link">
+    <span class="md-ellipsis">
+      *AzureStack Hybrid CloudÂ»
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redhat-edge-device-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      RedHat Edge Device Parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters-google-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameters Google Cloud
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters-kubernetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameters Kubernetes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#openshift" class="md-nav__link">
+    <span class="md-ellipsis">
+      ** OpenShift*
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orague-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Orague parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oracleexacc-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      OracleExAcc parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vcloud-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      ** VCloud parameters**
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmware-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      ** VMWare parameters**
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#folders" class="md-nav__link">
+    <span class="md-ellipsis">
+      Folders
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Folders">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#azure-folder" class="md-nav__link">
+    <span class="md-ellipsis">
+      Azure Folder
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#google-cloud-folders" class="md-nav__link">
+    <span class="md-ellipsis">
+      Google Cloud Folders
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#siem" class="md-nav__link">
+    <span class="md-ellipsis">
+      SIEM
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SIEM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#view-edit-and-delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      View, edit and delete
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#secrets-managers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Secrets Managers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Secrets Managers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#azure-key-vault" class="md-nav__link">
+    <span class="md-ellipsis">
+      Azure key vault
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#google-secret-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      Google Secret Manager
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-modifying-and-deleting-a-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Viewing, modifying and deleting a system
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#confidential-computing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Confidential computing
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SCMP_SUM_en.pdf" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PDF
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../print_page/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Stampa
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#providersubsystems" class="md-nav__link">
+    <span class="md-ellipsis">
+      provider/subsystems
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="provider/subsystems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-of-subsystems" class="md-nav__link">
+    <span class="md-ellipsis">
+      List of subsystems
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="List of subsystems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#information-on-subsystem-cron-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      ** Information on subsystem cron-job**
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#view-edit-and-delete-a-subsystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      View, edit and delete a subsystem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#on-premise-provider-cost-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      On-Premise provider cost model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manual-cost-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manual cost update
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cost-recovery-and-calculation-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cost recovery and calculation process
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cost recovery and calculation process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cost-recovery-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cost recovery structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recovery-and-calculation-of-customer-costs-for-the-azure-provider" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recovery and calculation of customer costs for the Azure provider
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recovery-and-calculation-of-customer-costs-for-the-aws-provider" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recovery and calculation of customer costs for the AWS provider
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recovery-and-calculation-of-customer-costs-for-the-google-provider" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recovery and calculation of customer costs for the Google provider
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recovery-and-calculation-of-customer-costs-for-oracle-oracleexacc-providers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recovery and calculation of customer costs for Oracle, OracleEXAcc providers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customer-cost-recovery-and-calculation-for-kubernetes-openshift-vclouddirector-vmware-red-hat-edge-providers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customer cost recovery and calculation for Kubernetes, OpenShift, vcloudDirector , VMWare, Red Hat Edge providers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-new-subsystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating new subsystem
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating new subsystem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters-shared-between-providers" class="md-nav__link">
+    <span class="md-ellipsis">
+      *Parameters shared between providers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verification-of-connection-and-rescue-shared-between-providers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verification of connection and rescue, shared between providers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-web-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      *Amazon Web Services
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#azure-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      ** Azure parameters**
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#azurestack-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      ** AzureStack parameters**
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameters* &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; * &gt; &gt; &gt; &gt; * &gt; &gt; * &gt; * &gt; * &gt; * &gt; &gt; * &gt; &gt; &gt; * &gt; &gt; * &gt; * &gt; * &gt; * &gt; &gt; &gt; &gt; &gt; &gt; &gt; * * * * &gt; &gt; * * &gt; * * &gt; &gt; &gt; * * &gt; &gt; &gt; * * &gt; &gt; &gt; &gt; &gt; &gt; * &gt; * * * * * &gt; * * * * * * &gt; * * * * * * * * * * * * * * &gt; * * * * * * * * * &gt; * * * * * * * * * * * * * * * * &gt; * &gt; &gt; &gt; * * * * * * * * * * * &gt; &gt; * * * &gt; * * * * * * &gt; * &gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#azurestack-hybrid-clouda" class="md-nav__link">
+    <span class="md-ellipsis">
+      *AzureStack Hybrid CloudÂ»
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redhat-edge-device-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      RedHat Edge Device Parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters-google-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameters Google Cloud
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters-kubernetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameters Kubernetes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#openshift" class="md-nav__link">
+    <span class="md-ellipsis">
+      ** OpenShift*
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orague-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Orague parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oracleexacc-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      OracleExAcc parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vcloud-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      ** VCloud parameters**
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmware-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      ** VMWare parameters**
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#folders" class="md-nav__link">
+    <span class="md-ellipsis">
+      Folders
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Folders">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#azure-folder" class="md-nav__link">
+    <span class="md-ellipsis">
+      Azure Folder
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#google-cloud-folders" class="md-nav__link">
+    <span class="md-ellipsis">
+      Google Cloud Folders
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#siem" class="md-nav__link">
+    <span class="md-ellipsis">
+      SIEM
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SIEM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#view-edit-and-delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      View, edit and delete
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#secrets-managers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Secrets Managers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Secrets Managers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#azure-key-vault" class="md-nav__link">
+    <span class="md-ellipsis">
+      Azure key vault
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#google-secret-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      Google Secret Manager
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-modifying-and-deleting-a-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Viewing, modifying and deleting a system
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#confidential-computing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Confidential computing
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="administration">Administration</h1>
+<p>The Administration feature is the basis for using the SCMP.</p>
+<p>The providers included within this feature will be used by the system to retrieve all necessary information.</p>
+<p>Within the functionality will be possible:</p>
+<ul>
+<li>Configure the cloud providers that can be used in the Reference Tenant.</li>
+<li>Configure the folders of the various providers.</li>
+<li>Configure SIEM Clouds from various providers.</li>
+<li>Configure the KeyVaults of the various providers.</li>
+<li>Configure the CommVaults for Backup and Disaster &amp; Recovery of the various providers.</li>
+<li>Confidential Computing for the various providers.</li>
+</ul>
+<h3 id="providersubsystems">provider/subsystems</h3>
+<h4 id="list-of-subsystems">List of subsystems</h4>
+<p>To access the Administration feature, at the top left click on the bento button. After that, click on â€œAdministrationâ€</p>
+<p>
+<figure><img src="../assets/images/extract/media/image42.png" /><figcaption>Access to Administration functionality</figcaption>
+</figure>
+</p>
+<p>At this point, the user finds himself within the tab page â€œCloud Systemsâ€, where we can view general information about subsystems, such as the reference provider and the date of creation of the subsystem and is also indicated with a red check if the system is on-premise type.
+2
+We can note that in the list there are "folders", subsystem containers, clicking at the "fresh" on the folder line we can view the subsystems inside and their information</p>
+<p>
+<figure><img src="../assets/images/extract/media/270125001.png" /><figcaption>List of subsystems and folders</figcaption>
+</figure>
+</p>
+<p>In addition, for each subsystem a status is available, represented by a colored â€œledâ€:</p>
+<ul>
+<li>Green: it works correctly in the SCMP â€œstatus: okâ€.</li>
+<li>Red: the subsystem is no longer usable by the SCMP â€œstatus : failedâ€.</li>
+</ul>
+<p>The SCMP periodically performs connection tests on all configured subsystems, when a subsystem fails this control, the status of the subsystem is updated and all data recovery processes are disabled (costs, inventory, monitoring, security).</p>
+<p>This may happen, for example when the secret or passwords used to connect expire and must be renewed.
+Going to change the subsystem you can insert the new connection parameters to restore the correct functioning, which will be confirmed by the status "OK"</p>
+<h5 id="information-on-subsystem-cron-job">** Information on subsystem cron-job**</h5>
+<p>Each tenant performs, during the day, several information recovery operations available for all configured subsystems, so that the user can view all the necessary data using the SCMP only.</p>
+<p>To view the outcome of these operations, click on the subsystem line and inside the modal select the "Show discovery info" button</p>
+<p>In addition to the amount of operations and their outcome, scrolling down you can view the list and its details by clicking the "cold" at the time of the operation concerned.</p>
+<p>
+<figure><img src="../assets/images/extract/media/image55.png" /><figcaption>About cron-job</figcaption>
+</figure>
+</p>
+<h5 id="view-edit-and-delete-a-subsystem">View, edit and delete a subsystem</h5>
+<p>To view the data of a Cloud Provider, within the list, click on the kebab menu at the Cloud Provider of Interest and click on â€œShowâ€.</p>
+<p>
+<figure><img src="../assets/images/extract/media/image43.png" /><figcaption>Access to the Cloud Provider in display mode</figcaption>
+</figure>
+</p>
+<p>On this page you can view the configuration of the Provider</p>
+<p>
+<figure><img src="../assets/images/extract/media/image44.png" /><figcaption>Subsystem in display mode</figcaption>
+</figure>
+</p>
+<p>If the provider is of â€œON-PREMISEâ€ type under the configuration will be visible a table showing the usable capabilities on the system and the list of resources already present in the subsystem</p>
+<p>
+<figure><img src="../assets/images/extract/media/image45.png" /><figcaption>On-Premise machine list</figcaption>
+</figure>
+</p>
+<p>To return to the Cloud Provider page, click on the â€œCloseâ€ button.</p>
+<p>To change the data of a Cloud Provider, within the list, click on the kebab menu at a Cloud Provider, and click on â€œEditâ€</p>
+<p>
+<figure><img src="../assets/images/extract/media/image46.png" /><figcaption>Cloud Provider access in edit mode</figcaption>
+</figure>
+</p>
+<p>This is done, the user will find himself inside the Cloud Provider page in "edit" mode, which allows you to change the data.</p>
+<p>To return to the Cloud Provider page, click on the â€œSaveâ€ button on the left.
+At this point, you will find yourself on the Cloud Provider page.</p>
+<p>
+<figure><img src="../assets/images/extract/media/image47.png" /><figcaption>Start for deleting a Cloud Provider</figcaption>
+</figure>
+</p>
+<p>To delete a Cloud Provider, within the list, click on the kebab menu at a Cloud Provider, and click on â€œDeleteâ€</p>
+<p>
+<figure><img src="../assets/images/extract/media/image48.png" /><figcaption>Cloud Provider Deletion Confirmation</figcaption>
+</figure>
+</p>
+<p>Done that, a modal will appear where you need to click on the â€œRemoveâ€ button</p>
+<p>At this point, the Cloud Provider will no longer be present within the list and the asset removal flow will be launched on the resource-manager.</p>
+<h5 id="on-premise-provider-cost-model"><strong>On-Premise provider cost model</strong></h5>
+<p>To manage the costs of using resources for the â€œOn-Premiseâ€ providers, you can define a specific cost model by subsystem.</p>
+<p>The cost model allows you to configure both the costs â€œproviderâ€ i.e. the ones actually incurred and then apply a discount or reload percentage to be applied to the customer.</p>
+<p>Providers using this feature are:</p>
+<ul>
+<li>VMWare</li>
+<li>VCloud Director</li>
+<li>RedHat Edge</li>
+<li>OpenShift</li>
+</ul>
+<p>To change the model, click the â€œthree pointsâ€ button at a subsystem and select the â€œCost modelâ€ item.</p>
+<p>
+<figure><img src="../assets/images/extract/media/image49.png" /><figcaption>Access to subsystem cost model</figcaption>
+</figure>
+</p>
+<p>On the model page we find a first generic section where you can configure the fields:</p>
+<ul>
+<li>Currency: the reference currency to be used for the subsystem.</li>
+<li>Discount/Surcharge: a discount or recharge rate to be applied to customer costs.</li>
+</ul>
+<p>
+<figure><img src="../assets/images/extract/media/270125002.png" /><figcaption>Cost model</figcaption>
+</figure>
+</p>
+<p>After clicking the â€œAdd rateâ€ button will open a modal in which, after choosing a metric (specific for the provider) and the relative unit of measurement to be used, the price will be inserted to all the elements of the subsystem, finally click the â€œSaveâ€ button to confirm the insertion.</p>
+<p>
+<figure><img src="../assets/images/extract/media/image51.png" /><figcaption>Selection of the metric to be presed</figcaption>
+</figure>
+</p>
+<p>To confirm the change to the model after entering all costs for each type of component available, click the â€œApplyâ€ button below.</p>
+<p>
+<figure><img src="../assets/images/extract/media/image52.png" /><figcaption>Complete cost model</figcaption>
+</figure>
+</p>
+<h5 id="manual-cost-update"><strong>Manual cost update</strong></h5>
+<p>The user is given the possibility to carry out a manual updating of the costs in case of necessity, this asynchronous operation can be requested individually by subsystem or globally on the whole tenant, which is automatically propagated on all available subsystems.</p>
+<p>To request the update of a single subsystem click the â€œthree pointsâ€ button on the subsystem line and select the â€œRefresh Costâ€ entry</p>
+<p>
+<figure><img src="../assets/images/extract/media/image53.png" /><figcaption>Manual cost update</figcaption>
+</figure>
+</p>
+<p>Within the modal we can indicate for how many days, starting from today's date, the costs of the selected subsystem must be repaid and confirmed. After confirming, we can go to the â€œ cron-job infoâ€ section to confirm the operations.</p>
+<p>You can also request the upgrade of costs for the whole tenant: by clicking first on the â€œhamburger menuâ€ button available on the top left and selecting the â€œrefresh costâ€, the activity will be distributed on all subsystems available on the page</p>
+<p>
+<figure><img src="../assets/images/extract/media/image54.png" /><figcaption>Update of costs on all tenant</figcaption>
+</figure>
+</p>
+<p>Once you select a cost recovery you can indicate the number of days to recover and selecting the box "Reset the cost" the SCMP will first perform a data cleaning (of its selected range) and then refresh</p>
+<p>
+<figure><img src="../assets/images/extract/media/20250604001.png" /><figcaption>Configuration of refresh costs</figcaption>
+</figure>
+</p>
+<h5 id="cost-recovery-and-calculation-process">Cost recovery and calculation process</h5>
+<h6 id="cost-recovery-structure">Cost recovery structure</h6>
+<p>The cost recovery process is carried out by the â€œAbstraction Layerâ€ module, this module consists of:</p>
+<ul>
+<li>An ABS sub-module called â€œlayerâ€ for each type of provider (e.g. â€œCMP-ABS-VMWare-layerâ€)</li>
+<li>ABS Gateway: is the sub-module that manages the communication and homologation of the information recovered from the various Layers of the different providers and makes them available for the other modules of the SCMP system.</li>
+</ul>
+<p>The cost recovery process is carried out by a cron-job, which is launched once per provider, automatically during night hours.</p>
+<p>For ON-Premise providers are automatically generated by the SCMP of usage values based on the amount of resources available in inventory using the same â€œABSâ€ modules. Subsequently, as with high providers, usage values will be used to calculate costs through the cost model described in the Administration section.</p>
+<p>In the event of failure, the process is automatically unscheduled until 3 attempts are reached. If the system fails to resolve automatically, manual intervention is required. In addition, you can request a manual cost update using the buttons available in the Administration section.</p>
+<p>Below the specific details for subsystem type</p>
+<h6 id="recovery-and-calculation-of-customer-costs-for-the-azure-provider">Recovery and calculation of customer costs for the <em>Azure</em> provider</h6>
+<p><strong>Recovery mode:</strong></p>
+<ul>
+<li><strong>Standard model</strong>: The ABS module requires the REST APIs made available by Azure for the last 2 days that are saved within the SCMP database.</li>
+<li><strong>Storage Account template</strong>: The ABS module recovers a file that contains the cost extracts made divided by subsystem,he are saved inside the SCMP database.</li>
+<li><strong>Billing storage</strong> model: the ABS module recovers a file that contains the extracts of all subscriptions available in the "billing account", the results are divided by subsystem and saved on the database</li>
+</ul>
+<p>** Cost calculation per resource:***</p>
+<ol>
+<li>The ABS module sends the cost information to the module and the information about the resource that generated them.</li>
+<li>The cost module verifies the subsystem configuration to identify the "aggregation typology", this parameter indicates which catalog to use (<a href="Catalog.md#risorse-e-relazioni-tra-risorse">RESOURCES</a>.
+ o <a href="Catalog.md#risorse-e-relazioni-tra-sku">SKU:</a>) so as to correctly calculate the price</li>
+<li>The cost module checks whether the resource identifier (UUID) is present in the <a href="Catalog.md#management-elements-di-catalogue-scmp">SCMP catalogue</a>, if present the system multiplies usage by the catalog cost</li>
+<li>If the resource is not listed (then it does not fall within the previous step) the SCMP will apply the percentage of discount/restrict configured <a href="./#parameter-azure">in the subsystem</a></li>
+</ol>
+<h6 id="recovery-and-calculation-of-customer-costs-for-the-aws-provider">Recovery and calculation of customer costs for the <em>AWS</em> provider</h6>
+<ul>
+<li><strong>Standard model</strong>: The ABS module interrogates AWS Cost Explorer APIs to get the costs of the last 2 days, saving data within the SCMP database.</li>
+<li>** Model "ARN ROLE"*: The ABS module assumes a specific IAM role (<a href="./#parameter-amazon-web-services">#</a>)) to access AWS billing data. The costs are extracted and subdivided by subsystem, then saved in the SCMP database.</li>
+</ul>
+<p>** Cost calculation per resource:***</p>
+<ol>
+<li>The ABS module sends the cost information to the module and the information about the resource that generated them.</li>
+<li>The cost module verifies the subsystem configuration to identify the "aggregation typology", this parameter indicates which catalog to use (<a href="Catalog.md#risorse-e-relazioni-tra-risorse">RESOURCES</a>
+ o <a href="Catalog.md#risorse-e-relazioni-tra-sku">SKU:</a>) so as to correctly calculate the price</li>
+<li>The cost module checks whether the resource identifier(UUID) is present in the <a href="Catalog.md#management-elements-di-catalogue-scmp">SCMP catalogue</a>, if present the system multiplies usage for the catalog cost.</li>
+<li>If the resource is not listed (then it does not fall within the previous step) the SCMP will apply the percentage of discount/restrict configured <a href="./#parametri-amazon-web-services">in the subsystem</a></li>
+</ol>
+<h6 id="recovery-and-calculation-of-customer-costs-for-the-google-provider">Recovery and calculation of customer costs for the <em>Google</em> provider</h6>
+<ul>
+<li><strong>Standard model</strong>: The ABS module questions Google Cloud Billing APIs to get the costs of the last 2 days, saving data within the SCMP database.</li>
+<li><strong>Dataset Export model</strong>: The ABS module accesses billing data exported by <strong>BigQuery</strong>. Costs are extracted, subdivided by subsystem and saved in the SCMP database.</li>
+</ul>
+<p>** Cost calculation per resource:***</p>
+<ol>
+<li>The ABS module sends the cost information to the module and the information about the resource that generated them.</li>
+<li>The cost module verifies the subsystem configuration to identify the "aggregation typology", this parameter indicates which catalog to use (<a href="Catalog.md#risorse-e-relazioni-tra-risorse">RESOURCES</a>
+ o <a href="Catalog.md#risorse-e-relazioni-tra-sku">SKU:</a>) so as to correctly calculate the price</li>
+<li>If the "Cost from USD" field has been selected, the system will use for calculating the price in USD (refunded by the provider), to which a discount/recharge rate defined in the administration section, otherwise the price already converted to EUR is used.</li>
+<li>The cost module checks whether the resource identifier(UUID) is present in the <a href="Catalog.md#management-elements-di-catalogue-scmp">SCMP catalogue</a>, if present the system multiplies usage for the catalog cost.</li>
+<li>If the resource is not listed (then it does not fall within the previous step) the SCMP will apply the percentage of discount/restrict configured <a href="./#parameter-google-cloud">in the subsystem</a></li>
+</ol>
+<h6 id="recovery-and-calculation-of-customer-costs-for-oracle-oracleexacc-providers">Recovery and calculation of customer costs for <em>Oracle, OracleEXAcc</em> providers</h6>
+<ul>
+<li><strong>Standard model</strong>: The ABS module questions the ORACLE API to get the costs of the last 2 days, saving the data within the SCMP database.</li>
+</ul>
+<p>** Cost calculation per resource:***</p>
+<ol>
+<li>The ABS module sends the cost information to the module and the information about the resource that generated them.</li>
+<li>The cost module verifies the subsystem configuration to identify the "aggregation typology", this parameter indicates which catalog to use (<a href="Catalog.md#risorse-e-relazioni-tra-risorse">RESOURCES</a>
+ o <a href="Catalog.md#risorse-e-relazioni-tra-sku">SKU:</a>) so as to correctly calculate the price</li>
+<li>If the "Cost from USD" field has been selected, the system will use for calculating the price in USD (refunded by the provider), to which a discount/recharge rate defined in the administration section, otherwise the price already converted to EUR is used.</li>
+<li>The cost module checks whether the resource identifier(UUID) is present in the <a href="Catalog.md#management-elements-di-catalogue-scmp">SCMP catalogue</a>, if present the system multiplies usage for the catalog cost.</li>
+<li>If the resource is not listed (therefore it does not fall within the previous step) the SCMP will apply the percentage of discount/recharge configured <a href="./#parameter-oracle">in the subsystem</a></li>
+</ol>
+<h6 id="customer-cost-recovery-and-calculation-for-kubernetes-openshift-vclouddirector-vmware-red-hat-edge-providers">Customer cost recovery and calculation for <em>Kubernetes, OpenShift, vcloudDirector , VMWare, Red Hat Edge</em> providers</h6>
+<ul>
+<li><em>Standard model</em>: The ABS module generates 24-hour Usage data for all available resources in the inventory, as providers are On-Premise and resources are all allocated to the customer.</li>
+</ul>
+<p>** Cost calculation per resource:***</p>
+<ol>
+<li>The ABS module sends the cost information to the module and the information about the resource that generated them.</li>
+<li>the SCMP will apply the percentage of discount/recharge configured <a href="./#model-di-costo-per-i-provider-on-premise">in the cost model</a></li>
+</ol>
+<h4 id="creating-new-subsystem">Creating new subsystem</h4>
+<p>To insert a new subsystem inside the portal, click on the â€œmenuâ€ available at the top right and select â€œ+ Add new cloud providerâ€</p>
+<p>
+<figure><img src="../assets/images/extract/media/image56.png" /><figcaption>Adding a new Cloud Provider</figcaption>
+</figure>
+</p>
+<p>The user displays the basic data of the subsystem to be entered, explained below.</p>
+<h5 id="parameters-shared-between-providers">*<em>Parameters shared between providers</em></h5>
+<p>Within the creation page we can see 3 fields:</p>
+<ul>
+<li>Name: indicates the name that will be displayed to indicate the subsystem.</li>
+<li>Type: indicates the type of cloud provider to which the subsystem belongs.</li>
+<li>Version: the subsystem provider version to install.</li>
+</ul>
+<p>
+<figure><img src="../assets/images/extract/media/image57.png" /><figcaption>General parameters of a subsystem</figcaption>
+</figure>
+</p>
+<p>After selecting the type and version of the system, the mask is updated to display the specific parameters according to the selected provider, since each of them manages authentication and resources differently.</p>
+<p>All providers require authentication, which can vary according to the system, for asset recovery.</p>
+<p>This sensitive information, such as passwords or certificates, is securely saved on an infrastructure element that deals with data security <a href="https://www.vaultproject.io/">https://www.vaultproject.io/</a>.</p>
+<h5 id="verification-of-connection-and-rescue-shared-between-providers">Verification of connection and rescue, shared between providers</h5>
+<p>For all subsystems are available at the bottom of page 3 buttons</p>
+<p>The â€œCloseâ€ button that allows to cancel the insertion of a new subsystem.</p>
+<p>The â€œTest Connectionâ€ key serves to carry out a connection test using the parameters inserted, in case of errors the system returns an error message that indicates â€œError: Unauthorized systemâ€ and the button becomes red, otherwise the button will become green and you can save the subsystem using the â€œSaveâ€ button.</p>
+<p>
+<figure><img src="../assets/images/extract/media/image58.png" /><figcaption>Connection buttons</figcaption>
+</figure>
+</p>
+<p>On the rescue, the SCMP will communicate to the module that manages that type of provider, to load inside our bus (Kafka) all items related to inventory, metrics, costs and security elements.</p>
+<p>The same module, it will then scan jobs for the periodic update of all the assets present.</p>
+<p>After saving, a modal will appear that informs the user that you cannot delete a cloud provider before 24 hours. From the modal, click on â€œOKâ€. After doing so, the user finds himself on the Cloud Provider page.</p>
+<h5 id="amazon-web-services">*<em>Amazon Web Services</em></h5>
+<p>Enabled features:</p>
+<ul>
+<li>Catalogue element recovery</li>
+<li>Recovery of inventory items</li>
+<li>Recovery of use metrics</li>
+<li>Recovery of resources costs</li>
+<li>Recovery of security information</li>
+<li>Provisioning resources</li>
+<li>Provisioning services</li>
+<li>Provisioning complex blueprints</li>
+</ul>
+<p>The specific parameters of the Amazon Web Services subsystem are shown in the table:</p>
+<p>
+<figure><img src="../assets/images/extract/media/image59.png" /><figcaption>Amazon Web Services configuration mask</figcaption>
+</figure>
+</p>
+<p>The mandatory parameters are indicated with *</p>
+<table>
+<thead>
+<tr>
+<th><strong>Nome</strong></th>
+<th><strong>Tipo</strong></th>
+<th><strong>Descrizione</strong></th>
+<th><strong>Esempio</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AccessKey *</td>
+<td>string</td>
+<td>La chiave di accesso AWS Ã¨ una stringa alfanumerica che identifica l'utente AWS.</td>
+<td>ZYKZGVAKIS4YK5IXCAXB</td>
+</tr>
+<tr>
+<td>SecretKey *</td>
+<td>password</td>
+<td>La chiave di accesso segreta AWS Ã¨ una stringa alfanumerica che viene utilizzata per autenticare l'utente AWS</td>
+<td>np6Kc_.xwsvhR8Q~rP05fCqYNXmbqfMGQLOEzfMt</td>
+</tr>
+<tr>
+<td>use A role</td>
+<td>Boolean</td>
+<td>Specifica lâ€™utilizzo di uno o piÃ¹ ruoli dâ€™amministrazione per lâ€™autenticazione su uno o piÃ¹ account specifico/i dellâ€™organization del provider</td>
+<td>true</td>
+</tr>
+<tr>
+<td>Arn Role (solo se useArole Ã¨ attivo)</td>
+<td>string</td>
+<td>Inserisci qui l'id Arn del ruolo associato ad un account specifico per lâ€™esecuzione della fase di discovery di monitoring e per il provisioning</td>
+<td>arn:aws:iam:{accountID}:role/{roleName}</td>
+</tr>
+<tr>
+<td>Audit Arn Role (solo se useArole Ã¨ attivo)</td>
+<td>string</td>
+<td>Inserisci qui l'id Arn di Audit del ruolo associato ad un account specifico per lâ€™esecuzione della fase di discovery dâ€™inventario</td>
+<td>arn:aws:iam:{accountID}:role/{roleName}</td>
+</tr>
+<tr>
+<td>Aggregator Name</td>
+<td>string</td>
+<td>Inserisci qui il nome dellâ€™ aggregator sulle risorse per lâ€™utilizzo del servizio AWS Config a supporto della fase di discovery dâ€™inventario</td>
+<td>aws-{aggregatorName}</td>
+</tr>
+<tr>
+<td>Cost Bucket Path</td>
+<td>string</td>
+<td>Inserisci qui il path del bucket di storage delle query sui costi</td>
+<td>s3://{bucketPath}</td>
+</tr>
+<tr>
+<td>Cost Export Dataset ID</td>
+<td>string</td>
+<td>Inserisci qui lâ€™ID del dataset dei costi sul quale eseguire le query</td>
+<td>{databaseName}.{tableName}</td>
+</tr>
+<tr>
+<td>usageAggregation</td>
+<td>Boolean</td>
+<td>Indica la tipologia di aggregazione utilizzata per il calcolo dei costi (true per le risorse, false per gli sku)</td>
+<td>True</td>
+</tr>
+<tr>
+<td>Rate Code Aggregation (solo se useAggregation Ã¨ false)</td>
+<td>Boolean</td>
+<td>Indica se lâ€™aggregazione degli sku avviene per sku ID o per rate code.</td>
+<td>true</td>
+</tr>
+<tr>
+<td>catalogPriceDiscount</td>
+<td>integer</td>
+<td>Inserisci qui uno sconto/maggiorazione da applicare sui prezzi del catalogo per tutte le risorse che non hanno una relazione CMP</td>
+<td>5</td>
+</tr>
+<tr>
+<td>odlID</td>
+<td>string</td>
+<td>Inserisci qui l'id dell'ordine di lavoro che verrÃ  associato al sottosistema e verrÃ  inserito come tag su tutte le risorse del sottosistema</td>
+<td>ODL001</td>
+</tr>
+<tr>
+<td>dataFirstCostRecover</td>
+<td>int</td>
+<td>Inserire il numero di giorni precedenti alla data di creazione dei quali bisogna recuperare i costi al primo avvio del sottosistema</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">Configurazioni sul provider</p>
+<ol>
+<li>Configurazione S3<ul>
+<li>Accedere ad <strong>Amazon S3</strong>.</li>
+<li>Creare o utilizzare un bucket per i dati CUR.</li>
+<li>Abilitare il <strong>Bucket Versioning</strong>.</li>
+</ul>
+</li>
+<li>Definizione CUR<ul>
+<li>Accedere ad <strong>Billing and cost management</strong></li>
+<li>Andare nella sezione Data Exports</li>
+<li>Configurare un nuovo report CUR come segue<ul>
+<li>Export details:<ul>
+<li><strong>Standard data export</strong>: formato standard d'esportazione</li>
+<li><strong>Export name</strong>: nome del report</li>
+</ul>
+</li>
+<li>Data table content settings:<ul>
+<li>Selezionare <strong>CUR 2.0</strong></li>
+<li>Selezionare come granularitÃ  <strong>Hourly</strong></li>
+</ul>
+</li>
+<li>Data export delivery options<ul>
+<li>file format: <strong>Parquet</strong></li>
+<li>file versioning: <strong>Overwrite existing data export file</strong></li>
+</ul>
+</li>
+<li>Data export storage settings<ul>
+<li>Configurare il puntamento al bucket S3 con quello creato inizialmente</li>
+<li>Configurare il prefisso del bucket path con <strong>data</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Creazione del ruolo IAM per Glue<ul>
+<li>Accedere ad <strong>IAM</strong>.</li>
+<li>Creare un ruolo custom per la gestione di Amazon Glue.</li>
+<li>Assegnare le seguenti policy:<ul>
+<li><code>AWSGlueServiceRole</code> (policy standard AWS)</li>
+<li>Policy custom per accesso al bucket S3:
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="nt">&quot;Version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span>
+<span class="nt">&quot;Statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="p">{</span>
+<span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
+<span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="s2">&quot;s3:GetObject&quot;</span><span class="p">,</span>
+<span class="s2">&quot;s3:PutObject&quot;</span>
+<span class="p">],</span>
+<span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="s2">&quot;arn:aws:s3:::{bucketPath}/*&quot;</span>
+<span class="p">]</span>
+<span class="p">}</span>
+<span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Creazione database Glue<ul>
+<li>Accedere a <strong>AWS Glue</strong>.</li>
+<li>Creare il database.</li>
+</ul>
+</li>
+<li>Configurazione del Crawler<ul>
+<li>Creare un <strong>crawler</strong> in Glue:<ul>
+<li>Selezionare il ruolo custom precedentemente creato.</li>
+<li>Definire il path S3 come <code>s3://{bucketPath}/data/</code>.</li>
+<li>Impostare uno <strong>scheduling</strong> (es. ogni ora: <code>0 * * * * *</code>).</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Utilizzo in Athena<ul>
+<li>Dopo la prima esecuzione del crawler, i dati saranno disponibili in <strong>Athena</strong> per le query.</li>
+<li>âš ï¸ <em>Per dati storici passati, contattare il supporto AWS.</em></li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol>
+<li>Configurazione e Aggregatori AWS<ol>
+<li>Configurazione iniziale<ul>
+<li>Accedere ad <strong>AWS Config</strong> e fare clic su <strong>Get started</strong>.</li>
+<li>Creare un bucket S3 per i dati aggregati.</li>
+<li>Abilitare l'override per risorse di tipo <strong>IAM</strong> e lasciare le restanti opzioni di default; AWS creerÃ  automaticamente il ruolo necessario.</li>
+</ul>
+</li>
+<li>Aggregatore Config<ul>
+<li>Creare un <strong>aggregatore di risorse</strong> nell'apposita sezione <strong>Aggregators</strong>.</li>
+<li>Includere tutte le regioni.</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<hr />
+<ol>
+<li>
+<p>Creazione utente IAM</p>
+<ul>
+<li>Accedere ad <strong>IAM</strong> e andare nella sezione <strong>Users</strong></li>
+<li>Creare un nuovo utente o selezionarne uno preesistente.</li>
+<li>Facoltativo: abilitare l'accesso a console per l'utente creato.</li>
+</ul>
+</li>
+<li>
+<p>Policy to be assigned to the user
+    _
+    _
+    _
+    _
+    _
+    _</p>
+<ul>
+<li>Add the following custom policy to manage the CUR bucket
+_</li>
+</ul>
+</li>
+<li>Access Key<ul>
+<li>Generate Secret Credential**.</li>
+<li>Save the <strong>Access Key</strong><em> and </em><em>Secret Key</em><strong> (not recoverable later).
+To enable</strong><strong>* intake of roles</strong> via STS for cross-account services (e.g. AWS Config), associate the following policy with the user created:
+_</li>
+</ul>
+</li>
+</ol>
+</div>
+<h5 id="azure-parameters">** Azure parameters**</h5>
+<p>Enabled features:</p>
+<ul>
+<li>Catalogue element recovery</li>
+<li>Recovery of inventory items</li>
+<li>Recovery of use metrics</li>
+<li>Recovery of resources costs</li>
+<li>Recovery of security information</li>
+<li>Provisioning resources</li>
+<li>Provisioning services</li>
+<li>Provisioning complex blueprints</li>
+</ul>
+<p>The specific parameters of the Azure subsystem to be inserted are shown in the table:</p>
+<p>
+<figure><img src="../assets/images/extract/media/image60.png" /><figcaption>Azure configuration mask</figcaption>
+</figure>
+</p>
+<p>The mandatory parameters are indicated with *</p>
+<table>
+<thead>
+<tr>
+<th><strong>Nome</strong></th>
+<th><strong>Tipo</strong></th>
+<th><strong>Descrizione</strong></th>
+<th><strong>Esempio</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clientId <strong>*</strong></td>
+<td>string</td>
+<td>L'ID univoco del client che si connette al sottosistema Azure Cloud. Questo ID viene utilizzato per identificare il client e per autorizzare l'accesso alle risorse del sottosistema.</td>
+<td>5a85c16c6ad-49db-a58e-e209-ee11f53d6c6b</td>
+</tr>
+<tr>
+<td>clientSecret *</td>
+<td>password</td>
+<td>La chiave segreta del client, utilizzata per autenticare il client con il sottosistema Azure Cloud. La chiave segreta deve essere tenuta segreta e non deve essere condivisa con nessuno.</td>
+<td>np6Kc_.xwsvhR8Q~rP05fCqYNXmbqfMGQLOEzfMt</td>
+</tr>
+<tr>
+<td>tenantId *</td>
+<td>string</td>
+<td>L'ID del tenant Azure a cui appartiene il sottosistema Azure Cloud. Il tenant Ã¨ un'entitÃ  organizzativa in Azure che rappresenta un'azienda o un'organizzazione.</td>
+<td>884147733-ff13-4783-a765-834183773083</td>
+</tr>
+<tr>
+<td>subscriptionId *</td>
+<td>string</td>
+<td>L'ID della sottoscrizione Azure utilizzata per accedere al sottosistema Azure Cloud. La sottoscrizione Ã¨ un contratto per l'utilizzo dei servizi Azure.</td>
+<td>884147733-ff13-4783-a765-834183773083</td>
+</tr>
+<tr>
+<td>usageAggregation</td>
+<td>boolean</td>
+<td>Indica se l'aggregazione per "usage" Ã¨ abilitata per la sottoscrizione. Quando questa spunta viene abilitata i costi del sottosistema verranno raggruppati per Tipologia risorsa</td>
+<td>false</td>
+</tr>
+<tr>
+<td>Storage account ID**</td>
+<td>String</td>
+<td>Inserire il percorso dove vengono effettuate le esportazioni dei costi</td>
+<td>/subscriptions/{{sottoscrizione}}/resourceGroups/{{resourcegroup}}/providers/Microsoft.Storage/storageAccounts/{{storage account}}</td>
+</tr>
+<tr>
+<td>Cost from Billing storage**</td>
+<td>boolean</td>
+<td>Selezionare questa casella per recuperare i costi in formato "billing Account"</td>
+<td>true</td>
+</tr>
+<tr>
+<td>catalogPriceDiscount</td>
+<td>integer</td>
+<td>Inserisci qui uno sconto/maggiorazione da applicare sui prezzi del catalogo per tutte le risorse che non hanno una relazione SCMP</td>
+<td>5</td>
+</tr>
+<tr>
+<td>odlID</td>
+<td>string</td>
+<td>Inserisci qui l'id dell'ordine di lavoro che verrÃ  associato al sottosistema e verrÃ  inserito come tag su tutte le risorse del sottosistema</td>
+<td>ODL001</td>
+</tr>
+<tr>
+<td>dataFirstCostRecover</td>
+<td>int</td>
+<td>Inserire il numero di giorni precedenti alla data di creazione dei quali bisogna recuperare i costi al primo avvio del sottosistema</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Variabili per il calcolo dei costi</p>
+<p>The variables indicated with ** are exclusive, so you can select only one at a time. Each variable activates a different system for calculating costs and, if more than one is set, the rescue of the subsystem will be prevented.
+Specifically we can:</p>
+<ul>
+<li>Use the "Storage account ID" field to recover costs through automatic extractions performed individually by subsystem (only if the storage belongs to the same tenant)</li>
+<li>Use the "Cost from Billing Storage" field to recover billing account costs, then using only one file for all available subscriptions (Contributionor and Blob Contributor permissions are required)</li>
+<li>Leaving the "Cost from Billing storage" field and the "Cost from billing storage" field SCMP will recover costs using APIs Azure prepared for daily costs.</li>
+</ul>
+<p>This distinction is necessary to prevent APIs Azure respond with a 429 error related to the large number of requests made, in addition to using the methods described above, it is necessary that the Azure system be correctly configured and the utilities inserted have all the necessary permits</p>
+</div>
+<h5 id="azurestack-parameters">** AzureStack parameters**</h5>
+<p>Enabled features:</p>
+<ul>
+<li>Catalogue element recovery</li>
+<li>Recovery of inventory items</li>
+<li>Recovery of use metrics</li>
+<li>Recovery of resources costs</li>
+<li>Recovery of security information</li>
+<li>Provisioning resources</li>
+<li>Provisioning services</li>
+<li>Provisioning complex blueprints</li>
+</ul>
+<p>The specific parameters of the AzureStack subsystem to be inserted are shown in the table:</p>
+<p>
+<figure><img src="../assets/images/extract/media/image61.png" /><figcaption>AzureStack configuration mask</figcaption>
+</figure>
+</p>
+<p>The mandatory parameters are indicated with *</p>
+<table>
+<thead>
+<tr>
+<th><strong>Nome</strong></th>
+<th><strong>Tipo</strong></th>
+<th><strong>Descrizione</strong></th>
+<th><strong>Esempio</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clientId <strong>*</strong></td>
+<td>string</td>
+<td>L'ID univoco del client che si connette al sottosistema Azure Cloud. Questo ID viene utilizzato per identificare il client e per autorizzare l'accesso alle risorse del sottosistema.</td>
+<td>5a85c16c6ad-49db-a58e-e209-ee11f53d6c6b</td>
+</tr>
+<tr>
+<td>clientSecret *</td>
+<td>password</td>
+<td>La chiave segreta del client, utilizzata per autenticare il client con il sottosistema Azure Cloud. La chiave segreta deve essere tenuta segreta e non deve essere condivisa con nessuno.</td>
+<td>np6Kc_.xwsvhR8Q~rP05fCqYNXmbqfMGQLOEzfMt</td>
+</tr>
+<tr>
+<td>tenantId *</td>
+<td>string</td>
+<td>L'ID del tenant Azure a cui appartiene il sottosistema Azure Cloud. Il tenant Ã¨ un'entitÃ  organizzativa in Azure che rappresenta un'azienda o un'organizzazione.</td>
+<td>884147733-ff13-4783-a765-834183773083</td>
+</tr>
+<tr>
+<td>subscriptionId *</td>
+<td>string</td>
+<td>L'ID della sottoscrizione Azure utilizzata per accedere al sottosistema Azure Cloud. La sottoscrizione Ã¨ un contratto per l'utilizzo dei servizi Azure.</td>
+<td>884147733-ff13-4783-a765-834183773083</td>
+</tr>
+<tr>
+<td>usageAggregation</td>
+<td>boolean</td>
+<td>Indica se l'aggregazione per "usage" Ã¨ abilitata per la sottoscrizione. Quando questa spunta viene abilitata i costi del sottosistema verranno raggruppati per Tipologia risorsa</td>
+<td>false</td>
+</tr>
+<tr>
+<td>catalogPriceDiscount</td>
+<td>integer</td>
+<td>Inserisci qui uno sconto/maggiorazione da applicare sui prezzi del catalogo per tutte le risorse che non hanno una relazione SCMP</td>
+<td>5</td>
+</tr>
+<tr>
+<td>odlID</td>
+<td>string</td>
+<td>Inserisci qui l'id dell'ordine di lavoro che verrÃ  associato al sottosistema e verrÃ  inserito come tag su tutte le risorse del sottosistema</td>
+<td>ODL001</td>
+</tr>
+<tr>
+<td>dataFirstCostRecover</td>
+<td>int</td>
+<td>Inserire il numero di giorni precedenti alla data di creazione dei quali bisogna recuperare i costi al primo avvio del sottosistema</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+<p>For on Premise providers, in particular, data on infrastructure capacity is required, so that SCMP can perform preliminary calculations in multiple scenarios.</p>
+<p>For example, during provisioning, so as not to exceed the maximum permitted capacity of the provider.</p>
+<h5 id="parameters"><strong>Parameters</strong><strong>*</strong> &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; * &gt; &gt; &gt; &gt; * &gt; &gt; * &gt; * &gt; * &gt; * &gt; &gt; * &gt; &gt; &gt; * &gt; &gt; * &gt; * &gt; * &gt; * &gt; &gt; &gt; &gt; &gt; &gt; &gt; * * * * &gt; &gt; * * &gt; * * &gt; &gt; &gt; * * &gt; &gt; &gt; * * &gt; &gt; &gt; &gt; &gt; &gt; * &gt; * * * * * &gt; * * * * * * &gt; * * * * * * * * * * * * * * &gt; * * * * * * * * * &gt; * * * * * * * * * * * * * * * * &gt; * &gt; &gt; &gt; * * * * * * * * * * * &gt; &gt; * * * &gt; * * * * * * &gt; * &gt;</h5>
+<p>Enabled features:</p>
+<ul>
+<li>Catalogue element recovery</li>
+<li>Recovery of inventory items</li>
+<li>Recovery of use metrics</li>
+<li>Recovery of resources costs</li>
+<li>Recovery of security information</li>
+<li>Provisioning resources</li>
+<li>Provisioning services</li>
+<li>Provisioning complex blueprints</li>
+</ul>
+<p>The specific parameters of the AzureStack HCI subsystem to be inserted are shown in the table:</p>
+<p>
+<figure><img src="../assets/images/extract/media/image62.png" /><figcaption>AzureStack HCI configuration mask</figcaption>
+</figure>
+</p>
+<p>The mandatory parameters are indicated with *</p>
+<table>
+<thead>
+<tr>
+<th><strong>Nome</strong></th>
+<th><strong>Tipo</strong></th>
+<th><strong>Descrizione</strong></th>
+<th><strong>Esempio</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clientId <strong>*</strong></td>
+<td>string</td>
+<td>L'ID univoco del client che si connette al sottosistema Azure Cloud. Questo ID viene utilizzato per identificare il client e per autorizzare l'accesso alle risorse del sottosistema.</td>
+<td>5a85c16c6ad-49db-a58e-e209-ee11f53d6c6b</td>
+</tr>
+<tr>
+<td>clientSecret *</td>
+<td>password</td>
+<td>La chiave segreta del client, utilizzata per autenticare il client con il sottosistema Azure Cloud. La chiave segreta deve essere tenuta segreta e non deve essere condivisa con nessuno.</td>
+<td>np6Kc_.xwsvhR8Q~rP05fCqYNXmbqfMGQLOEzfMt</td>
+</tr>
+<tr>
+<td>tenantId *</td>
+<td>string</td>
+<td>L'ID del tenant Azure a cui appartiene il sottosistema Azure Cloud. Il tenant Ã¨ un'entitÃ  organizzativa in Azure che rappresenta un'azienda o un'organizzazione.</td>
+<td>884147733-ff13-4783-a765-834183773083</td>
+</tr>
+<tr>
+<td>subscriptionId *</td>
+<td>string</td>
+<td>L'ID della sottoscrizione Azure utilizzata per accedere al sottosistema Azure Cloud. La sottoscrizione Ã¨ un contratto per l'utilizzo dei servizi Azure.</td>
+<td>884147733-ff13-4783-a765-834183773083</td>
+</tr>
+<tr>
+<td>usageAggregation</td>
+<td>boolean</td>
+<td>Indica se l'aggregazione per "usage" Ã¨ abilitata per la sottoscrizione. Quando questa spunta viene abilitata i costi del sottosistema verranno raggruppati per Tipologia risorsa</td>
+<td>false</td>
+</tr>
+<tr>
+<td>catalogPriceDiscount</td>
+<td>integer</td>
+<td>Inserisci qui uno sconto/maggiorazione da applicare sui prezzi del catalogo per tutte le risorse che non hanno una relazione SCMP</td>
+<td>5</td>
+</tr>
+<tr>
+<td>odlID</td>
+<td>string</td>
+<td>Inserisci qui l'id dell'ordine di lavoro che verrÃ  associato al sottosistema e verrÃ  inserito come tag su tutte le risorse del sottosistema</td>
+<td>ODL001</td>
+</tr>
+<tr>
+<td>dataFirstCostRecover</td>
+<td>int</td>
+<td>Inserire il numero di giorni precedenti alla data di creazione dei quali bisogna recuperare i costi al primo avvio del sottosistema</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+<p>For on Premise providers, in particular, data on infrastructure capacity is required, so that SCMP can perform preliminary calculations in multiple scenarios.</p>
+<p>For example, during provisioning, so as not to exceed the maximum permitted capacity of the provider.</p>
+<h5 id="azurestack-hybrid-clouda">*<em>AzureStack Hybrid CloudÂ»</em></h5>
+<p>Enabled features:</p>
+<ul>
+<li>Catalogue element recovery</li>
+<li>Recovery of inventory items</li>
+<li>Recovery of use metrics</li>
+<li>Provisioning resources</li>
+<li>Provisioning services</li>
+<li>Provisioning complex blueprints</li>
+</ul>
+<p>The specific parameters of the AzureStack Hybrid cloud subsystem to be inserted are shown in the table:</p>
+<p>
+<figure><img src="../assets/images/extract/media/image63.png" /><figcaption>AzureStack Hybrid cloud configuration mask</figcaption>
+</figure>
+</p>
+<p>The mandatory parameters are indicated with *</p>
+<table>
+<thead>
+<tr>
+<th><strong>Nome</strong></th>
+<th><strong>Tipo</strong></th>
+<th><strong>Descrizione</strong></th>
+<th><strong>Esempio</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clientId <strong>*</strong></td>
+<td>string</td>
+<td>L'ID univoco del client che si connette al sottosistema Azure Cloud. Questo ID viene utilizzato per identificare il client e per autorizzare l'accesso alle risorse del sottosistema.</td>
+<td>5a85c16c6ad-49db-a58e-e209-ee11f53d6c6b</td>
+</tr>
+<tr>
+<td>clientSecret *</td>
+<td>password</td>
+<td>La chiave segreta del client, utilizzata per autenticare il client con il sottosistema Azure Cloud. La chiave segreta deve essere tenuta segreta e non deve essere condivisa con nessuno.</td>
+<td>np6Kc_.xwsvhR8Q~rP05fCqYNXmbqfMGQLOEzfMt</td>
+</tr>
+<tr>
+<td>tenantId *</td>
+<td>string</td>
+<td>L'ID del tenant Azure a cui appartiene il sottosistema Azure Cloud. Il tenant Ã¨ un'entitÃ  organizzativa in Azure che rappresenta un'azienda o un'organizzazione.</td>
+<td>884147733-ff13-4783-a765-834183773083</td>
+</tr>
+<tr>
+<td>subscriptionId *</td>
+<td>string</td>
+<td>L'ID della sottoscrizione Azure utilizzata per accedere al sottosistema Azure Cloud. La sottoscrizione Ã¨ un contratto per l'utilizzo dei servizi Azure.</td>
+<td>884147733-ff13-4783-a765-834183773083</td>
+</tr>
+<tr>
+<td>usageAggregation</td>
+<td>boolean</td>
+<td>Indica se l'aggregazione per "usage" Ã¨ abilitata per la sottoscrizione. Quando questa spunta viene abilitata i costi del sottosistema verranno raggruppati per Tipologia risorsa</td>
+<td>false</td>
+</tr>
+<tr>
+<td>catalogPriceDiscount</td>
+<td>integer</td>
+<td>Inserisci qui uno sconto/maggiorazione da applicare sui prezzi del catalogo per tutte le risorse che non hanno una relazione SCMP</td>
+<td>5</td>
+</tr>
+<tr>
+<td>odlID</td>
+<td>string</td>
+<td>Inserisci qui l'id dell'ordine di lavoro che verrÃ  associato al sottosistema e verrÃ  inserito come tag su tutte le risorse del sottosistema</td>
+<td>ODL001</td>
+</tr>
+<tr>
+<td>dataFirstCostRecover</td>
+<td>int</td>
+<td>Inserire il numero di giorni precedenti alla data di creazione dei quali bisogna recuperare i costi al primo avvio del sottosistema</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+<p>For on Premise providers, in particular, data on infrastructure capacity is required, so that SCMP can perform preliminary calculations in multiple scenarios.</p>
+<p>For example, during provisioning, so as not to exceed the maximum permitted capacity of the provider.</p>
+<h5 id="redhat-edge-device-parameters">RedHat Edge Device Parameters</h5>
+<p>Enabled features:</p>
+<ul>
+<li>Catalogue element recovery</li>
+<li>Recovery of inventory items</li>
+<li>Recovery of use metrics</li>
+<li>Recovery of resources costs</li>
+<li>Recovery of security information</li>
+<li>Provisioning resources</li>
+<li>Provisioning services</li>
+<li>Provisioning complex blueprints</li>
+</ul>
+<p>The specific parameters of the Google Cloud subsystem to be inserted are displayed in the table.</p>
+<p>
+<figure><img src="../assets/images/extract/media/image64.png" /><figcaption>Edge configuration mask</figcaption>
+</figure>
+</p>
+<p>The mandatory parameters are indicated with *</p>
+<table>
+<thead>
+<tr>
+<th><strong>Nome</strong></th>
+<th><strong>Tipo</strong></th>
+<th><strong>Descrizione</strong></th>
+<th><strong>Esempio</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>client_id *</td>
+<td>string</td>
+<td></td>
+<td>104822473261100667392</td>
+</tr>
+<tr>
+<td>clientSecret *</td>
+<td>string</td>
+<td>Secret del cliente utilizzato per la connessione</td>
+<td>82hg7ds1h0sds7392</td>
+</tr>
+<tr>
+<td>odlID</td>
+<td>string</td>
+<td>Inserisci qui l'id dell'ordine di lavoro che verrÃ  associato al sottosistema e verrÃ  inserito come tag su tutte le risorse del sottosistema</td>
+<td>ODL001</td>
+</tr>
+<tr>
+<td>catalogPriceDiscount</td>
+<td>integer</td>
+<td>Inserisci qui uno sconto/maggiorazione da applicare sui prezzi del catalogo per tutte le risorse che non hanno una relazione SCMP</td>
+<td>10</td>
+</tr>
+<tr>
+<td>dataFirstCostRecover</td>
+<td>int</td>
+<td>Inserire il numero di giorni precedenti alla data di creazione dei quali bisogna recuperare i costi al primo avvio del sottosistema</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">Configurazione lato PROVIDER</p>
+<p>In order to insert the system into the SCMP, some configurations are required on the provider's portal.</p>
+<p>Specifically:</p>
+<ul>
+<li>
+<p>Create a service account</p>
+<ol>
+<li>Login to https://console.redhat.com</li>
+<li>On the top right click the ' Settings â†’ Service Accounts â†’ Create service account.</li>
+<li>Enter Name and Description â‡¢ Create.</li>
+<li>Copy Client ID and Client Secret (the secret will no longer be shown).</li>
+</ol>
+</li>
+<li>
+<p>assign permissions</p>
+<ol>
+<li>Go to Settings â†’ User Access â†’ Groups</li>
+<li>Create a group containing the following permissions/roles:</li>
+</ol>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Servizio</th>
+<th>Ruolo consigliato</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Edge Management (fleet, update)</td>
+<td><strong>Edge Management Administrator</strong> o <strong>User</strong></td>
+</tr>
+<tr>
+<td>Image Builder</td>
+<td><strong>Image Builder Administrator</strong> o <strong>User</strong></td>
+</tr>
+<tr>
+<td>Insights Inventory (lettura host)</td>
+<td><strong>Insights Inventory Viewer</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>In the Service Accounts tab of the â‡¢ Add service account â‡¢ the account you have just created</li>
+<li>Rotation and revocation permissions<ol>
+<li>Portal â‡¢ Service Accounts â†’ menu ())</li>
+<li>Select <strong>Reset credentials</strong>* to regenerate only the Secret Client.</li>
+<li>Select <strong>Delete service account</strong>* to permanently unsubscribe automation.</li>
+</ol>
+</li>
+</ul>
+<p>With this configuration you can safely orchestrate the entire edge life cycle â€“ from image generation to rollout updates â€“ without ever using personal credentials.</p>
+</div>
+<h5 id="parameters-google-cloud">Parameters Google Cloud</h5>
+<p>Enabled features:</p>
+<p>Recovery of catalog items</p>
+<ul>
+<li>Recovery of inventory items</li>
+<li>Recovery of use metrics</li>
+<li>Recovery of resources costs</li>
+<li>Recovery of security information</li>
+<li>Provisioning resources</li>
+<li>Provisioning services</li>
+<li>Provisioning complex blueprints</li>
+</ul>
+<p>The specific parameters of the Google Cloud subsystem to be inserted are displayed in the table, the â€œService accountâ€ field can be inserted both automatically and manually as described in the paragraph.</p>
+<p>
+<figure><img src="../assets/images/extract/media/image65.png" /><figcaption>Google configuration mask</figcaption>
+</figure>
+</p>
+<p>The mandatory parameters (available below the service account section).</p>
+<table>
+<thead>
+<tr>
+<th><strong>Nome</strong></th>
+<th><strong>Tipo</strong></th>
+<th><strong>Descrizione</strong></th>
+<th><strong>Esempio</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>serviceAccount *</td>
+<td>object</td>
+<td>File di connessione generato dalla console Google</td>
+<td>service_account.json</td>
+</tr>
+<tr>
+<td>discoveryProjectId *</td>
+<td>string</td>
+<td>Identificativo del progetto di cui si effettuerÃ  il discovery</td>
+<td>Theproject-547280</td>
+</tr>
+<tr>
+<td>costExportProjectId</td>
+<td>string</td>
+<td>Dataset id del service account di esportazione costi se il dataset Ã¨ differente dal ProjectID</td>
+<td>test-customer.test_customer.gcp_billing_export_resource_v1_01527DF_51B683_EB2A9</td>
+</tr>
+<tr>
+<td>usageAggregation</td>
+<td>boolean</td>
+<td>Indica se l'aggregazione per "usage" Ã¨ abilitata per la sottoscrizione. Quando questa spunta viene abilitata i costi del sottosistema verranno raggruppati per Tipologia risorsa</td>
+<td>false</td>
+</tr>
+<tr>
+<td>Cost from USD Currency</td>
+<td>boolean</td>
+<td>Indica se il costo finale Ã¨ calcolato dal prezzo in USD o EUR</td>
+<td>true</td>
+</tr>
+<tr>
+<td>providerPriceDiscount ** (solo se costFromUSDCurrency Ã¨ true)</td>
+<td>integer</td>
+<td>Inserisci qui uno sconto/maggiorazione da applicare sui prezzi in USD del provider per tutte le risorse</td>
+<td>30</td>
+</tr>
+<tr>
+<td>catalogPriceDiscount **</td>
+<td>integer</td>
+<td>Inserisci qui uno sconto/maggiorazione da applicare sui prezzi del catalogo per tutte le risorse che non hanno una relazione SCMP</td>
+<td>-5</td>
+</tr>
+<tr>
+<td>odlID</td>
+<td>string</td>
+<td>Inserisci qui l'id dell'ordine di lavoro che verrÃ  associato al sottosistema e verrÃ  inserito come tag su tutte le risorse del sottosistema</td>
+<td>ODL001</td>
+</tr>
+<tr>
+<td>dataFirstCostRecover</td>
+<td>int</td>
+<td>Inserire il numero di giorni precedenti alla data di creazione dei quali bisogna recuperare i costi al primo avvio del sottosistema</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Variabili per il calcolo dei costi</p>
+<p>The variables indicated with ** are used differently, for the calculation of the "client" cost depending on the presence of the "Cost from USD Currency" field.
+Specifically:</p>
+<ul>
+<li>If the field is disabled the value inserted in "PriceDiscount"vcatalog is used as a percentage added to the price recovered by the provider (or discounted if the value is negative) as for other providers</li>
+<li>If the field is activated the value inserted in "PriceDiscount"catalog and the value of "PriceDiscount" is used as a coefficient multiplied by the cost in USD recovered by the provider</li>
+</ul>
+<p>This distinction is necessary to prevent APIs Azure respond with a 429 error related to the large number of requests made, in addition to using the methods described above, it is necessary that the Azure system be correctly configured and the utilities inserted have all the necessary permits</p>
+<p>
+<figure><img src="../assets/images/extract/media/image66.png" /><figcaption>Uploading the configuration file</figcaption>
+</figure>
+</p>
+<p>By uploading the file the form is automatically completed with the necessary parameters, but it is also possible to insert them manually (yellow panel present in the image), following the table, all fields are mandatory:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Nome</strong></th>
+<th><strong>Tipo</strong></th>
+<th><strong>Descrizione</strong></th>
+<th><strong>Esempio</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>string</td>
+<td>Inserire il nome della tipologia di autenticazione configurata</td>
+<td>service_account</td>
+</tr>
+<tr>
+<td>project_id *</td>
+<td>string</td>
+<td>Inserisci qui l'id univoco del progetto associato al service account</td>
+<td>Theproject-367810</td>
+</tr>
+<tr>
+<td>private_key_id *</td>
+<td>string</td>
+<td>Inserisci qui l'id univoco della chiave privata del service account</td>
+<td>55cb5cf903ee93ea1e9c294a07e46e0af0633e6</td>
+</tr>
+<tr>
+<td>private_key *</td>
+<td>password</td>
+<td>Contiene la chiave privata del service account in formato PEM. Ãˆ fondamentale per l'autenticazione del service account alle API di Google Cloud</td>
+<td>-----BEGIN PRIVATE KEY-----MIIJQgIBADANBâ€¦</td>
+</tr>
+<tr>
+<td>client_e-mail *</td>
+<td>string</td>
+<td>L'indirizzo e-mail univoco del service account. Ãˆ utilizzato per identificare il service account quando si autentica alle API di Google Cloud</td>
+<td><a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#117;&#115;&#101;&#114;&#64;&#100;&#111;&#109;&#105;&#110;&#105;&#111;&#46;&#99;&#111;&#109;">&#117;&#115;&#101;&#114;&#64;&#100;&#111;&#109;&#105;&#110;&#105;&#111;&#46;&#99;&#111;&#109;</a></td>
+</tr>
+<tr>
+<td>client_id *</td>
+<td>string</td>
+<td>L'ID client del service account. Ãˆ un identificatore univoco utilizzato per identificare il service account in Google Cloud</td>
+<td>104822473261100667392</td>
+</tr>
+<tr>
+<td>auth_uri *</td>
+<td>string</td>
+<td>L'URI utilizzato per l'autenticazione del service account alle API di Google Cloud</td>
+<td><a href="https://accounts.google.com/o/oauth2/auth">https://accounts.google.com/o/oauth2/auth</a></td>
+</tr>
+<tr>
+<td>token_uri *</td>
+<td>string</td>
+<td>L'URI utilizzato per ottenere un token di accesso per il service account</td>
+<td><a href="https://oauth2.googleapis.com/token">https://oauth2.googleapis.com/token</a></td>
+</tr>
+<tr>
+<td>auth_provider_x509_cert_url*</td>
+<td>string</td>
+<td>L'URL del certificato X.509 utilizzato per l'autenticazione del service account</td>
+<td><a href="https://www.googleapis.com/oauth2/v1/certs">https://www.googleapis.com/oauth2/v1/certs</a></td>
+</tr>
+<tr>
+<td>client_x509_cert_url *</td>
+<td>string</td>
+<td>L'URL del certificato X.509 nel client</td>
+<td><a href="https://www.googleapis.com/robot/v1/metadata/f543/myserviceaccount%40projectName.gserviceaccount.com">https://www.googleapis.com/robot/v1/metadata/f543/myserviceaccount%40projectName.gserviceaccount.com</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Configurazione sul provider</p>
+<ol>
+<li>Access to GCP Console<ul>
+<li>Go to https://console.cloud.google.com/</li>
+<li>Login with your Google Cloud account.</li>
+</ul>
+</li>
+<li>Create or identify the Service Account (SA)
+From the console, select the project in which you want to add (or already present) the service account
+From the console, to create the service account, go to IAM and admin &gt; Service accounts.
+    Click on Create service account.
+    Assign id (e.g. my-service-account), name and description and finally Create.
+    On the service account page, go to the Keys section
+    Click Add key and select Create new key
+    Choose json format and click Create
+    Download and store the JSON file in a safe place.</li>
+<li>
+<p>Associate permissions to the Service Account</p>
+<p>On the same page of the service accounts, find the account you just created and click on your name.
+Go to the Permissions section and the table below, at the service account, in the Inheritance column click Edit principal.
+In the pop-up menu, select the appropriate roles for the service account. Below is the minimal list of roles for SCMP:
+    - App Engine Admin
+    - BigQuery Data Transfer Agent
+    - Cloud OS Config Service Agent
+    - Compute Admin
+    - Kubernetes Engine Agent
+    - OS Inventroy Viewer
+    - Security Centre Service Agent
+Click Save and add permissions to the service account.</p>
+</li>
+<li>
+<p>Service APIs Enable</p>
+<p>Back to the console home
+Select the project in which the service account is present
+Go to APIs and services
+Top click on + Enable APIs and services
+Search API services in the search bar to enable and click on their name
+Once inside the API service, select Enable to enable it; below the API services for SCMP:
+    - Cloud Monitoring API
+    - Compute Engine API
+    - Cloud Asset API
+    - BigQuery API
+    - Cloud Resource Manager API
+    - OS Config API
+    - Security Command Center API
+    - Cloud Billing API
+    - Service Usage API
+    - Cloud Dataplex API</p>
+</li>
+<li>
+<p>Dataset of costs</p>
+<p>If the dataset of costs is located in a service account other than the one you want to integrate, specify in the text box Cost Export Dataset ID (mel subsystem creation module present in SCMP administration) the complete connection string to the related dataset (e.g. projectId.datasetName.tableName)</p>
+</li>
+</ol>
+</div>
+<h5 id="parameters-kubernetes">Parameters Kubernetes</h5>
+<p>Enabled features:</p>
+<ul>
+<li>Catalogue element recovery</li>
+<li>Recovery of inventory items</li>
+<li>Recovery of use metrics</li>
+<li>Recovery of resources costs</li>
+<li>Recovery of security information</li>
+<li>Provisioning resources</li>
+<li>Provisioning services</li>
+<li>Provisioning complex blueprints</li>
+</ul>
+<p>The specific parameters of the Kubernetes subsystem to be inserted are shown in the table</p>
+<p>
+<figure><img src="../assets/images/extract/media/image67.png" /><figcaption>Kubernetes configuration mask</figcaption>
+</figure>
+</p>
+<p>The mandatory parameters are indicated with *</p>
+<table>
+<thead>
+<tr>
+<th><strong>Nome</strong></th>
+<th><strong>Tipo</strong></th>
+<th><strong>Descrizione</strong></th>
+<th><strong>Esempio</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Certificate authority data *</td>
+<td>string</td>
+<td>Inserire i dati relativi al certificato utilizzato dallâ€™ utenza utilizzata per la connessione</td>
+<td>Sgeijesf90434n7u3h97ef</td>
+</tr>
+<tr>
+<td>Kubernetes API server URI *</td>
+<td>string</td>
+<td>Inserire lâ€™ URL del server al quale connettersi</td>
+<td><a href="https://www.google.com/infos">https://www.google.com/infos</a></td>
+</tr>
+<tr>
+<td>User certificate Data *</td>
+<td>String</td>
+<td>Inserire il certificato relativo allâ€™ utenza utilizzata per la connessione</td>
+<td>---begin private key--- fnbsujffsfoije â€¦</td>
+</tr>
+<tr>
+<td>User key Data *</td>
+<td>String</td>
+<td>Inserire la key relativa allâ€™ utenza utilizzata per la connessione</td>
+<td>Sf8j9jts4ewht7h3wfwj908w</td>
+</tr>
+<tr>
+<td>User token *</td>
+<td>String</td>
+<td>Token segreto relativo allâ€™ utenza utilizzata per la connessione al provider</td>
+<td>Sf8eufce9sfber4543jh8ddsfh89r43</td>
+</tr>
+<tr>
+<td>User name *</td>
+<td>String</td>
+<td>Inserire lâ€™username utilizzato per lâ€™autenticazione</td>
+<td>administrator</td>
+</tr>
+<tr>
+<td>Label selector</td>
+<td>string</td>
+<td>Inserisci qui un selettore per filtrare le risorse recuperate dalla SCMP</td>
+<td>Name=rossi</td>
+</tr>
+<tr>
+<td>catalogPriceDiscount</td>
+<td>integer</td>
+<td>Inserisci qui uno sconto/maggiorazione da applicare sui prezzi del catalogo per tutte le risorse che non hanno una relazione SCMP</td>
+<td>-10</td>
+</tr>
+<tr>
+<td>odlID</td>
+<td>string</td>
+<td>Inserisci qui l'id dell'ordine di lavoro che verrÃ  associato al sottosistema e verrÃ  inserito come tag su tutte le risorse del sottosistema</td>
+<td>ODL001</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">Configurazione sul provider</p>
+<p>the standard authentication method is through the parameters contained in the kubeconfig file.
+The kubeconfig defines:
+    Endpoint API server (server)
+    Authentication method (client certificates, tokens, oidc, etc.)
+    Namespace by default
+    Background
+Authentication:
+    Through client certificates (client-certificate-data and client-key-data)</p>
+<pre><code>Or through tokens (tokens within the user context)
+</code></pre>
+<p>Minimal example of kubeconfig:</p>
+<p>apiVersion: v1
+kind: Config
+clusters:
+- cluster:
+    certified-authority-data: <ca-data>
+    server: https://<api-server>
+name: my-cluster
+contexts:
+- context:
+    cluster: my-cluster
+    user: my-user
+name: my-context
+current-context: my-context
+users:
+- name: my-user
+user:
+    token: <token></p>
+</div>
+<h5 id="openshift">** OpenShift*</h5>
+<p>Enabled features:</p>
+<ul>
+<li>Catalogue element recovery</li>
+<li>Recovery of inventory items</li>
+<li>Recovery of use metrics</li>
+<li>Recovery of resources costs</li>
+<li>Recovery of security information</li>
+<li>Provisioning resources</li>
+<li>Provisioning services</li>
+<li>Provisioning complex blueprints</li>
+</ul>
+<p>The specific parameters of the OpenShift subsystem to be inserted are shown in the table:</p>
+<p>
+<figure><img src="../assets/images/extract/media/image68.png" /><figcaption>OpenShift configuration mask</figcaption>
+</figure>
+</p>
+<p>The mandatory parameters are indicated with *</p>
+<table>
+<thead>
+<tr>
+<th><strong>Nome</strong></th>
+<th><strong>Tipo</strong></th>
+<th><strong>Descrizione</strong></th>
+<th><strong>Esempio</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Username <strong>*</strong></td>
+<td>string</td>
+<td>L'username dell' utenza OpenShift che verrÃ  utilizzata per la connessione al provider</td>
+<td>nome.cognome@mail.com</td>
+</tr>
+<tr>
+<td>Password *</td>
+<td>password</td>
+<td>La password del client, utilizzata per autenticare il client con il sottosistema. La chiave segreta deve essere tenuta segreta e non deve essere condivisa con nessuno.</td>
+<td>np6KcXmbqfMGQLOEzfMt</td>
+</tr>
+<tr>
+<td>API server port *</td>
+<td>integer</td>
+<td>La porta sulla quale sono in ascolto le API OpenShift</td>
+<td>8090</td>
+</tr>
+<tr>
+<td>API url *</td>
+<td>string</td>
+<td>L'url OpenShift sul quale effettuare le richieste</td>
+<td>www.google.com</td>
+</tr>
+<tr>
+<td>discover all Namespaces</td>
+<td>boolean</td>
+<td>Se l'utenza possiede permessi di amministratore su tutti i "progetti" di OpenShift verranno recuperati tutti i namespaces</td>
+<td>false</td>
+</tr>
+<tr>
+<td>Namespace selector (visibile solo se attivo "discover all namespaces)</td>
+<td>selection</td>
+<td>Se l'utente utilizzato ha visibilitÃ  di un numero limitato di namespace Ã¨ necessario inserire qui la lista dei namespaces abilitati</td>
+<td>demo,infos,production</td>
+</tr>
+<tr>
+<td>odlID</td>
+<td>string</td>
+<td>Inserisci qui l'id dell'ordine di lavoro che verrÃ  associato al sottosistema e verrÃ  inserito come tag su tutte le risorse del sottosistema</td>
+<td>ODL001</td>
+</tr>
+<tr>
+<td>dataFirstCostRecover</td>
+<td>int</td>
+<td>Inserire il numero di giorni precedenti alla data di creazione dei quali bisogna recuperare i costi al primo avvio del sottosistema</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Autorizzazioni utente</p>
+<p>If we leave the "Discover all namespaces" field active, it is necessary that the user has administrative permissions on <strong>TUTTI</strong>* the namespaces, otherwise it will not be possible to insert the system.</p>
+<p>This distinction is necessary because the OpenShift system automatically blocks unauthorized requests correctly.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Configurazione sul provider</p>
+<p>To connect an OpenShift cluster system, you simply have a nominal or impersonal user that has the appropriate privileges (e.g. cluster-admin or otherwise sufficient for the intended use) on the cluster.</p>
+<p>Authentication:</p>
+<pre><code>Username and Password
+</code></pre>
+<p>Notes:</p>
+<pre><code>In OpenShift it is very common to use ServiceAccount specially created, with related RoleBinding or ClusterRoleBinding.
+
+Users can be both human (nominal) and technical (impersonal).
+</code></pre>
+</div>
+<h5 id="orague-parameters"><strong>Orague parameters</strong></h5>
+<p>Enabled features:</p>
+<ul>
+<li>Catalogue element recovery</li>
+<li>Recovery of inventory items</li>
+<li>Recovery of resources costs</li>
+<li>Recovery of security information</li>
+</ul>
+<p>The specific parameters of the Oracle subsystem to be inserted are shown in the table:</p>
+<p>
+<figure><img src="../assets/images/extract/media/image69.png" /><figcaption>Oracle configuration mask</figcaption>
+</figure>
+</p>
+<p>The mandatory parameters are indicated with *</p>
+<table>
+<thead>
+<tr>
+<th><strong>Nome</strong></th>
+<th><strong>Tipo</strong></th>
+<th><strong>Descrizione</strong></th>
+<th><strong>Esempio</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>username *</td>
+<td>string</td>
+<td>Il nome utente utilizzato per l'autenticazione con OCI.</td>
+<td>ocid5.user.oc77.aaabnbthaj6pnvsb2gqnaaaaait3mqzekefmlhwkige2wxna6hfaj3f6njma</td>
+</tr>
+<tr>
+<td>fingerprint *</td>
+<td>string</td>
+<td>Ã¨ un valore univoco che identifica il dispositivo, utilizzato per l'autenticazione con OCI.</td>
+<td>6a:f4:6e:9a:73:95:27:d5:64:8d11:a3:f5:0e:fb:f4:</td>
+</tr>
+<tr>
+<td>tenantId *</td>
+<td>string</td>
+<td>L'ID del tenant OCI a cui ci si vuole connettere</td>
+<td>ocid5.tenancy.oc77...aaabnbthaj6pnvsb2gqnaaaaait3mqzekefmlhwkige2wxna6hfaj3f6njma</td>
+</tr>
+<tr>
+<td>region *</td>
+<td>string</td>
+<td>La regione Ã¨ ls posizione geografica specifica in cui si trovano le risorse OCI.</td>
+<td>eu-dcc-rome-1</td>
+</tr>
+<tr>
+<td>Realm</td>
+<td>string</td>
+<td>Il nome del contenitore logico che raggruppa le risorse OCI e i relativi costi.</td>
+<td>personal-realm.it</td>
+</tr>
+<tr>
+<td>keyFile *</td>
+<td>password</td>
+<td>un file PEM che contiene la chiave pubblica e privata utilizzata per l'autenticazione.</td>
+<td>" -----BEGIN PRIVATE KEY-----MIIJQgIBADANBâ€¦"</td>
+</tr>
+<tr>
+<td>usageAggregation</td>
+<td>boolean</td>
+<td>Indica se l'aggregazione per "usage" Ã¨ abilitata per la sottoscrizione. Quando questa spunta viene abilitata i costi del sottosistema verranno raggruppati per Tipologia risorsa</td>
+<td>false</td>
+</tr>
+<tr>
+<td>catalogPriceDiscount</td>
+<td>integer</td>
+<td>Inserisci qui uno sconto/maggiorazione da applicare sui prezzi del catalogo per tutte le risorse che non hanno una relazione SCMP</td>
+<td>-10</td>
+</tr>
+<tr>
+<td>odlID</td>
+<td>string</td>
+<td>Inserisci qui l'id dell'ordine di lavoro che verrÃ  associato al sottosistema e verrÃ  inserito come tag su tutte le risorse del sottosistema</td>
+<td>ODL001</td>
+</tr>
+<tr>
+<td>dataFirstCostRecover</td>
+<td>int</td>
+<td>Inserire il numero di giorni precedenti alla data di creazione dei quali bisogna recuperare i costi al primo avvio del sottosistema</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">Configurazione sul provider</p>
+<p>Procedure to create parameters for external integration in Oracle Cloud Infrastructure (OCI):
+1. Access to OCI Console</p>
+<pre><code>Go to https://cloud.oracle.com/
+Login with your Oracle Cloud account.
+</code></pre>
+<ol>
+<li>
+<p>Create or identify IAM User</p>
+<p>In the main console menu, go to Identity &amp; Security &gt; Users.
+Select an existing user or create a new user for integration:
+    Click Create User if you need to create one.
+    Assign a name and an email.
+    Save.</p>
+</li>
+<li>
+<p>Associate a group with appropriate permissions</p>
+<p>After creating the user, you must associate it with a group that has the permissions for the resources you want to manage via API.
+Go to Identity &gt; Groups.
+Select a group (e.g. Administrators or create a custom group).
+Click Add User to Group and add the newly created user.</p>
+</li>
+<li>
+<p>Generate API key (Key File)</p>
+<p>Return to user page (Identity &gt; Users &gt; select user).
+Go to the API Keys tab.
+Click Add API Key.
+You have two options:
+    Upload an existing public key (public RSA).
+    Or generate a new public and private console key (download the private key).
+Select â€œGenerate API Key Pairâ€ to locally generate the key:
+    Download the private key (.pem) and save it safely (it is your Key File).
+    The public key will be automatically associated with the user.</p>
+</li>
+<li>
+<p>Get the required parameters</p>
+<p>Ocid User (User OCID):
+    Go to Identity &gt; Users &gt; select user.
+    Find the user OCID on the user page (formato ocid1.user.oc1..aaaaaa.. . ).
+Fingerprint:
+    It is the fingerprint of the public API key you added (viewed in the API Keys section).
+Ocid Tenant (Tenant OCID / Compartment OCID Main):
+    Go to Identity &gt; Tenancy (click on the tenancy name on the top left).
+    Find the OCID tenancy (it is the main tenant, e.g. ocid1.tenancy.oc1..aaaaaaa.. . ).
+Region:
+    Choose the region of your OCI (e.g. eu-frankfurt-1, us-ashburn-1, etc).
+    You can find it at the top right of the console or in Governance &amp; Administration &gt; Regions.
+Realm:
+    It is usually oc1 for most OCI public tenants. You can verify it in the documentation or from CLI if necessary.</p>
+</li>
+</ol>
+<p>Summary of parameters and where to find them</p>
+<p>Parameter Where to find it / how to get it
+Ocid User Identity &gt; Users &gt; user select &gt; OCID
+Fingerprint Identity &gt; Users
+Ocid Tenant Identity
+Region Top right of the console (e.g. eu-frankfurt-1)
+Realm Generally oc1 (OCI realm standard)
+Key File Private Key .pem generated at the time of the API Key</p>
+</div>
+<h5 id="oracleexacc-parameters">OracleExAcc parameters</h5>
+<p>Enabled features:</p>
+<ul>
+<li>Catalogue element recovery</li>
+<li>Recovery of inventory items</li>
+<li>Recovery of resources costs</li>
+<li>Recovery of security information</li>
+</ul>
+<p>The specific parameters of the OracleExAcc subsystem to be inserted are shown in the table:</p>
+<p>
+<figure><img src="../assets/images/extract/media/image70.png" /><figcaption>OracleExAcc configuration mask</figcaption>
+</figure>
+</p>
+<p>The mandatory parameters are indicated with *</p>
+<table>
+<thead>
+<tr>
+<th><strong>Nome</strong></th>
+<th><strong>Tipo</strong></th>
+<th><strong>Descrizione</strong></th>
+<th><strong>Esempio</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>username *</td>
+<td>string</td>
+<td>Il nome utente utilizzato per l'autenticazione con OCI.</td>
+<td>ocid5.user.oc77.aaabnbthaj6pnvsb2gqnaaaaait3mqzekefmlhwkige2wxna6hfaj3f6njma</td>
+</tr>
+<tr>
+<td>fingerprint *</td>
+<td>string</td>
+<td>Ã¨ un valore univoco che identifica il dispositivo, utilizzato per l'autenticazione con OCI.</td>
+<td>6a:f4:6e:9a:73:95:27:d5:64:8d11:a3:f5:0e:fb:f4:</td>
+</tr>
+<tr>
+<td>tenantId *</td>
+<td>string</td>
+<td>L'ID del tenant OCI a cui ci si vuole connettere</td>
+<td>ocid5.tenancy.oc77...aaabnbthaj6pnvsb2gqnaaaaait3mqzekefmlhwkige2wxna6hfaj3f6njma</td>
+</tr>
+<tr>
+<td>region *</td>
+<td>string</td>
+<td>La regione Ã¨ ls posizione geografica specifica in cui si trovano le risorse OCI.</td>
+<td>eu-dcc-rome-1</td>
+</tr>
+<tr>
+<td>Private key *</td>
+<td>password</td>
+<td>un file PEM che contiene la chiave pubblica e privata utilizzata per l'autenticazione.</td>
+<td>" -----BEGIN PRIVATE KEY-----MIIJQgIBADANBâ€¦"</td>
+</tr>
+<tr>
+<td>catalogPriceDiscount</td>
+<td>integer</td>
+<td>Inserisci qui uno sconto/maggiorazione da applicare sui prezzi del catalogo per tutte le risorse che non hanno una relazione SCMP</td>
+<td>-10</td>
+</tr>
+<tr>
+<td>odlID</td>
+<td>string</td>
+<td>Inserisci qui l'id dell'ordine di lavoro che verrÃ  associato al sottosistema e verrÃ  inserito come tag su tutte le risorse del sottosistema</td>
+<td>ODL001</td>
+</tr>
+<tr>
+<td>dataFirstCostRecover</td>
+<td>int</td>
+<td>Inserire il numero di giorni precedenti alla data di creazione dei quali bisogna recuperare i costi al primo avvio del sottosistema</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+<h5 id="vcloud-parameters">** VCloud parameters**</h5>
+<p>Enabled features:</p>
+<ul>
+<li>Catalogue element recovery</li>
+<li>Recovery of inventory items</li>
+<li>Recovery of use metrics</li>
+<li>Recovery of resources costs</li>
+<li>Recovery of security information</li>
+</ul>
+<p>The specific parameters of the VCloudDirector subsystem to be inserted are shown in the table</p>
+<p>
+<figure><img src="../assets/images/extract/media/image71.png" /><figcaption>VCloudDirector configuration mask</figcaption>
+</figure>
+</p>
+<p>The mandatory parameters are indicated with *</p>
+<table>
+<thead>
+<tr>
+<th><strong>Nome</strong></th>
+<th><strong>Tipo</strong></th>
+<th><strong>Descrizione</strong></th>
+<th><strong>Esempio</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url *</td>
+<td>string</td>
+<td>l'indirizzo del server VCloudDirector a cui ci si vuole connettere</td>
+<td><a href="https://url.westeurope.com/tenant/org-zzg-435832">https://url.westeurope.com/tenant/org-zzg-435832</a></td>
+</tr>
+<tr>
+<td>tenantId *</td>
+<td>string</td>
+<td>L'ID del tenant del VCloudDirector Ã¨ l'identificatore univoco del tenant a cui ci si vuole connettere.</td>
+<td>org-zzg-435832</td>
+</tr>
+<tr>
+<td>Use providerPermission</td>
+<td>boolean</td>
+<td>Da attivare se l'utenza ha tutte le autorizzazioni a livello provider , non attivandola non vengono recuperate tutte le informazioni ma delle sole organization abilitate</td>
+<td>true</td>
+</tr>
+<tr>
+<td>token *</td>
+<td>password</td>
+<td>Il token di autenticazione per il VCloudDirector Ã¨ una stringa segreta che viene utilizzata per autenticare l'utente con il VCloudDirector</td>
+<td>aesZo6LextKTQx92VoRpyzaesZo6LextKT</td>
+</tr>
+<tr>
+<td>Location</td>
+<td>String</td>
+<td>Inserire la regione di appartenenza delle risorse VCloudDirector</td>
+<td>Eu west</td>
+</tr>
+<tr>
+<td>Location</td>
+<td>string</td>
+<td>inserire la posizione geografica del sistema</td>
+<td>OnPremise</td>
+</tr>
+<tr>
+<td>catalogPriceDiscount</td>
+<td>integer</td>
+<td>Inserisci qui uno sconto/maggiorazione da applicare sui prezzi del catalogo per tutte le risorse che non hanno una relazione SCMP</td>
+<td>5</td>
+</tr>
+<tr>
+<td>odlID</td>
+<td>string</td>
+<td>Inserisci qui l'id dell'ordine di lavoro che verrÃ  associato al sottosistema e verrÃ  inserito come tag su tutte le risorse del sottosistema</td>
+<td>ODL001</td>
+</tr>
+</tbody>
+</table>
+<h5 id="vmware-parameters">** VMWare parameters**</h5>
+<p>Enabled features:</p>
+<ul>
+<li>Catalogue element recovery</li>
+<li>Recovery of inventory items</li>
+<li>Recovery of use metrics</li>
+<li>Recovery of resources costs</li>
+<li>Recovery of security information</li>
+<li>Provisioning resources</li>
+<li>Provisioning services</li>
+<li>Provisioning complex blueprints</li>
+</ul>
+<p>The specific parameters of the VMWare subsystem to be inserted are shown in the table:</p>
+<p>
+<figure><img src="../assets/images/extract/media/image72.png" /><figcaption>VMWare configuration mask</figcaption>
+</figure>
+</p>
+<p>The mandatory parameters are indicated with *</p>
+<table>
+<thead>
+<tr>
+<th><strong>Nome</strong></th>
+<th><strong>Tipo</strong></th>
+<th><strong>Descrizione</strong></th>
+<th><strong>Esempio</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clientId <strong>*</strong></td>
+<td>string</td>
+<td>L'ID univoco del client che si connette al sottosistema Azure Cloud. Questo ID viene utilizzato per identificare il client e per autorizzare l'accesso alle risorse del sottosistema.</td>
+<td>5a85c16c6ad-49db-a58e-e209-ee11f53d6c6b</td>
+</tr>
+<tr>
+<td>clientSecret *</td>
+<td>password</td>
+<td>La chiave segreta del client, utilizzata per autenticare il client con il sottosistema Azure Cloud. La chiave segreta deve essere tenuta segreta e non deve essere condivisa con nessuno.</td>
+<td>np6Kc_.xwsvhR8Q~rP05fCqYNXmbqfMGQLOEzfMt</td>
+</tr>
+<tr>
+<td>tenantId *</td>
+<td>string</td>
+<td>L'ID del tenant Azure a cui appartiene il sottosistema Azure Cloud. Il tenant Ã¨ un'entitÃ  organizzativa in Azure che rappresenta un'azienda o un'organizzazione.</td>
+<td>884147733-ff13-4783-a765-834183773083</td>
+</tr>
+<tr>
+<td>subscriptionId *</td>
+<td>string</td>
+<td>L'ID della sottoscrizione Azure utilizzata per accedere al sottosistema Azure Cloud. La sottoscrizione Ã¨ un contratto per l'utilizzo dei servizi Azure.</td>
+<td>884147733-ff13-4783-a765-834183773083</td>
+</tr>
+<tr>
+<td>usageAggregation</td>
+<td>boolean</td>
+<td>Indica se l'aggregazione per "usage" Ã¨ abilitata per la sottoscrizione. Quando questa spunta viene abilitata i costi del sottosistema verranno raggruppati per Tipologia risorsa</td>
+<td>false</td>
+</tr>
+<tr>
+<td>catalogPriceDiscount</td>
+<td>integer</td>
+<td>Inserisci qui uno sconto/maggiorazione da applicare sui prezzi del catalogo per tutte le risorse che non hanno una relazione SCMP</td>
+<td>5</td>
+</tr>
+<tr>
+<td>odlID</td>
+<td>string</td>
+<td>Inserisci qui l'id dell'ordine di lavoro che verrÃ  associato al sottosistema e verrÃ  inserito come tag su tutte le risorse del sottosistema</td>
+<td>ODL001</td>
+</tr>
+<tr>
+<td>datsFirstCostRecover</td>
+<td>int</td>
+<td>Inserire il numero di giorni precedenti alla data di creazione dei quali bisogna recuperare i costi al primo avvio del sottosistema</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+<p>For on Premise providers, in particular, data on infrastructure capacity is required, so that SCMP can perform preliminary calculations in multiple scenarios.</p>
+<p>For example, during provisioning, so as not to exceed the maximum permitted capacity of the provider.</p>
+<h4 id="folders">Folders</h4>
+<h5 id="azure-folder">Azure Folder</h5>
+<p>To allow the SCMP to exploit all the potential offered by the provider â€œAzureâ€ the possibility of setting up â€œFoldersâ€ has been inserted</p>
+<p>During the creation of a provider by selecting the type â€œAzureâ€ we can notice the presence of an exclusive field for the provider:</p>
+<ul>
+<li>A confirmation box to indicate to the SCMP if the provider is a â€œFolderâ€.</li>
+</ul>
+<p>
+<figure><img src="../assets/images/extract/media/image73.png" /><figcaption>Folder option Azure</figcaption>
+</figure>
+</p>
+<p>The specific parameters of the Azure subsystem to be inserted are shown in the following table:</p>
+<p>
+<figure><img src="../assets/images/extract/media/image74.png" /><figcaption>Azure Folder configuration mask</figcaption>
+</figure>
+</p>
+<p>The mandatory parameters are indicated with *</p>
+<table>
+<thead>
+<tr>
+<th><strong>Nome</strong></th>
+<th><strong>Tipo</strong></th>
+<th><strong>Descrizione</strong></th>
+<th><strong>Esempio</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clientId <strong>*</strong></td>
+<td>string</td>
+<td>L'ID univoco del client che si connette al sottosistema Azure Cloud. Questo ID viene utilizzato per identificare il client e per autorizzare l'accesso alle risorse del sottosistema.</td>
+<td>5a85c16c6ad-49db-a58e-e209-ee11f53d6c6b</td>
+</tr>
+<tr>
+<td>clientSecret *</td>
+<td>password</td>
+<td>La chiave segreta del client, utilizzata per autenticare il client con il sottosistema Azure Cloud. La chiave segreta deve essere tenuta segreta e non deve essere condivisa con nessuno.</td>
+<td>np6Kc_.xwsvhR8Q~rP05fCqYNXmbqfMGQLOEzfMt</td>
+</tr>
+<tr>
+<td>tenantId *</td>
+<td>string</td>
+<td>L'ID del tenant Azure a cui appartiene il sottosistema Azure Cloud. Il tenant Ã¨ un'entitÃ  organizzativa in Azure che rappresenta un'azienda o un'organizzazione.</td>
+<td>884147733-ff13-4783-a765-834183773083</td>
+</tr>
+<tr>
+<td>usageAggregation</td>
+<td>boolean</td>
+<td>Indica se l'aggregazione per "usage" Ã¨ abilitata per la sottoscrizione. Quando questa spunta viene abilitata i costi del sottosistema verranno raggruppati per Tipologia risorsa</td>
+<td>false</td>
+</tr>
+<tr>
+<td>catalogPriceDiscount</td>
+<td>integer</td>
+<td>Inserisci qui uno sconto/maggiorazione da applicare sui prezzi del catalogo per tutte le risorse che non hanno una relazione SCMP</td>
+<td>5</td>
+</tr>
+<tr>
+<td>odlID</td>
+<td>string</td>
+<td>Inserisci qui l'id dell'ordine di lavoro che verrÃ  associato al sottosistema e verrÃ  inserito come tag su tutte le risorse del sottosistema</td>
+<td>ODL001</td>
+</tr>
+<tr>
+<td>datsFirstCostRecover</td>
+<td>int</td>
+<td>Inserire il numero di giorni precedenti alla data di creazione dei quali bisogna recuperare i costi al primo avvio del sottosistema</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+<h5 id="google-cloud-folders">Google Cloud Folders</h5>
+<p>To allow the SCMP to take advantage of all the potential offered by the provider â€œGoogle Cloudâ€ the possibility to configure â€œFoldersâ€ and the ability to import the file generated by the providerâ€™s console so as to simplify the insertion of the same.</p>
+<p>During the creation of a provider by selecting the type â€œGoogle Cloudâ€ we can notice the presence of 2 exclusive fields for the provider:</p>
+<ol>
+<li>A confirmation box to indicate to the SCMP if the provider is a â€œFolderâ€.</li>
+<li>A box where, by clicking inside it will be possible, through the windows file selection window insert the â€œJSONâ€ type file exported directly from the Google console.</li>
+</ol>
+<p>
+<figure><img src="../assets/images/extract/media/image75.png" /><figcaption>Specific parameters of Google Cloud</figcaption>
+</figure>
+</p>
+<p>The specific parameters of the Google Folder to be inserted are displayed in the table:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Nome</strong></th>
+<th><strong>Tipo</strong></th>
+<th><strong>Descrizione</strong></th>
+<th><strong>Esempio</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>serviceAccount</td>
+<td>object</td>
+<td>File di connessione generato dalla console Google</td>
+<td>service_account.json</td>
+</tr>
+<tr>
+<td>costExportDatasetID</td>
+<td>string</td>
+<td>Inserire lâ€™id del dataset da utilizzare per il recupero delle informazioni</td>
+<td>Projectid.dataset.table</td>
+</tr>
+<tr>
+<td>usageAggregation</td>
+<td>boolean</td>
+<td>Indica se l'aggregazione per "usage" Ã¨ abilitata per la sottoscrizione. Quando questa spunta viene abilitata i costi del sottosistema verranno raggruppati per Tipologia risorsa</td>
+<td>false</td>
+</tr>
+<tr>
+<td>Cost from USD Currency</td>
+<td>Boolean</td>
+<td>Indica se il costo finale Ã¨ calcolato dal prezzo in USD o EUR</td>
+<td>true</td>
+</tr>
+<tr>
+<td>providerPriceDiscount (solo se costFromUSDCurrency Ã¨ true)</td>
+<td>integer</td>
+<td>Inserisci qui uno sconto/maggiorazione da applicare sui prezzi in USD del provider per tutte le risorse</td>
+<td>30</td>
+</tr>
+<tr>
+<td>Cost cross project</td>
+<td>Boolean</td>
+<td>Indica se recuperare i costi di tutti i progetti dellâ€™account di fatturazione o solamente del progetto corrente</td>
+<td>true</td>
+</tr>
+<tr>
+<td>catalogPriceDiscount</td>
+<td>integer</td>
+<td>Inserisci qui uno sconto/maggiorazione da applicare sui prezzi del catalogo per tutte le risorse che non hanno una relazione SCMP</td>
+<td>-20</td>
+</tr>
+<tr>
+<td>odlID</td>
+<td>string</td>
+<td>Inserisci qui l'id dell'ordine di lavoro che verrÃ  associato al sottosistema e verrÃ  inserito come tag su tutte le risorse del sottosistema</td>
+<td>ODL001</td>
+</tr>
+<tr>
+<td>datsFirstCostRecover</td>
+<td>int</td>
+<td>Inserire il numero di giorni precedenti alla data di creazione dei quali bisogna recuperare i costi al primo avvio del sottosistema</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Abilitazioni obbligatorie</p>
+<p>The following services must be accessed on the service account used:</p>
+<ul>
+<li>bigquery.googleapis.com</li>
+<li>cloudresourcemanager.googleapis.com</li>
+<li>cloudasset.googleapis.com</li>
+<li>cloudbilling.googleapis.com</li>
+<li>compute.googleapis.com</li>
+<li>container.googleapis.com</li>
+<li>monitoring.googleapis.com</li>
+</ul>
+<p>The â€œServiceAccountâ€ field can be inserted automatically by uploading the file or manually by entering the fields available in the form.</p>
+<p>After setting up a â€œFolderâ€ system it will be displayed both in the cloud provider list, and in the folder page.</p>
+<p>
+<figure><img src="../assets/images/extract/media/image76.png" /><figcaption>View folders</figcaption>
+</figure>
+</p>
+<p>From the â€œCloud Systemâ€ page of the â€œAdministrationâ€ module, click the tab â€œFoldersâ€ on the top right where the list of folders configured in the tenant will be displayed.</p>
+<p>Within the page you can do the same editing and deletion of folders on the â€œCloud Providerâ€ page.</p>
+<p>
+<figure><img src="../assets/images/extract/media/image77.png" /><figcaption>Access to Folders</figcaption>
+</figure>
+</p>
+<p>By accessing a â€œFolderâ€ in â€œViewâ€ mode by scrolling down on the page we can view the list of subsystems in the provider and the related status information:</p>
+<ul>
+<li>In green we can see a properly configured subsystem in the provider and that the SCMP automatically inserts into the system and will be visible in the â€œCloud Providersâ€ section and in all SCMP features.</li>
+<li>In red we can see an incorrectly configured subsystem that, after the appropriate changes from the â€œGoogle Cloudâ€ console, can be accepted by the SCMP.</li>
+</ul>
+<p>
+<figure><img src="../assets/images/extract/media/image78.png" /><figcaption>Subsystem View of Folder</figcaption>
+</figure>
+</p>
+</div>
+<h3 id="siem">SIEM</h3>
+<p>The user can create a SIEM-type provider, by clicking on the tab that depicts a shield, placed in the top bar, d0opo having logged in to the page â€œCloud SIEMsâ€, on the top right, click on the burger menu and then click on â€œAttach a SIEMâ€</p>
+<p>
+<figure><img src="../assets/images/extract/media/image79.png" /><figcaption>Creating to SIEM cloud provider</figcaption>
+</figure>
+</p>
+<p>Within the â€œAdd SIEMâ€ page, fill out all fields of the â€œGeneral propertiesâ€ section. After doing this, fill out all fields of the section â€œSIEMâ€™s propertiesâ€ following the table:</p>
+<p>
+<figure><img src="../assets/images/extract/media/image80.png" /><figcaption>Filling the form to create a SIEM provider</figcaption>
+</figure>
+</p>
+<p>The mandatory parameters are indicated with *</p>
+<table>
+<thead>
+<tr>
+<th><strong>Nome</strong></th>
+<th><strong>Tipo</strong></th>
+<th><strong>Descrizione</strong></th>
+<th><strong>Esempio</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clientId *</td>
+<td>string</td>
+<td>Identificativo univoco del SIEM al quale connettersi , Fornito dal SIEM durante la registrazione dell'applicazione</td>
+<td>1b16698f-2df5-ed44-86b9ed-4b42c 1fe7ad9</td>
+</tr>
+<tr>
+<td>clientSecret *</td>
+<td>password</td>
+<td>Il secret da utilizzare per la connessione, fornito dal SIEM durante la registrazione dell'applicazione</td>
+<td>1b16698f-2df5-ed44-86b9ed-4b42c 1fe7ad9</td>
+</tr>
+<tr>
+<td>resourceGroup *</td>
+<td>string</td>
+<td>Il gruppo di risorse Azure in cui Ã¨ ospitato il SIEM</td>
+<td>myGroup</td>
+</tr>
+<tr>
+<td>subscriptionId *</td>
+<td>string</td>
+<td>L'ID sottoscrizione Azure associata al SIEM</td>
+<td>1b16698f-2df5-ed44-86b9ed-4b42c 1fe7ad9</td>
+</tr>
+<tr>
+<td>tenantId *</td>
+<td>string</td>
+<td>L'ID tenant Azure associato al SIEM</td>
+<td>1b16698f-2df5-ed44-86b9ed-4b42c 1fe7ad9</td>
+</tr>
+<tr>
+<td>workspaceID*</td>
+<td>string</td>
+<td>L'ID dell'area di lavoro Log Analytics associata al SIEM</td>
+<td>1b16698f-2df5-ed44-86b9ed-4b42c 1fe7ad9</td>
+</tr>
+<tr>
+<td>workspaceName*</td>
+<td>string</td>
+<td>Il nome dell'area di lavoro Log Analytics associata al SIEM</td>
+<td>theWorkspaceName</td>
+</tr>
+</tbody>
+</table>
+<p>Finally, at the bottom right, click on the â€œSaveâ€ button. After that, a popup of SIEM creation appears below and the user is redirected to the SIEM list.</p>
+<h4 id="view-edit-and-delete">View, edit and delete</h4>
+<p>To view a SIEM, at a said one, click on the kebab menu and then click on â€œShowâ€ . At this point, the user finds himself within the â€œShow SIEMâ€ page where you can view but do not change the data. After viewing the data, at the bottom right, click on the â€œCloseâ€ button.
+This is done, the user finds himself within the SIEM list.</p>
+<p>
+<figure><img src="../assets/images/extract/media/image81.png" /><figcaption>Access to SIEM in display mode</figcaption>
+</figure>
+</p>
+<p>
+<figure><img src="../assets/images/extract/media/image82.png" /><figcaption>SIEM in display mode</figcaption>
+</figure>
+</p>
+<p>To change a SIEM, at a said one, click on the kebab menu and then click on â€œEditâ€ . At this point, you will find yourself inside the â€œEdit SIEMâ€ page where you can change the fields.</p>
+<p>After changing the fields of interest, at the bottom right, click on the â€œUpdateâ€ button. This is done, a popup of the SIEM changed and the user is found in the SIEM list.</p>
+<p>
+<figure><img src="../assets/images/extract/media/image83.png" /><figcaption>Access to SIEM in edit mode</figcaption>
+</figure>
+</p>
+<p><img alt="" src="../assets/images/extract/media/image84.png" />
+<figure><img src="../assets/images/extract/media/image85.png" /><figcaption>SIEM in edit mode</figcaption>
+</figure>
+</p>
+<p>To delete a SIEM, at a said one, click on the kebab menu and then click on â€œDeleteâ€ . At this point a modal appears where you need to click on the â€œRemoveâ€ button.</p>
+<p>
+<figure><img src="../assets/images/extract/media/image86.png" /><figcaption>Option to delete to "Delete" SIEM</figcaption>
+</figure>
+</p>
+<p>
+<figure><img src="../assets/images/extract/media/image87.png" /><figcaption>Confirmation to eliminate to SIEM</figcaption>
+</figure>
+</p>
+<h3 id="secrets-managers">Secrets Managers</h3>
+<p>The user can create a secret manager by clicking on the tab depicting a padlock, placed in the top bar, as shown in the figure</p>
+<p>After accessing the â€œSecret Managerâ€ page, at the top right, click on the burger menu and then click on â€œAdd a secret managerâ€
+<figure><img src="../assets/images/extract/media/image88.png" /><figcaption>Adding a new Secret Manager</figcaption>
+</figure>
+</p>
+<p>Here is an example of form in the case of adding a Secret Manager from the Azure provider (selectable from the dropdown â€œTypeâ€ at the top of the page).</p>
+<p>After entering all the parameters required, at the bottom, click the â€œSaveâ€ button to conclude the insertion and the user is redirected to the list of â€œSecret Managersâ€ where you can view the newly created component.</p>
+<h4 id="azure-key-vault">Azure key vault</h4>
+<p>The specific parameters for an Azure key vault to be inserted are displayed in the table:</p>
+<p>
+<figure><img src="../assets/images/extract/media/image89.png" /><figcaption>Azure key vault configuration mask</figcaption>
+</figure>
+</p>
+<p>The mandatory parameters are indicated with *</p>
+<table>
+<thead>
+<tr>
+<th><strong>Nome</strong></th>
+<th><strong>Tipo</strong></th>
+<th><strong>Descrizione</strong></th>
+<th><strong>Esempio</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clientId *</td>
+<td>string</td>
+<td>Identificativo univoco del key vault</td>
+<td>09f8985-9f89d0-4623-98982-5a510fd3d2</td>
+</tr>
+<tr>
+<td>clientSecret *</td>
+<td>password</td>
+<td>Una chiave segreta utilizzata per autenticare l'applicazione con il Key Vault</td>
+<td>np6Kc_.xwsvhR8Q~rP05fCqYNXmbqfMGQLOEzfMt</td>
+</tr>
+<tr>
+<td>resourceGroup *</td>
+<td>string</td>
+<td>Il gruppo di risorse Azure in cui Ã¨ ospitato il Key Vault</td>
+<td>resoruceGroupName</td>
+</tr>
+<tr>
+<td>subscriptionId *</td>
+<td>string</td>
+<td>L'ID sottoscrizione Azure associata al Key Vault</td>
+<td>09f8985-9f89d0-4623-98982-5a510fd3d2</td>
+</tr>
+<tr>
+<td>tenantId</td>
+<td>string</td>
+<td>L'ID tenant Azure associato al Key Vault</td>
+<td>09f8985-9f89d0-4623-98982-5a510fd3d2</td>
+</tr>
+<tr>
+<td>privateUrl</td>
+<td>string</td>
+<td>URL privato di accesso al key Vault</td>
+<td><a href="https://vault.azure.net/vault">https://vault.azure.net/vault</a></td>
+</tr>
+</tbody>
+</table>
+<p>Table 25 â€“ Specific fields Azure key vault</p>
+<h4 id="google-secret-manager">Google Secret Manager</h4>
+<p>The specific parameters of the Google Secret Manager to be inserted are displayed in the following table:</p>
+<p>
+<figure><img src="../assets/images/extract/media/image90.png" /><figcaption>Google Secret Manager configuration mask</figcaption>
+</figure>
+</p>
+<p>The mandatory parameters are indicated with *</p>
+<table>
+<thead>
+<tr>
+<th><strong>Nome</strong></th>
+<th><strong>Tipo</strong></th>
+<th><strong>Descrizione</strong></th>
+<th><strong>Esempio</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kmsProjectId <strong>*</strong></td>
+<td>string</td>
+<td>l'ID del progetto Google Cloud Platform (GCP) associato al servizio Google Cloud Key Management Service (KMS).</td>
+<td>5a85c16c6ad-49db-a58e-e209-ee11f53d6c6b</td>
+</tr>
+<tr>
+<td>serviceAccount *</td>
+<td>object</td>
+<td>File di connessione generato dalla console Google</td>
+<td>service_account.json</td>
+</tr>
+</tbody>
+</table>
+<p>You can manually insert the parameters in the â€œservice_account.jsonâ€ file if you do not want to upload it, all parameters are mandatory:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Nome</strong></th>
+<th><strong>Tipo</strong></th>
+<th><strong>Descrizione</strong></th>
+<th><strong>Esempio</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>string</td>
+<td>Inserire il nome della tipologia di autenticazione configurata</td>
+<td>service_account</td>
+</tr>
+<tr>
+<td>project_id *</td>
+<td>string</td>
+<td>Inserisci qui l'id univoco del progetto associato al service account</td>
+<td>Theproject-367810</td>
+</tr>
+<tr>
+<td>private_key_id *</td>
+<td>string</td>
+<td>Inserisci qui l'id univoco della chiave privata del service account</td>
+<td>55cb5cf903ee93ea1e9c294a07e46e0af0633e6</td>
+</tr>
+<tr>
+<td>private_key *</td>
+<td>password</td>
+<td>Contiene la chiave privata del service account in formato PEM. Ãˆ fondamentale per l'autenticazione del service account alle API di Google Cloud</td>
+<td>-----BEGIN PRIVATE KEY-----MIIJQgIBADANBâ€¦</td>
+</tr>
+<tr>
+<td>client_e-mail *</td>
+<td>string</td>
+<td>L'indirizzo email univoco del service account. Ãˆ utilizzato per identificare il service account quando si autentica alle API di Google Cloud</td>
+<td><a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#117;&#115;&#101;&#114;&#64;&#100;&#111;&#109;&#105;&#110;&#105;&#111;&#46;&#99;&#111;&#109;">&#117;&#115;&#101;&#114;&#64;&#100;&#111;&#109;&#105;&#110;&#105;&#111;&#46;&#99;&#111;&#109;</a></td>
+</tr>
+<tr>
+<td>client_id *</td>
+<td>string</td>
+<td>L'ID client del service account. Ãˆ un identificatore univoco utilizzato per identificare il service account in Google Cloud</td>
+<td>104822473261100667392</td>
+</tr>
+<tr>
+<td>auth_uri *</td>
+<td>string</td>
+<td>L'URI utilizzato per l'autenticazione del service account alle API di Google Cloud</td>
+<td><a href="https://accounts.google.com/o/oauth2/auth">https://accounts.google.com/o/oauth2/auth</a></td>
+</tr>
+<tr>
+<td>token_uri *</td>
+<td>string</td>
+<td>L'URI utilizzato per ottenere un token di accesso per il service account</td>
+<td><a href="https://oauth2.googleapis.com/token">https://oauth2.googleapis.com/token</a></td>
+</tr>
+<tr>
+<td>auth_provider_x509_cert_url*</td>
+<td>string</td>
+<td>L'URL del certificato X.509 utilizzato per l'autenticazione del service account</td>
+<td><a href="https://www.googleapis.com/oauth2/v1/certs">https://www.googleapis.com/oauth2/v1/certs</a></td>
+</tr>
+<tr>
+<td>client_x509_cert_url *</td>
+<td>string</td>
+<td>L'URL del certificato X.509 nel client</td>
+<td><a href="https://www.googleapis.com/robot/v1/metadata/f543/myserviceaccount%40projectName.gserviceaccount.com">https://www.googleapis.com/robot/v1/metadata/f543/myserviceaccount%40projectName.gserviceaccount.com</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="viewing-modifying-and-deleting-a-system">Viewing, modifying and deleting a system</h4>
+<p>You can view the data of a Secret Manager, within the list, by clicking on the kebab menu at a manager, and then on â€œShowâ€.</p>
+<p>
+<figure><img src="../assets/images/extract/media/image91.png" /><figcaption>Access to the manager in display mode</figcaption>
+</figure>
+</p>
+<p>On this page you can view the configuration of the Provider .</p>
+<p>
+<figure><img src="../assets/images/extract/media/image92.png" /><figcaption>manager in display mode</figcaption>
+</figure>
+</p>
+<p>To return to the Secret Manager page, on the bottom left, click on the â€œCloseâ€ button.</p>
+<p>At this point, you will find yourself on the Secret Manager page.</p>
+<p>To change the data of a Secret Manager within the list, click on the kebab menu at a Cloud Provider, and click on â€œEditâ€.</p>
+<p>
+<figure><img src="../assets/images/extract/media/image93.png" /><figcaption>Access manager in edit mode</figcaption>
+</figure>
+</p>
+<p>This is done, you will find yourself within the Cloud Provider page in edit mode where you can change your data. To return to the Cloud Provider page, click on the â€œSaveâ€ button on the left. At this point, you will find yourself on the Cloud Provider page.</p>
+<p>To delete a "Secret manager", within the list, click on the kebab menu at a Secret Manager, and click on "Delete" .
+<figure><img src="../assets/images/extract/media/image94.png" /><figcaption>Start for deletion of a Secret Manager</figcaption>
+</figure>
+</p>
+<p>Done that, a modal will appear where you need to click on the â€œRemoveâ€ button
+<figure><img src="../assets/images/extract/media/image95.png" /><figcaption>Confirm elimination of the Secret Manager</figcaption>
+</figure>
+</p>
+<p>At this point, the Secret Manager will no longer be present within the list and the asset removal flow will be launched on the resource-manager.</p>
+<h3 id="backup">Backup</h3>
+<p>The user is given the possibility to connect a CommVault to the SCMP to allow the recovery and visualization of the backup information and operations carried out by Vault.</p>
+<p>To access this feature you need to select the â€œCommVaultâ€ tab available at the top in the â€œAdministrationâ€ feature.</p>
+<p>We will return to the page that contains the list of all configured â€œCommVaultâ€ and clicking on the menu on the right you can add a new CommVault</p>
+<p>
+<figure><img src="../assets/images/extract/media/image96.png" /><figcaption>Access to CommVault</figcaption>
+</figure>
+</p>
+<p>On this page, after entering the login credentials (ip address, user and password) we can click on the â€œTest connectionâ€ button to confirm the correct insertion of the data and then confirm insertion via the â€œSaveâ€ button.</p>
+<p>
+<figure><img src="../assets/images/extract/media/image97.png" /><figcaption>Connecting to a CommVault</figcaption>
+</figure>
+</p>
+<h3 id="confidential-computing">Confidential computing</h3>
+<p>In the Confidential Computing section, the user can enter a connection to a â€œRemote Attestationâ€ service to control and display information relating to the confidentiality status of machines managed by the service.</p>
+<p>To access this feature you need to select the â€œConfidential computingâ€ tab available at the top in the â€œAdministrationâ€ feature.</p>
+<p>We will return to the page that contains the list of all the services of â€œRemote attestationâ€ configured and clicking on the menu on the right you can add a new connection .</p>
+<p>
+<figure><img src="../assets/images/extract/media/image98.png" /><figcaption>Access to Confidential Computing</figcaption>
+</figure>
+</p>
+<p>On this page, after entering the login credentials (ip address, user and password) we can click on the â€œTest connectionâ€ button to confirm the correct insertion of the data and then confirm insertion via the â€œSaveâ€ button.</p>
+<p>
+<figure><img src="../assets/images/extract/media/image99.png" /><figcaption>Creation of connection to a â€œRemote Attestationâ€ service</figcaption>
+</figure>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.top", "search.highlight", "search.suggest"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="../js/print-site.js"></script>
+      
+        <script src="../assets/js/toc.js"></script>
+      
+        <script src="../assets/js/language-switcher.js"></script>
+      
+    
+  </body>
+</html>
