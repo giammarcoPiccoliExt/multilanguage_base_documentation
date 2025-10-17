@@ -1,13 +1,13 @@
-site_name: '{{ site_name }}'
-docs_dir: '{{ docs_dir }}'                           # Where to find the markdown files
-site_dir: '{{ site_dir }}'                           # Where to put the HTML files
+site_name: 'Documentazione Super Progetto'
+docs_dir: '../../docs/it'                           # Where to find the markdown files
+site_dir: '../../generated/it'                           # Where to put the HTML files
 
 theme:
     name: material
     custom_dir: '../../overrides/'                   # This is where the customization of the theme lives
     logo: assets/images/logo.png                     # The logo is shared by all languages
     favicon: assets/images/favicon.ico               # The favicon is shared by all languages
-    language: {{ language_code }}                    # The build's language
+    language: it                    # The build's language
     features:
     - navigation.top
     - search.highlight
@@ -24,7 +24,7 @@ extra_javascript:
 
 plugins:
   - search:
-      lang: {{ search_lang }}                       # Set language for search
+      lang: it                       # Set language for search
   - render_swagger:
       css: personalization/swagger-ui.css           # Correctly indented plugin config
   - print-site:
@@ -42,7 +42,12 @@ plugins:
       include_css: true
       enabled: true
 
-{{ nav_yaml }}
+nav:
+- Home: index.html
+- Sviluppatori: developers/index.html
+- Amministrazione: Administration/index.html
+- PDF: SCMP_SUM_it.pdf
+
 
 markdown_extensions:
   - markdown_captions

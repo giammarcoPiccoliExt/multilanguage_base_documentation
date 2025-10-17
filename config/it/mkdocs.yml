@@ -9,7 +9,6 @@ theme:
     favicon: assets/images/favicon.ico               # The favicon is shared by all languages
     language: it                    # The build's language
     features:
-    - navigation.instant
     - navigation.top
     - search.highlight
     - search.suggest
@@ -28,7 +27,20 @@ plugins:
       lang: it                       # Set language for search
   - render_swagger:
       css: personalization/swagger-ui.css           # Correctly indented plugin config
-  - print-site                                      # mkdocs-print-site-plugin
+  - print-site:
+      add_to_navigation: true
+      print_page_title: 'Stampa'
+      add_table_of_contents: true
+      toc_title: 'Indice dei contenuti'
+      toc_depth: 6
+      add_full_urls: false
+      enumerate_headings: true
+      enumerate_figures: true
+      add_cover_page: true
+      cover_page_template: ""
+      path_to_pdf: ""
+      include_css: true
+      enabled: true
 
 nav:
 - Home: index.html
