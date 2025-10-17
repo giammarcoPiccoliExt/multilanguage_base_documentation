@@ -29,9 +29,9 @@ plugins:
       css: personalization/swagger-ui.css           # Correctly indented plugin config
   - print-site:
       add_to_navigation: true
-      print_page_title: 'Stampa'
+      print_page_title: 'Print'
       add_table_of_contents: true
-      toc_title: 'Indice dei contenuti'
+      toc_title: 'Table of Contents'
       toc_depth: 6
       add_full_urls: false
       enumerate_headings: true
@@ -43,9 +43,9 @@ plugins:
       enabled: true
 
 nav:
-- Home: index.html
-- Developers: developers/index.html
-- Administration: Administration/index.html
+- Home: index.md
+- Developers: developers.md
+- Administration: Administration.md
 - PDF: SCMP_SUM_en.pdf
 
 

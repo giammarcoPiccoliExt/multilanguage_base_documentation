@@ -5,6 +5,8 @@ import os
 
 # Base dir (preConfiguration/build)
 BASE_DIR = os.path.dirname(__file__)
+# Root dir del progetto (due livelli sopra)
+PROJECT_ROOT = os.path.normpath(os.path.join(BASE_DIR, '..', '..'))
 
 # Carica le variabili base (site_name, author)
 config_path = os.path.join(BASE_DIR, 'config.json')
@@ -39,16 +41,19 @@ for lang_code, lang_config in languages.items():
     # Genera il contenuto dal template
     output = template.render(**template_vars)
     
+    # Converti il path relativo in path assoluto rispetto al project root
+    output_path = os.path.join(PROJECT_ROOT, lang_config["path"])
+    
     # Crea la directory se non esiste
-    config_dir = os.path.dirname(lang_config["path"])
+    config_dir = os.path.dirname(output_path)
     if config_dir and not os.path.exists(config_dir):
         os.makedirs(config_dir, exist_ok=True)
     
     # Salva il file di configurazione
-    with open(lang_config["path"], "w", encoding="utf-8") as f:
+    with open(output_path, "w", encoding="utf-8") as f:
         f.write(output)
     
-    print(f"✅ mkdocs.yml {lang_code.upper()} generato con successo in {lang_config['path']}")
+    print(f"✅ mkdocs.yml {lang_code.upper()} generato con successo in {output_path}")
 
 print("🎉 Configurazioni per tutte le lingue generate con successo!")
 

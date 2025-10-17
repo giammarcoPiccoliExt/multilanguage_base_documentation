@@ -1,5 +1,5 @@
 nav:
-- Home: index.html
-- Developers: developers/index.html
-- Administration: Administration/index.html
+- Home: index.md
+- Developers: developers.md
+- Administration: Administration.md
 - PDF: SCMP_SUM_en.pdf

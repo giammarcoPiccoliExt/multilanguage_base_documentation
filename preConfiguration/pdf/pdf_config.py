@@ -28,16 +28,21 @@ def save_rendered(content, filename):
         f.write(content)
 
 # Lista dei template da generare e nomi file output (senza .j2)
-# Usa la configurazione italiana come default per i PDF
-default_lang_config = config["languages"]["it"]
+# Genera PDF per tutte le lingue configurate
+for lang_code, lang_config in config["languages"].items():
+    print(f"Generando template PDF per {lang_code.upper()}...")
+    
+    templates = [
+        ("pdf-header.html.j2", f"documentation/pdfGeneration/{lang_code}/pdf-header.html"),
+        ("pdf-footer.html.j2", f"documentation/pdfGeneration/{lang_code}/pdf-footer.html"),
+        ("pdf-firstPage.html.j2", f"documentation/pdfGeneration/{lang_code}/pdf-firstPage.html"),
+    ]
 
-templates = [
-    ("pdf-header.html.j2", "documentation/pdfGeneration/pdf-header.html"),
-    ("pdf-footer.html.j2", "documentation/pdfGeneration/pdf-footer.html"),
-    ("pdf-firstPage.html.j2", "documentation/pdfGeneration/pdf-firstPage.html"),
-]
+    for tpl_file, out_file in templates:
+        rendered = render_template(tpl_file, lang_config)
+        save_rendered(rendered, out_file)
+        print(f"  ✅ Generato {out_file}")
+    
+    print(f"🎉 Template PDF {lang_code.upper()} completati!")
 
-for tpl_file, out_file in templates:
-    rendered = render_template(tpl_file, default_lang_config)
-    save_rendered(rendered, out_file)
-    print(f"Generato {out_file}")
+print("🎉 Tutti i template PDF generati con successo!")
