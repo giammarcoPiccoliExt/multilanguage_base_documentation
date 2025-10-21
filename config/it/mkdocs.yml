@@ -28,9 +28,9 @@ plugins:
   - render_swagger:
       css: personalization/swagger-ui.css           # Correctly indented plugin config
   - print-site:
-      add_to_navigation: true
+      add_to_navigation: false
       print_page_title: 'Stampa'
-      add_table_of_contents: true
+      add_table_of_contents: false
       toc_title: 'Indice dei contenuti'
       toc_depth: 6
       add_full_urls: false

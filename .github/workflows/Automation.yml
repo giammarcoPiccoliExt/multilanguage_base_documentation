@@ -253,6 +253,39 @@ jobs:
           echo "⚠️ Directory includes/swagger non presente, nulla da copiare";
         fi
 
+    - name: Update nav configs for HTML links and rebuild
+      if: env.RUN_SWAGGER == 'true'
+      run: |
+        echo "🔄 Updating nav configs to use /index.html instead of .md"
+
+        # Backup original nav configs
+        cp preConfiguration/build/nav_config_it.yml preConfiguration/build/nav_config_it.yml.backup
+        cp preConfiguration/build/nav_config_en.yml preConfiguration/build/nav_config_en.yml.backup
+
+        # Replace .md with /index.html in nav configs
+        sed -i 's/\.md$/\/index.html/g' preConfiguration/build/nav_config_it.yml
+        sed -i 's/\.md$/\/index.html/g' preConfiguration/build/nav_config_en.yml
+
+        echo "✅ Nav configs updated for HTML links"
+        echo "📄 IT nav config:"
+        cat preConfiguration/build/nav_config_it.yml
+        echo "📄 EN nav config:"
+        cat preConfiguration/build/nav_config_en.yml
+
+        # Regenerate mkdocs configs with HTML links
+        python preConfiguration/build/build_config.py
+
+        # Rebuild documentation with HTML links
+        echo "🔄 Rebuilding documentation with HTML links..."
+        mkdocs build -f config/it/mkdocs.yml
+        mkdocs build -f config/en/mkdocs.yml
+
+        # Restore original nav configs
+        mv preConfiguration/build/nav_config_it.yml.backup preConfiguration/build/nav_config_it.yml
+        mv preConfiguration/build/nav_config_en.yml.backup preConfiguration/build/nav_config_en.yml
+
+        echo "✅ Documentation rebuilt with HTML links, nav configs restored"
+
     - name: Optimize images
       run: python preConfiguration/build/image_resizier.py
 
