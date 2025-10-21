@@ -286,6 +286,17 @@ jobs:
         mv preConfiguration/build/nav_config_it.yml.backup preConfiguration/build/nav_config_it.yml
         mv preConfiguration/build/nav_config_en.yml.backup preConfiguration/build/nav_config_en.yml
 
+        # Copy PDF files to respective language directories
+        echo "🔄 Copying PDF files to language directories..."
+        if [ -f generated/pdf/SCMP_SUM_it.pdf ]; then
+          cp generated/pdf/SCMP_SUM_it.pdf generated/it/
+          echo "✅ Copied SCMP_SUM_it.pdf to generated/it/"
+        fi
+        if [ -f generated/pdf/SCMP_SUM_en.pdf ]; then
+          cp generated/pdf/SCMP_SUM_en.pdf generated/en/
+          echo "✅ Copied SCMP_SUM_en.pdf to generated/en/"
+        fi
+
         echo "✅ Documentation rebuilt with HTML links, nav configs restored"
 
     - name: Optimize images
