@@ -226,17 +226,24 @@ jobs:
         mkdir -p includes/swagger
         for var in "${VARS[@]}"; do
           echo "🔄 Fetching Swagger for API: $var"
-            HTTP_RESPONSE=$(curl --location --silent --show-error --write-out "HTTPSTATUS:%{http_code}" \
-              -H "Authorization: Bearer $API_TOKEN" \
-              -H "x-Tenant: Default" \
-              "https://www.movincloud.com/api/${var}/v3/api-docs" \
-              -o "includes/swagger/${var}.json")
+          HTTP_RESPONSE=$(curl --location --silent --show-error --write-out "HTTPSTATUS:%{http_code}" \
+            -H "Authorization: Bearer $API_TOKEN" \
+            -H "x-Tenant: Default" \
+            "https://www.movincloud.com/api/${var}/v3/api-docs" \
+            -o "includes/swagger/${var}.json")
           HTTP_BODY=$(cat includes/swagger/${var}.json || echo '{}')
           HTTP_STATUS=$(echo "$HTTP_RESPONSE" | tr -d '\n' | sed -e 's/.*HTTPSTATUS://')
           echo "✅ Saved includes/swagger/${var}.json (HTTP $HTTP_STATUS)"
           echo "📄 Preview: $(echo "$HTTP_BODY" | head -c 160)"
+
+          # Create .md file for MkDocs build in docs/<lang>/swagger
+          for LANG in en it; do
+            mkdir -p docs/$LANG/swagger
+            echo "!!swagger **${var}.json!!" > docs/$LANG/swagger/${var}.md
+            echo "✅ Created docs/$LANG/swagger/${var}.md"
+          done
         done
-        echo "📁 Swagger specs centralizzati in includes/swagger"
+        echo "📁 Swagger specs centralizzati in includes/swagger e docs/<lang>/swagger"
 
     - name: Copy all swagger artifacts into docs (EN + IT) before build
       if: env.RUN_SWAGGER == 'true'
