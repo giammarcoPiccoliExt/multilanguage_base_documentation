@@ -4,4 +4,5 @@ mkdocs-print-site-plugin
 mkdocs-material 
 markdown-captions
 mkdocs-render-swagger-plugin
+Pillow
 markdown-it-py>=3.0.0
