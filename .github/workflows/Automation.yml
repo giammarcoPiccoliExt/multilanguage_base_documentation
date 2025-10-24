@@ -310,6 +310,20 @@ jobs:
     - name: Optimize images
       run: python preConfiguration/build/image_resizier.py
 
+    - name: Copy swagger-ui.css into all API folders (EN/IT)
+      run: |
+        for LANG in en it; do
+          SWAGGER_DIR="generated/$LANG/swagger"
+          if [ -d "$SWAGGER_DIR" ]; then
+            for API in "$SWAGGER_DIR"/*; do
+              if [ -d "$API" ]; then
+                cp overrides/assets/stylesheets/swagger-ui.css "$API/"
+                echo "✅ Copied swagger-ui.css into $API"
+              fi
+            done
+          fi
+        done
+
     # ----------------------------
     # 🔹 DEPLOY PREBUILT SU GH-PAGES (Senza Mike)
     # ----------------------------
