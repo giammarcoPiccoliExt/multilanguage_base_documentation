@@ -239,8 +239,9 @@ jobs:
           # Create .md file for MkDocs build in docs/<lang>/swagger
           for LANG in en it; do
             mkdir -p docs/$LANG/swagger
-            echo "!!swagger **${var}.json!!" > docs/$LANG/swagger/${var}.md
-            echo "✅ Created docs/$LANG/swagger/${var}.md"
+            # Link to the API HTML after build: swagger/<api>/index.html
+            echo "[Vai alla documentazione Swagger ${var}](swagger/${var}/index.html)" > docs/$LANG/swagger/${var}.md
+            echo "✅ Created docs/$LANG/swagger/${var}.md with HTML link"
           done
         done
         echo "📁 Swagger specs centralizzati in includes/swagger e docs/<lang>/swagger"
