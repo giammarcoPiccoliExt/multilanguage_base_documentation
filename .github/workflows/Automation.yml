@@ -242,10 +242,6 @@ jobs:
             # Link to the API HTML after build: swagger/<api>/index.html
             echo "[Vai alla documentazione Swagger ${var}](swagger/${var}/index.html)" > docs/$LANG/swagger/${var}.md
             echo "✅ Created docs/$LANG/swagger/${var}.md with HTML link"
-            # Copy JSON into API folder BEFORE build
-            mkdir -p docs/$LANG/swagger/$var
-            cp includes/swagger/$var.json docs/$LANG/swagger/$var/$var.json
-            echo "✅ Copiato includes/swagger/$var.json in docs/$LANG/swagger/$var/$var.json"
           done
         done
         echo "📁 Swagger specs centralizzati in includes/swagger e docs/<lang>/swagger"
