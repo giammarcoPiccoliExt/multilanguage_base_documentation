@@ -6,11 +6,11 @@ This section contains technical documentation for developers.
 
 --8<-- "includes/developers/api.md"
 
-## Start
+## Get Started
 
 To start developing with our platform, follow these steps:
 
-1. **Sign up** for a developer account
+1. **Register** for an developer account
 2. **Generate** your API keys
 3. **Install** our SDKs
 4. **Build** your first integration
@@ -24,7 +24,7 @@ We provide official SDKs for various programming languages:
 - **Java** - Maven dependency available
 - **PHP** - Composer package available
 
-## Example Code
+## Code Examples
 
 ### Authentication Example
 
@@ -36,7 +36,7 @@ const client = new Platform({
   environment: 'production'
 });
 
-// Authenticate user
+// Authenticate the user
 const user = await client.auth.login({
   username: 'user@example.com',
   password: 'password'
@@ -47,6 +47,6 @@ const user = await client.auth.login({
 
 For technical support:
 
-- Consult our [API Documentation](--8<-- "includes/urls-ita.md")
-- Visit our [Developers Forum](https://developers.example.com/forum/it)
+- Consult our [API documentation](--8<-- "includes/urls-ita.md")
+- Visit our [developer forum](https://developers.example.com/forum/it)
 - Contact support at [developers@example.com](mailto:developers@example.com)
