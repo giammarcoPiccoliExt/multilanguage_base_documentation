@@ -1,29 +1,29 @@
-# Welcome to the Documentation
+# Welcome to the Italian Documentation
 
-This is the home page of the English documentation.
+This is the main page of the Italian documentation.
 
-## Getting Started
+## Start
 
-Welcome to our comprehensive documentation. This guide will help you get started with our platform and understand its key features.
+Welcome to our complete documentation. This guide will help you get started with our platform and understand its main features.
 
 ## Quick Navigation
 
-- [Developer Documentation](developers.md) - Technical guides and API documentation
-- [Support Resources](--8<-- "includes/urls-en.md") - Links to help and support
+- [Developers](developers.md) - Technical documentation and API documentation
+- [Support Resources](--8<-- "includes/urls-ita.md") - Links for help and support
 
 ## Features
 
-Our platform offers a wide range of features designed to help you succeed:
+Our platform offers a wide range of features designed to help you achieve success:
 
-- **Easy Integration** - Simple APIs and SDKs
+- **Simple Integration** - Simple APIs and SDKs
 - **Scalable Architecture** - Built to grow with your needs
 - **Comprehensive Documentation** - Everything you need to know
-- **24/7 Support** - We're here to help
+- **24/7 Support** - We're here to help you
 
-## What's New
+## New Features
 
-Stay up to date with the latest features and improvements to our platform.
+Stay up-to-date with the latest features and improvements to our platform.
 
 ---
 
-For more information, please refer to our [developer documentation](developers.md) or visit our support portal.
+For more information, please consult our [developers documentation](developers.md) or visit our support portal.

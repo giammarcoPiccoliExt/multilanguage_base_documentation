@@ -1,32 +1,32 @@
-# Documentazione per Sviluppatori
+# Developer Documentation
 
-Questa sezione contiene la documentazione tecnica per gli sviluppatori.
+This section contains technical documentation for developers.
 
-## Documentazione API
+## API Documentation
 
 --8<-- "includes/developers/api.md"
 
-## Iniziare
+## Start
 
-Per iniziare a sviluppare con la nostra piattaforma, segui questi passaggi:
+To start developing with our platform, follow these steps:
 
-1. **Registrati** per un account sviluppatore
-2. **Genera** le tue chiavi API
-3. **Installa** i nostri SDK
-4. **Costruisci** la tua prima integrazione
+1. **Sign up** for a developer account
+2. **Generate** your API keys
+3. **Install** our SDKs
+4. **Build** your first integration
 
-## SDK e Librerie
+## SDKs and Libraries
 
-Forniamo SDK ufficiali per diversi linguaggi di programmazione:
+We provide official SDKs for various programming languages:
 
 - **JavaScript/Node.js** - `npm install @platform/sdk`
 - **Python** - `pip install platform-sdk`
-- **Java** - Dipendenza Maven disponibile
-- **PHP** - Pacchetto Composer disponibile
+- **Java** - Maven dependency available
+- **PHP** - Composer package available
 
-## Esempi di Codice
+## Example Code
 
-### Esempio di Autenticazione
+### Authentication Example
 
 ```javascript
 const Platform = require('@platform/sdk');
@@ -36,17 +36,17 @@ const client = new Platform({
   environment: 'production'
 });
 
-// Autentica utente
+// Authenticate user
 const user = await client.auth.login({
   username: 'user@example.com',
   password: 'password'
 });
 ```
 
-## Supporto
+## Support
 
-Per supporto tecnico:
+For technical support:
 
-- Consulta la nostra [documentazione API](--8<-- "includes/urls-ita.md")
-- Visita il nostro [forum sviluppatori](https://developers.example.com/forum/it)
-- Contatta il supporto a [developers@example.com](mailto:developers@example.com)
+- Consult our [API Documentation](--8<-- "includes/urls-ita.md")
+- Visit our [Developers Forum](https://developers.example.com/forum/it)
+- Contact support at [developers@example.com](mailto:developers@example.com)
