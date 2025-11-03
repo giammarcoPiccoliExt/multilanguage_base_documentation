@@ -1,5 +1,6 @@
 # Administration
 
+Use these examples to structure your documentation for clarity and consistency.
 
 La funzionalità di Administration è la base di partenza per poter utilizzare la SCMP.
 

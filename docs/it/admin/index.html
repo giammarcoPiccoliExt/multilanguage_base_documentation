@@ -5,6 +5,24 @@
   <title>Editor Markdown con GitHub</title>
 <link rel="stylesheet" href="editor.css">
 <link rel="stylesheet" href="editorOriginal.css">
+  <link rel="icon" type="image/png" href="./favicon.png">
+  <!-- Local FontAwesome fallback -->
+  <link rel="stylesheet" href="./fontawesome-local.css">
+ <!-- FontAwesome CDN to fix missing local font files -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"  crossorigin="anonymous" referrerpolicy="no-referrer" />
+ <style>
+  /* Local loading gif */
+  .editormd-preview-container .loading, .editormd .loading {background-image:url('./images/loading.gif') !important;}
+   /* Force FontAwesome to use CDN sources; prevent local /fonts/ 404 */
+   @font-face {
+     font-family: 'FontAwesome';
+     font-style: normal;
+     font-weight: 400;
+     src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2') format('woff2'),
+          url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff') format('woff'),
+          url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.ttf') format('truetype');
+   }
+ </style>
 
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/editor.md@1.5.0/editormd.min.js"></script>
@@ -26,7 +44,7 @@
     <button id="refreshRepoBtn" class="sidebar-btn">Aggiorna repo</button>
   <ul id="file-list-ul"></ul>
     <button id="newFileBtn" class="sidebar-btn">Nuovo file Markdown</button>
-    <button id="saveBtn" class="sidebar-btn">Salva Modifiche</button>
+      <button id="pushAllBtn" class="sidebar-btn">Push All Changes</button>
     <button id="deployBtn" class="sidebar-btn">Esegui Deploy Docs</button>
     <button id="deleteFileBtn" class="sidebar-btn delete-btn">Elimina file</button>
   <div id="uploadBox" class="upload-box">
@@ -56,17 +74,6 @@
   </div>
 </div>
 
-<!-- Modale avviso modifiche non salvate -->
-<div id="unsavedChangesModal" class="modal-bg">
-  <div class="modal-box unsaved-modal">
-    <h3 class="modal-title">Attenzione</h3>
-    <p>Salvare prima di cambiare file.<br>Le modifiche non salvate andranno perse.</p>
-    <div class="modal-actions">
-      <button id="closeUnsavedModalBtn" class="modal-btn">Chiudi</button>
-      <button id="confirmOpenFileBtn" class="modal-btn">Apri nuovo file</button>
-    </div>
-  </div>
-</div>
 <div id="imagesModal" class="modal-bg">
   <div class="modal-box images-modal">
     <button id="closeImagesModal" class="modal-close">&times;</button>
@@ -88,7 +95,8 @@ let currentFilePath = null, currentSha = null;
 let currentUsername = null, currentRepo = null, currentToken = null;
 let branch = "main";
 let cachedImages = [], lastLoadedFiles = [];
-let pendingOpenFile = null, selectedFileToDelete = null, selectedImageToDelete = null;
+let selectedFileToDelete = null, selectedImageToDelete = null;
+let pendingChanges = [];
 
 /* ================== FUNZIONI UTILI ================== */
 function decodeBase64Utf8(base64Str) {
@@ -97,9 +105,6 @@ function decodeBase64Utf8(base64Str) {
 }
 function encodeUtf8Base64(str) {
   return btoa(unescape(encodeURIComponent(str)));
-}
-function hasUnsavedChanges() {
-  return editor && currentFileContent !== null && editor.getMarkdown() !== currentFileContent;
 }
 
 /* ================== EDITOR ================== */
@@ -127,9 +132,12 @@ function updatePreviewImages() {
 }
 
 /* ================== GESTIONE FILE ================== */
+let allFilesCache = {}; // Cache per tutti i file scaricati
+
 function loadFiles(username, repo, token) {
   $("#file-list-ul").empty();
   lastLoadedFiles = [];
+  allFilesCache = {}; // Reset cache
 
   function fetchFolder(path = "") {
     $.ajax({
@@ -143,6 +151,8 @@ function loadFiles(username, repo, token) {
             if (path.startsWith("documentation")) {
               $("#file-list-ul").append(`<li><a href="#" class="open-md-file" data-path="${file.path}">${file.path}</a></li>`);
               lastLoadedFiles.push(file.path);
+              // Scarica subito il contenuto del file
+              downloadFileContent(file.path, username, repo, token);
             }
           }
         });
@@ -152,44 +162,206 @@ function loadFiles(username, repo, token) {
   }
   fetchFolder();
 }
-function loadFile(path, username, repo, token) {
+
+// Scarica il contenuto di un singolo file e lo mette in cache
+function downloadFileContent(path, username, repo, token) {
   $.ajax({
     url: `https://api.github.com/repos/${username}/${repo}/contents/${path}?ref=${branch}`,
     headers: { Authorization: `token ${token}` },
     success: file => {
-      if (!file?.content) return;
-      const content = decodeBase64Utf8(file.content);
-      currentFileContent = content;
-      editor.setMarkdown(content);
-      currentFilePath = path; currentSha = file.sha;
-      currentUsername = username; currentRepo = repo; currentToken = token;
-      loadImagesList(updatePreviewImages);
-      setTimeout(() => {
-        const baseUrl = `https://raw.githubusercontent.com/${username}/${repo}/${branch}/documentation/docs/`;
-        $(".editormd-preview-container img").each(function() {
-          const src = $(this).attr("src");
-          if (src?.startsWith("images/")) $(this).attr("src", baseUrl + src.replace(/^\/+/, ""));
-        });
-      }, 500);
+      if (file?.content) {
+        const content = decodeBase64Utf8(file.content);
+        allFilesCache[path] = { content, sha: file.sha };
+      }
     },
-    error: err => alert("Errore nel caricamento del file.")
+    error: err => console.error("Errore download file:", path, err)
   });
 }
-function saveFile() {
-  if (!currentFilePath || !currentUsername || !currentRepo || !currentToken) {
-    alert("Nessun file selezionato o credenziali mancanti.");
-    return;
+function loadFile(path, username, repo, token) {
+  // Prima controlla se ci sono modifiche non salvate nel file corrente
+  if (currentFilePath && editor && editor.getMarkdown() !== currentFileContent) {
+    saveCurrentFileToMemory();
   }
+
+  // Carica il file: prima da pendingChanges, poi da cache, infine da GitHub
+  const pending = pendingChanges.find(f => f.path === path);
+  if (pending) {
+    // File modificato in memoria
+    currentFileContent = pending.content;
+    editor.setMarkdown(pending.content);
+    currentFilePath = path; currentSha = pending.sha;
+    currentUsername = username; currentRepo = repo; currentToken = token;
+    console.log("Caricato da pendingChanges:", path);
+  } else if (allFilesCache[path]) {
+    // File in cache (scaricato all'inizio)
+    currentFileContent = allFilesCache[path].content;
+    editor.setMarkdown(allFilesCache[path].content);
+    currentFilePath = path; currentSha = allFilesCache[path].sha;
+    currentUsername = username; currentRepo = repo; currentToken = token;
+    console.log("Caricato da cache:", path);
+  } else {
+    // Fallback: scarica da GitHub
+    $.ajax({
+      url: `https://api.github.com/repos/${username}/${repo}/contents/${path}?ref=${branch}`,
+      headers: { Authorization: `token ${token}` },
+      success: file => {
+        if (!file?.content) return;
+        const content = decodeBase64Utf8(file.content);
+        currentFileContent = content;
+        editor.setMarkdown(content);
+        currentFilePath = path; currentSha = file.sha;
+        currentUsername = username; currentRepo = repo; currentToken = token;
+        // Salva in cache per prossimi usi
+        allFilesCache[path] = { content, sha: file.sha };
+        console.log("Caricato da GitHub:", path);
+      },
+      error: err => alert("Errore nel caricamento del file.")
+    });
+    return; // Exit early per evitare di eseguire il resto
+  }
+
+  loadImagesList(updatePreviewImages);
+  setTimeout(() => {
+    const baseUrl = `https://raw.githubusercontent.com/${username}/${repo}/${branch}/documentation/docs/`;
+    $(".editormd-preview-container img").each(function() {
+      const src = $(this).attr("src");
+      if (src?.startsWith("images/")) $(this).attr("src", baseUrl + src.replace(/^\/+/, ""));
+    });
+  }, 500);
+}
+
+// Funzione per creare nuovo file
+function createNewFile() {
+  const fileName = prompt("Nome del nuovo file (senza estensione .md):");
+  if (!fileName) return;
+  
+  const filePath = `documentation/docs/it/${fileName}.md`;
+  const defaultContent = `# ${fileName}\n\nContenuto del nuovo file...`;
+  
+  // Aggiungi alla lista file
+  $("#file-list-ul").append(`<li><a href="#" class="open-md-file" data-path="${filePath}">${filePath}</a></li>`);
+  
+  // Aggiungi a cache e pendingChanges
+  allFilesCache[filePath] = { content: defaultContent, sha: null };
+  pendingChanges.push({ path: filePath, content: defaultContent, sha: null });
+  
+  // Carica il nuovo file nell'editor
+  currentFileContent = defaultContent;
+  editor.setMarkdown(defaultContent);
+  currentFilePath = filePath;
+  currentSha = null;
+  
+  alert("Nuovo file creato! Ricordati di fare Push All per salvarlo su GitHub.");
+}
+
+// Salva il file corrente in memoria (pendingChanges + cache)
+function saveCurrentFileToMemory() {
+  if (!currentFilePath || !editor) return;
   let content = editor.getMarkdown();
-  content = content.replace(/!\[(.*?)\]\(https:\/\/raw\.githubusercontent\.com\/[^\/]+\/[^\/]+\/[^\/]+\/documentation\/docs\/images\/([^\)]+)\)/g, "![$1](images/$2)");
-  $.ajax({
-    url: `https://api.github.com/repos/${currentUsername}/${currentRepo}/contents/${currentFilePath}`,
-    type: "PUT",
-    headers: { Authorization: `token ${currentToken}` },
-    data: JSON.stringify({ message: "Aggiornamento file da editor web", content: encodeUtf8Base64(content), sha: currentSha }),
-    success: res => { alert("File salvato!"); currentSha = res.content.sha; },
-    error: err => alert("Errore nel salvataggio del file.")
-  });
+  content = content.replace(/!\[(.*?)\]\(https:\/\/raw\.githubusercontent\.com\/[^\/]+\/[^\/]+\/[^\/]+\/documentation\/docs\/images\/([^)]+)\)/g, "![$1](images/$2)");
+  pendingChanges = pendingChanges.filter(f => f.path !== currentFilePath);
+  pendingChanges.push({ path: currentFilePath, content, sha: currentSha });
+  currentFileContent = content;
+  if (allFilesCache[currentFilePath]) {
+    allFilesCache[currentFilePath].content = content;
+  } else {
+    allFilesCache[currentFilePath] = { content, sha: currentSha };
+  }
+  console.log("[MEM] salvato:", currentFilePath);
+}
+
+function saveFile() {
+  // Only update pendingChanges - keep manual save functionality
+  saveCurrentFileToMemory();
+  alert("Modifica salvata localmente. Verrà inviata con Push All.");
+}
+
+function pushAllChanges() {
+  if (!currentUsername || !currentRepo || !currentToken) return alert("Credenziali mancanti.");
+  if (pendingChanges.length === 0) return alert("Nessuna modifica da inviare.");
+
+  alert(`Avvio push di ${pendingChanges.length} file...`);
+  let completed = 0, errors = 0;
+
+  // Helper per assicurare lo SHA (solo se file esiste già)
+  function ensureSha(change, done) {
+    if (change.sha) return done(change.sha);
+    $.ajax({
+      url: `https://api.github.com/repos/${currentUsername}/${currentRepo}/contents/${change.path}?ref=${branch}`,
+      headers: { Authorization: `token ${currentToken}` },
+      success: file => {
+        done(file.sha);
+      },
+      error: () => {
+        // Se 404, è un nuovo file: sha rimane null
+        done(null);
+      }
+    });
+  }
+
+  function pushNext(index) {
+    if (index >= pendingChanges.length) {
+      alert(`Push terminato. OK: ${completed}, Errori: ${errors}`);
+      if (errors === 0) pendingChanges = [];
+      return;
+    }
+    const change = pendingChanges[index];
+    ensureSha(change, sha => {
+      const body = {
+        message: `Update ${change.path} (batch wising)`,
+        content: encodeUtf8Base64(change.content)
+      };
+      if (sha) body.sha = sha;
+      $.ajax({
+        url: `https://api.github.com/repos/${currentUsername}/${currentRepo}/contents/${change.path}`,
+        type: "PUT",
+        headers: { Authorization: `token ${currentToken}` },
+        data: JSON.stringify(body),
+        success: res => {
+          completed++;
+          allFilesCache[change.path] = { content: change.content, sha: res.content.sha };
+          console.log(`[PUSH OK] ${change.path}`);
+          pushNext(index + 1);
+        },
+        error: (xhr) => {
+          errors++;
+          console.error(`[PUSH ERR] ${change.path} status=${xhr.status} resp=`, xhr.responseText);
+          // Retry once if conflict (409) or SHA mismatch (422)
+          if (xhr.status === 409 || xhr.status === 422) {
+            console.log(`[RETRY] ${change.path}`);
+            ensureSha(change, newSha => {
+              const retryBody = {
+                message: `Retry update ${change.path}`,
+                content: encodeUtf8Base64(change.content)
+              };
+              if (newSha) retryBody.sha = newSha;
+              $.ajax({
+                url: `https://api.github.com/repos/${currentUsername}/${currentRepo}/contents/${change.path}`,
+                type: "PUT",
+                headers: { Authorization: `token ${currentToken}` },
+                data: JSON.stringify(retryBody),
+                success: res2 => {
+                  completed++;
+                  console.log(`[RETRY OK] ${change.path}`);
+                  allFilesCache[change.path] = { content: change.content, sha: res2.content.sha };
+                  pushNext(index + 1);
+                },
+                error: (xhr2) => {
+                  errors++;
+                  console.error(`[RETRY FAIL] ${change.path} status=${xhr2.status} resp=`, xhr2.responseText);
+                  pushNext(index + 1);
+                }
+              });
+            });
+          } else {
+            pushNext(index + 1);
+          }
+        }
+      });
+    });
+  }
+
+  pushNext(0);
 }
 
 /* ================== GESTIONE IMMAGINI ================== */
@@ -284,15 +456,10 @@ setInterval(checkRepoStatus, 5000);
 $(document).on("click", ".open-md-file", function(e) {
   e.preventDefault();
   const path = $(this).data("path");
-  if (hasUnsavedChanges()) {
-    pendingOpenFile = { path, username: currentUsername, repo: currentRepo, token: currentToken };
-    $("#unsavedChangesModal").show();
-  } else {
-    loadFile(path, currentUsername, currentRepo, currentToken);
-  }
+  loadFile(path, currentUsername, currentRepo, currentToken);
 });
-$("#confirmOpenFileBtn").on("click", () => { if (pendingOpenFile) { loadFile(pendingOpenFile.path, pendingOpenFile.username, pendingOpenFile.repo, pendingOpenFile.token); pendingOpenFile = null; $("#unsavedChangesModal").hide(); }});
-$("#saveBtn").on("click", saveFile);
+$("#pushAllBtn").on("click", pushAllChanges);
+$("#newFileBtn").on("click", createNewFile);
 $("#uploadBtn").on("click", () => { const file = $("#uploadImage")[0].files[0]; if (file) uploadImage(file); });
 $("#deployBtn").on("click", () => { editAutomationYaml(true, () => setTimeout(() => editAutomationYaml(false), 5000)); });
 $("#startBtn").on("click", () => {
@@ -365,10 +532,6 @@ $(document).on("click", ".copy-img-name", function() {
 // Chiudi modale immagini
 $("#closeImagesModal").on("click", function() {
   $("#imagesModal").css("display", "none");
-});
-// Chiudi modale unsaved changes
-$("#closeUnsavedModalBtn").on("click", function() {
-  $("#unsavedChangesModal").css("display", "none");
 });
 </script>
 

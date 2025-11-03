@@ -112,5 +112,66 @@ The main automation pipeline is defined in `Automation.yml` and orchestrates the
 
 5. Deploy manually by copying files to your web server or using the deployment steps in the workflow.
 
+## Markdown Examples from Administration.md
+
+Below are examples of all the different Markdown elements used in the Administration documentation:
+
+
+### 1. Headings
+# Main Title
+## Section Title
+### Subsection Title
+
+
+### 2. Bullet Lists
+- First item
+- Second item
+- Third item
+
+
+### 3. Numbered Lists
+1. First step
+2. Second step
+3. Third step
+
+
+### 4. Images
+![Alt text](images/extract/media/image42.png)
+
+
+### 5. Bold Text
+**Bold text**
+
+
+### 6. Italic Text
+*Italic text*
+
+
+### 7. Inline Code
+`inline code`
+
+
+### 8. Blockquotes
+> This is a blockquote
+
+
+### 9. Horizontal Rule
 ---
-For any issues or questions, refer to the workflow and scripts in the `preConfiguration/` folder, or contact the project maintainer.
+
+
+### 10. Nested Lists
+- Main item
+   - Subitem
+      - Subsubitem
+
+
+### 11. Mixed Formatting in Lists
+- **Bold item**: Description
+- *Italic item*: Description
+
+
+### 12. Links
+[Link text](https://example.com)
+
+---
+Use these examples to structure your documentation for clarity and consistency.
