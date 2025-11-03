@@ -1,0 +1,1 @@
+Add loading.gif here (local spinner image). Use a small optimized GIF (e.g. 32x32).
