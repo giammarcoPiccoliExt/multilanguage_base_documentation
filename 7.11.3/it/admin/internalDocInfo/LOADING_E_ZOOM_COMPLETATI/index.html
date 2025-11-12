@@ -1,0 +1,688 @@
+
+<!doctype html>
+<html lang="it" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>🚀 LOADING OVERLAY E IMAGE MODAL - IMPLEMENTAZIONE COMPLETATA - Documentazione Super Progetto</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/print-site.css">
+    
+      <link rel="stylesheet" href="../../../css/print-site-material.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/eng-standard-theme.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/fabric.min.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/toc.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/language-switcher.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#loading-overlay-e-image-modal-implementazione-completata" class="md-skip">
+          Vai al contenuto
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Intestazione">
+    <a href="../../.." title="Documentazione Super Progetto" class="md-header__button md-logo" aria-label="Documentazione Super Progetto" data-md-component="logo">
+      
+  <img src="../../../assets/images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Documentazione Super Progetto
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              🚀 LOADING OVERLAY E IMAGE MODAL - IMPLEMENTAZIONE COMPLETATA
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Cancella" aria-label="Cancella" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inizializza la ricerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigazione" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Documentazione Super Progetto" class="md-nav__button md-logo" aria-label="Documentazione Super Progetto" data-md-component="logo">
+      
+  <img src="../../../assets/images/logo.png" alt="logo">
+
+    </a>
+    Documentazione Super Progetto
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../developers/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sviluppatori
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Amministrazione
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SCMP_SUM_it.pdf" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PDF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Indice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Indice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#funzionalita-implementate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Funzionalità Implementate:
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ Funzionalità Implementate:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-loading-overlay-globale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Loading Overlay Globale
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-modal-immagini-ingrandite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Modal Immagini Ingrandite
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-integrazione-completa-loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Integrazione Completa Loading
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#posizioni-loading-integrate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Posizioni Loading Integrate:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funzionalita-image-modal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🖼️ Funzionalità Image Modal:
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🖼️ Funzionalità Image Modal:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#trigger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trigger:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#controlli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Controlli:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#animazioni" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Animazioni:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#struttura-tecnica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔧 Struttura Tecnica:
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Struttura Tecnica:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#css-classes-principali" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CSS Classes Principali:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funzioni-javascript" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Funzioni JavaScript:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#risultati-ux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✨ Risultati UX:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#status-finale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎉 Status Finale:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="loading-overlay-e-image-modal-implementazione-completata">🚀 <strong>LOADING OVERLAY E IMAGE MODAL - IMPLEMENTAZIONE COMPLETATA</strong></h1>
+<h2 id="funzionalita-implementate">✅ <strong>Funzionalità Implementate:</strong></h2>
+<h3 id="1-loading-overlay-globale"><strong>1. Loading Overlay Globale</strong></h3>
+<ul>
+<li><strong>🎨 CSS Avanzato</strong>: Overlay con blur backdrop, spinner animato, e contenuto elegante</li>
+<li><strong>⚡ Funzioni Core</strong>: <code>showLoadingOverlay()</code>, <code>updateLoadingProgress()</code>, <code>hideLoadingOverlay()</code></li>
+<li><strong>📊 Progress Real-time</strong>: Aggiornamento dinamico dei messaggi di stato</li>
+</ul>
+<h3 id="2-modal-immagini-ingrandite"><strong>2. Modal Immagini Ingrandite</strong></h3>
+<ul>
+<li><strong>🔍 Click to Zoom</strong>: Click su qualsiasi immagine negli accordion per ingrandire</li>
+<li><strong>🎨 Design Elegante</strong>: Overlay scuro, animazioni zoom, bottone chiudi</li>
+<li><strong>⌨️ UX Avanzata</strong>: Chiusura con Escape, click overlay, o bottone X</li>
+</ul>
+<h3 id="3-integrazione-completa-loading"><strong>3. Integrazione Completa Loading</strong></h3>
+<ul>
+<li><strong>📦 Cache Immagini</strong>: Loading durante scaricamento iniziale con progress <code>0/23 immagini</code></li>
+<li><strong>📤 Upload</strong>: Overlay durante caricamento nuove immagini  </li>
+<li><strong>🔄 Operazioni API</strong>: Tutti i punti critici coperti</li>
+</ul>
+<hr />
+<h2 id="posizioni-loading-integrate">🎯 <strong>Posizioni Loading Integrate:</strong></h2>
+<table>
+<thead>
+<tr>
+<th><strong>Operazione</strong></th>
+<th><strong>Trigger</strong></th>
+<th><strong>Messaggio</strong></th>
+<th><strong>Progress</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>📦 <strong>Cache Iniziale</strong></td>
+<td>Startup editor</td>
+<td>"📦 Caricamento immagini..."</td>
+<td>"Scaricate X/Y immagini"</td>
+</tr>
+<tr>
+<td>📤 <strong>Upload Immagine</strong></td>
+<td>Upload file</td>
+<td>"📤 Upload immagine..."</td>
+<td>Nome file + status</td>
+</tr>
+<tr>
+<td>🔍 <strong>API Repository</strong></td>
+<td>Connessioni GitHub</td>
+<td>"Connessione al repository..."</td>
+<td>Status operazione</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="funzionalita-image-modal">🖼️ <strong>Funzionalità Image Modal:</strong></h2>
+<h3 id="trigger"><strong>Trigger:</strong></h3>
+<ul>
+<li>Click su qualsiasi immagine <code>.img-preview-large</code> negli accordion</li>
+<li>Gestione automatica di cached vs remote images</li>
+</ul>
+<h3 id="controlli"><strong>Controlli:</strong></h3>
+<ul>
+<li><strong>❌ Bottone X</strong>: Chiusura diretta</li>
+<li><strong>⌨️ Escape</strong>: Chiusura da tastiera  </li>
+<li><strong>🖱️ Click Overlay</strong>: Chiusura click esterno</li>
+</ul>
+<h3 id="animazioni"><strong>Animazioni:</strong></h3>
+<ul>
+<li><strong>Zoom In</strong>: Entrata elegante con <code>imageZoomIn</code> </li>
+<li><strong>Hover Effects</strong>: Transform scale sulle anteprime</li>
+<li><strong>Loading States</strong>: Spinner durante caricamenti</li>
+</ul>
+<hr />
+<h2 id="struttura-tecnica">🔧 <strong>Struttura Tecnica:</strong></h2>
+<h3 id="css-classes-principali"><strong>CSS Classes Principali:</strong></h3>
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">loading-overlay</span><span class="w">          </span><span class="c">/* Overlay principale con blur */</span>
+<span class="p">.</span><span class="nc">loading-content</span><span class="w">         </span><span class="c">/* Contenuto centrato loading */</span>
+<span class="p">.</span><span class="nc">loading-spinner</span><span class="w">         </span><span class="c">/* Spinner rotante animato */</span>
+<span class="p">.</span><span class="nc">image-modal-overlay</span><span class="w">     </span><span class="c">/* Modal overlay immagini */</span><span class="w">  </span>
+<span class="p">.</span><span class="nc">image-modal-content</span><span class="w">     </span><span class="c">/* Container immagine ingrandita */</span>
+</code></pre></div>
+<h3 id="funzioni-javascript"><strong>Funzioni JavaScript:</strong></h3>
+<div class="highlight"><pre><span></span><code><span class="nx">showLoadingOverlay</span><span class="p">(</span><span class="nx">message</span><span class="p">,</span><span class="w"> </span><span class="nx">progress</span><span class="p">)</span><span class="w">    </span><span class="c1">// Mostra loading</span>
+<span class="nx">updateLoadingProgress</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span><span class="w">              </span><span class="c1">// Aggiorna progress  </span>
+<span class="nx">hideLoadingOverlay</span><span class="p">()</span><span class="w">                     </span><span class="c1">// Nasconde loading</span>
+<span class="nx">showImageModal</span><span class="p">(</span><span class="nx">src</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="p">)</span><span class="w">                </span><span class="c1">// Mostra immagine grande</span>
+<span class="nx">hideImageModal</span><span class="p">()</span><span class="w">                         </span><span class="c1">// Chiude modal immagine</span>
+</code></pre></div>
+<hr />
+<h2 id="risultati-ux">✨ <strong>Risultati UX:</strong></h2>
+<table>
+<thead>
+<tr>
+<th><strong>Prima</strong></th>
+<th><strong>Dopo</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>⏳ Attese senza feedback</td>
+<td>📊 Progress in tempo reale</td>
+</tr>
+<tr>
+<td>🔇 Operazioni silenziose</td>
+<td>💬 Messaggi informativi</td>
+</tr>
+<tr>
+<td>📱 Anteprime piccole</td>
+<td>🖼️ Zoom immagini full-size</td>
+</tr>
+<tr>
+<td>❓ Stati incerti</td>
+<td>✅ Feedback chiaro e immediato</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="status-finale">🎉 <strong>Status Finale:</strong></h2>
+<ul>
+<li>✅ <strong>Loading Overlay</strong>: Funzionale e integrato  </li>
+<li>✅ <strong>Image Zoom Modal</strong>: Click per ingrandire attivo</li>
+<li>✅ <strong>Progress Tracking</strong>: Real-time su tutte le operazioni</li>
+<li>✅ <strong>UX Completa</strong>: Feedback continuo per l'utente</li>
+</ul>
+<p><strong>La sovraimpressione loading e il zoom immagini sono completamente operativi!</strong> 🚀</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Torna su
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.top", "search.highlight", "search.suggest"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copiato", "clipboard.copy": "Copia", "search.result.more.one": "1 altro in questa pagina", "search.result.more.other": "# altri in questa pagina", "search.result.none": "Nessun documento trovato", "search.result.one": "1 documento trovato", "search.result.other": "# documenti trovati", "search.result.placeholder": "Scrivi per iniziare a cercare", "search.result.term.missing": "Non presente", "select.version": "Seleziona la versione"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="../../../js/print-site.js"></script>
+      
+        <script src="../../../assets/js/toc.js"></script>
+      
+        <script src="../../../assets/js/language-switcher.js"></script>
+      
+    
+  </body>
+</html>
