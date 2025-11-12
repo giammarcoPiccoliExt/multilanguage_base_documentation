@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'FontAwesome';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/fontawesome-webfont.woff2') format('woff2'),
+       url('./fonts/fontawesome-webfont.woff') format('woff'),
+       url('./fonts/fontawesome-webfont.ttf') format('truetype');
+}
+/* Minimal icon example usage placeholder */
+.fa { display:inline-block; font:normal normal normal 14px/1 FontAwesome; }
+.fa-refresh:before { content:"\f021"; }

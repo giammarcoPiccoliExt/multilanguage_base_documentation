@@ -1,0 +1,704 @@
+
+<!doctype html>
+<html lang="it" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Editor Admin - Guida Completa - Documentazione Super Progetto</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/print-site.css">
+    
+      <link rel="stylesheet" href="../../../css/print-site-material.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/eng-standard-theme.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/fabric.min.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/toc.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/language-switcher.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#editor-admin-guida-completa" class="md-skip">
+          Vai al contenuto
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Intestazione">
+    <a href="../../.." title="Documentazione Super Progetto" class="md-header__button md-logo" aria-label="Documentazione Super Progetto" data-md-component="logo">
+      
+  <img src="../../../assets/images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Documentazione Super Progetto
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Editor Admin - Guida Completa
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Cancella" aria-label="Cancella" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inizializza la ricerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigazione" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Documentazione Super Progetto" class="md-nav__button md-logo" aria-label="Documentazione Super Progetto" data-md-component="logo">
+      
+  <img src="../../../assets/images/logo.png" alt="logo">
+
+    </a>
+    Documentazione Super Progetto
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../developers/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sviluppatori
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Amministrazione
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SCMP_SUM_it.pdf" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PDF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Indice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Indice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-come-utilizzare-leditor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Come utilizzare l'editor
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Come utilizzare l&#39;editor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-avvio-e-autenticazione" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Avvio e autenticazione
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-navigazione-dei-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Navigazione dei file
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-modifica-dei-contenuti-markdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Modifica dei contenuti Markdown
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-gestione-immagini" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 Gestione immagini
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-staging-e-commit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 Staging e commit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-versioni-e-deploy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6 Versioni e deploy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17-suggerimenti-rapidi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.7 Suggerimenti rapidi
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-architettura-del-progetto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Architettura del progetto
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-navigazione-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Navigazione file
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-sistema-immagini" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Sistema immagini
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-staging-locale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Staging locale
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-esperienza-utente-e-feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Esperienza utente e feedback
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-integrazione-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Integrazione GitHub
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-robustezza-caricamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Robustezza caricamento
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-asset-locali-richiesti" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Asset locali richiesti
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-come-e-stato-costruito-questo-documento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Come è stato costruito questo documento
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-checklist-rapida" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Checklist rapida
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="editor-admin-guida-completa">Editor Admin - Guida Completa</h1>
+<p>Questo documento riunisce in un unico riferimento pratico tutte le note tecniche e funzionali sull'editor admin. Le informazioni provengono dai file di dettaglio presenti nella cartella <code>internalDocInfo</code> e sono state armonizzate per facilitare l'onboarding e l'utilizzo quotidiano.</p>
+<h2 id="1-come-utilizzare-leditor">1. Come utilizzare l'editor</h2>
+<h3 id="11-avvio-e-autenticazione">1.1 Avvio e autenticazione</h3>
+<ul>
+<li>Compila i campi utente, repository e token quindi premi "Start".</li>
+<li>L'app inizializza l'editor Markdown, carica la struttura dei file, preleva lo stato del repository e avvia il caching delle immagini.</li>
+<li>Se una dipendenza non è pronta (es. jQuery) l'inizializzazione attende automaticamente finché tutto è disponibile.</li>
+</ul>
+<h3 id="12-navigazione-dei-file">1.2 Navigazione dei file</h3>
+<ul>
+<li>Il pannello laterale mostra la gerarchia dei file in formato ad albero.</li>
+<li>Le cartelle possono essere aperte o chiuse con un click; <code>preConfiguration</code> appare sotto <code>docs</code> ed è chiusa di default.</li>
+<li>Seleziona un file per caricarlo nell'editor; il file attivo viene evidenziato.</li>
+</ul>
+<h3 id="13-modifica-dei-contenuti-markdown">1.3 Modifica dei contenuti Markdown</h3>
+<ul>
+<li>Lavora direttamente nell'editor; le immagini vengono aggiornate in anteprima con percorsi corretti (cache o URL GitHub).</li>
+<li>Le scorciatoie standard (es. Ctrl+S) salvano il contenuto nel sistema di staging locale senza inviare nulla a GitHub.</li>
+</ul>
+<h3 id="14-gestione-immagini">1.4 Gestione immagini</h3>
+<ul>
+<li>Usa "Carica immagine" per aggiungere un file: l'immagine entra nello staging locale con preview e metadati.</li>
+<li>La cache scarica tutte le immagini all'avvio (parallelamente) e le converte in data URL per renderle istantanee.</li>
+<li>Il pulsante "Vedi immagini" mostra una galleria con indicatori di caricamento coerenti.</li>
+</ul>
+<h3 id="15-staging-e-commit">1.5 Staging e commit</h3>
+<ul>
+<li>Ogni modifica (file o immagine) compare nel pannello di staging con contatori e azioni di rimozione.</li>
+<li>Premi "Commit All" per inviare tutto in batch: il sistema risolve gli SHA, mostra l'avanzamento e ripete automaticamente gli upload se necessario.</li>
+<li>Puoi svuotare lo staging o rimuovere elementi singoli prima del commit.</li>
+</ul>
+<h3 id="16-versioni-e-deploy">1.6 Versioni e deploy</h3>
+<ul>
+<li>Il modal "Gestisci versioni" opera sul branch <code>gh-pages</code>: elenco, selezione multipla ed eliminazione.</li>
+<li>Il pulsante "Deploy" modifica il workflow <code>Automation.yml</code> impostando il flag di esecuzione.</li>
+</ul>
+<h3 id="17-suggerimenti-rapidi">1.7 Suggerimenti rapidi</h3>
+<ul>
+<li>Controlla il box di stato del repository per conoscere l'ultimo commit e i pending changes.</li>
+<li>Gli overlay di caricamento forniscono feedback chiaro durante operazioni lunghe.</li>
+<li>La modal immagini supporta zoom e chiusura con overlay, pulsante o tasto Escape.</li>
+</ul>
+<h2 id="2-architettura-del-progetto">2. Architettura del progetto</h2>
+<ul>
+<li>Il codice è suddiviso in moduli specializzati (<code>core</code>, <code>images</code>, <code>repository</code>, <code>files</code>, <code>versions</code>, <code>deploy</code>, <code>events</code>) importati in <code>index.html</code> e coordinati da <code>app.js</code>.</li>
+<li>Ogni modulo espone funzioni dedicate: gestione inizializzazione, cache immagini, stato repo, albero file, versioni e deploy.</li>
+<li><code>app.js</code> verifica il caricamento dei moduli e scrive messaggi diagnostici in console.</li>
+</ul>
+<h2 id="3-navigazione-file">3. Navigazione file</h2>
+<ul>
+<li><code>addFileToTree</code> e <code>buildFileTree</code> costruiscono la struttura annidata, mentre <code>setupFolderToggle</code> gestisce l'apertura delle cartelle.</li>
+<li>La UI applica icone, gradienti, hover e animazioni per una navigazione simile a quella di un IDE.</li>
+<li>I file nuovi vengono aggiunti al tree senza bisogno di ricaricare l'intero repository.</li>
+</ul>
+<h2 id="4-sistema-immagini">4. Sistema immagini</h2>
+<ul>
+<li><code>loadImagesList</code> scarica l'elenco delle immagini dal repository GitHub e memorizza i contenuti in <code>window.cachedImages</code>.</li>
+<li><code>updatePreviewImages</code> intercetta i percorsi relativi (images/, admin/images/, ecc.) e li sostituisce con data URL o con l'URL raw su GitHub, evitando chiamate verso localhost.</li>
+<li>L'upload avviene con chiamate <code>PUT</code> su GitHub e termina con un refresh della cache.</li>
+<li>La logica di blocco dei pattern previene richieste errate e garantisce fallback sicuri.</li>
+</ul>
+<h2 id="5-staging-locale">5. Staging locale</h2>
+<ul>
+<li><code>stageFileLocally</code> e <code>stageImageLocally</code> aggiungono elementi alle mappe di staging, mantenendo contenuto, SHA originale, metadati e timestamp.</li>
+<li>Il pannello di staging appare automaticamente al primo elemento e mostra stato "nuovo" o "modificato".</li>
+<li><code>commitAllStaging</code> esegue il batch upload: recupera gli SHA correnti, effettua i <code>PUT</code>, traccia progressi e esiti, e aggiorna la cache locale.</li>
+</ul>
+<h2 id="6-esperienza-utente-e-feedback">6. Esperienza utente e feedback</h2>
+<ul>
+<li>Le funzioni <code>showLoadingOverlay</code>, <code>updateLoadingProgress</code> e <code>hideLoadingOverlay</code> offrono un overlay con spinner, messaggi e progress live.</li>
+<li>Le immagini possono essere ingrandite in una modal dedicata con animazioni di apertura e chiusura.</li>
+<li>Tutte le operazioni critiche (cache, upload, API) mostrano feedback coerente per evitare tempi morti non spiegati.</li>
+</ul>
+<h2 id="7-integrazione-github">7. Integrazione GitHub</h2>
+<ul>
+<li>Operazioni critiche: download albero (<code>GET /contents</code>), lettura file (<code>GET /contents/{path}</code>), salvataggio (<code>PUT /contents/{path}</code>), gestione immagini (GET/PUT) e check stato repository (<code>GET /commits</code>).</li>
+<li>Funzioni opzionali: gestione versioni su <code>gh-pages</code> e toggling del workflow di deploy.</li>
+<li>Il sistema gestisce automaticamente gli SHA, i retry su conflitto e l'avanzamento delle operazioni.</li>
+</ul>
+<h2 id="8-robustezza-caricamento">8. Robustezza caricamento</h2>
+<ul>
+<li><code>initializeApp</code> effettua polling finché <code>$</code> non è disponibile, quindi registra l'handler <code>$(document).ready</code> e verifica che tutti i moduli siano caricati.</li>
+<li>Il logging in console facilita il debug di moduli mancanti o dipendenze non ancora pronte.</li>
+</ul>
+<h2 id="9-asset-locali-richiesti">9. Asset locali richiesti</h2>
+<ul>
+<li><code>favicon.png</code> (32x32 o 48x48) in <code>docs/it/admin/</code>.</li>
+<li><code>images/loading.gif</code> (16-32 px) in <code>docs/it/admin/images/</code>.</li>
+<li>Font Awesome 4.7 (<code>woff2</code>, <code>woff</code>, <code>ttf</code>) in <code>docs/it/admin/fonts/</code> scaricabili da CDN.</li>
+<li>Dopo aver copiato i file verifica che non appaiano più richieste 404 nel browser.</li>
+</ul>
+<h2 id="10-come-e-stato-costruito-questo-documento">10. Come è stato costruito questo documento</h2>
+<ul>
+<li>Le sezioni derivano dai file: <code>ALBERATURA_FILE_COMPLETATA.md</code>, <code>CACHE_IMMAGINI_COMPLETATA.md</code>, <code>FIX_CHIAMATE_LOCALHOST_COMPLETATO.md</code>, <code>FIX_JQUERY_UNDEFINED.md</code>, <code>LOADING_E_ZOOM_COMPLETATI.md</code>, <code>MAPPATURA_GITHUB_API.md</code>, <code>MODULARIZZAZIONE_COMPLETATA.md</code>, <code>README-local-assets.md</code>, <code>STAGING_LOCALE_COMPLETATO.md</code>, <code>TEST_PATTERN_BLOCKING.md</code>.</li>
+<li>Ogni tema è stato sintetizzato, deduplicando ripetizioni e aggregando i punti comuni in capitoli verticali.</li>
+<li>Le istruzioni d'uso (sezione 1) combinano i flussi descritti nei documenti originali in un percorso operativo coerente.</li>
+</ul>
+<h2 id="11-checklist-rapida">11. Checklist rapida</h2>
+<ul>
+<li>Autenticazione completata e repo connesso.</li>
+<li>Albero dei file visibile e <code>preConfiguration</code> sotto <code>docs</code>.</li>
+<li>Cache immagini caricata (nessuna chiamata localhost).</li>
+<li>Staging locale popolato dopo modifiche.</li>
+<li>Overlay di caricamento visibili durante le operazioni lunghe.</li>
+<li>Asset locali presenti per evitare 404.</li>
+</ul>
+<p>Questa guida fornisce una vista completa sia sull'uso quotidiano dell'editor sia sulla sua architettura tecnica, facilitando manutenzione, debug e formazione di nuovi collaboratori.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Torna su
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.top", "search.highlight", "search.suggest"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copiato", "clipboard.copy": "Copia", "search.result.more.one": "1 altro in questa pagina", "search.result.more.other": "# altri in questa pagina", "search.result.none": "Nessun documento trovato", "search.result.one": "1 documento trovato", "search.result.other": "# documenti trovati", "search.result.placeholder": "Scrivi per iniziare a cercare", "search.result.term.missing": "Non presente", "select.version": "Seleziona la versione"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="../../../js/print-site.js"></script>
+      
+        <script src="../../../assets/js/toc.js"></script>
+      
+        <script src="../../../assets/js/language-switcher.js"></script>
+      
+    
+  </body>
+</html>
