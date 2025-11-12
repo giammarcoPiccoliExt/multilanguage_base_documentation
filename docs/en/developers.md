@@ -1,7 +1,7 @@
 # Developer Documentation
 
 This section contains technical documentation for developers.
-
+vdvddvdv  
 ## API Documentation
 
 --8<-- includes/developers/api.md
