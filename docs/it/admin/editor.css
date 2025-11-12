@@ -1,3 +1,125 @@
+/* =================== LOADING OVERLAY =================== */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    backdrop-filter: blur(3px);
+}
+
+.loading-content {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    animation: loadingPulse 2s infinite;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #007acc;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+.loading-text {
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.loading-progress {
+    font-size: 14px;
+    color: #666;
+    font-family: 'Courier New', monospace;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes loadingPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+/* =================== IMAGE MODAL OVERLAY =================== */
+.image-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    cursor: pointer;
+}
+
+.image-modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    position: relative;
+    animation: imageZoomIn 0.3s ease-out;
+}
+
+.image-modal-content img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.image-modal-close {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    background: white;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-modal-close:hover {
+    background: #f0f0f0;
+    transform: scale(1.1);
+}
+
+@keyframes imageZoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
 .img-preview-large {
     max-width: 320px;
     max-height: 240px;
@@ -6,6 +128,127 @@
     box-shadow: 0 2px 12px #bbb;
     background: #fff;
     display: block;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.img-preview-large:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 16px #999;
+}
+
+/* =================== STAGING PANEL STYLES =================== */
+.staging-panel {
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    margin: 15px 0;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.staging-panel h4 {
+    margin: 0 0 10px 0;
+    color: #495057;
+    font-size: 16px;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 8px;
+}
+
+.staging-count {
+    background: #007acc;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.staging-list {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+
+.staging-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    background: white;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    font-size: 12px;
+}
+
+.staging-item-icon {
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+.staging-item-path {
+    flex-grow: 1;
+    color: #495057;
+    font-family: 'Courier New', monospace;
+}
+
+.staging-item-type {
+    background: #28a745;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 10px;
+    margin-right: 8px;
+}
+
+.staging-item-type.modified {
+    background: #ffc107;
+    color: #000;
+}
+
+.staging-item-remove {
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.staging-item-remove:hover {
+    background: #c82333;
+    transform: scale(1.1);
+}
+
+.staging-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.commit-btn {
+    background: #28a745 !important;
+    color: white !important;
+    font-weight: bold;
+}
+
+.commit-btn:hover {
+    background: #218838 !important;
+}
+
+.clear-btn {
+    background: #6c757d !important;
+    color: white !important;
+}
+
+.clear-btn:hover {
+    background: #5a6268 !important;
 }
 /* Accordion immagini modale */
 #images-accordion {
@@ -184,13 +427,214 @@ body { font-family: sans-serif; margin: 20px; }
     top: 0;
     width: 280px;
     height: 100vh;
-    background: #616161;
+    background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
     color: #fff;
-    border-right: 1px solid #444;
+    border-right: 2px solid #5a67d8;
     padding: 20px 10px 10px 10px;
     transition: left 0.3s;
     z-index: 100;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
 }
+
+/* Contenitori scrollabili nel sidebar */
+#sidebar h3 {
+    margin: 15px 0 10px 0;
+    flex-shrink: 0;
+}
+
+#file-list-container {
+    flex: 1;
+    min-height: 200px;
+    max-height: 250px;
+}
+
+#image-list-container {
+    flex: 1;
+    min-height: 150px;
+    max-height: 200px;
+    margin-bottom: 10px;
+}
+
+.upload-box {
+    flex-shrink: 0;
+    margin-top: auto;
+}
+
+/* === GRIGLIA PULSANTI === */
+.buttons-section {
+    flex-shrink: 0;
+    margin: 10px 0;
+}
+
+.buttons-section h3 {
+    margin: 10px 0 8px 0 !important;
+    color: #ffab66;
+}
+
+.buttons-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-bottom: 15px;
+}
+
+.buttons-grid .sidebar-btn {
+    padding: 8px 6px;
+    font-size: 11px;
+    margin: 0;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Pulsanti che occupano 2 colonne */
+.buttons-grid .sidebar-btn.full-width {
+    grid-column: 1 / -1;
+}
+
+/* ================== TOP MENU ================== */
+#top-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-bottom: 2px solid #5a67d8;
+    z-index: 200;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.top-menu-content {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 30px;
+    padding: 0 20px;
+    height: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    overflow-x: auto;
+    flex-wrap: wrap;
+}
+
+.menu-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: fit-content;
+    flex-wrap: nowrap;
+}
+
+.menu-group-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    white-space: nowrap;
+    margin-right: 6px;
+}
+
+.top-btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(10px);
+}
+
+.top-btn:hover {
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Pulsanti di creazione */
+.top-btn.create-btn {
+    background: rgba(40, 167, 69, 0.8);
+    border: 1px solid rgba(40, 167, 69, 0.5);
+}
+
+.top-btn.create-btn:hover {
+    background: rgba(40, 167, 69, 1);
+    border-color: rgba(40, 167, 69, 1);
+}
+
+/* Pulsanti repository */
+.top-btn.repo-btn {
+    background: rgba(0, 123, 255, 0.8);
+    border: 1px solid rgba(0, 123, 255, 0.5);
+}
+
+.top-btn.repo-btn:hover {
+    background: rgba(0, 123, 255, 1);
+    border-color: rgba(0, 123, 255, 1);
+}
+
+/* Pulsanti eliminazione */
+.top-btn.delete-btn {
+    background: rgba(220, 53, 69, 0.8);
+    border: 1px solid rgba(220, 53, 69, 0.5);
+}
+
+.top-btn.delete-btn:hover {
+    background: rgba(220, 53, 69, 1);
+    border-color: rgba(220, 53, 69, 1);
+}
+
+/* Pulsanti commit */
+.top-btn.commit-btn {
+    background: rgba(255, 193, 7, 0.8);
+    border: 1px solid rgba(255, 193, 7, 0.5);
+    color: #212529 !important;
+}
+
+.top-btn.commit-btn:hover {
+    background: rgba(255, 193, 7, 1);
+    border-color: rgba(255, 193, 7, 1);
+    color: #212529 !important;
+}
+
+/* Pulsanti clear */
+.top-btn.clear-btn {
+    background: rgba(108, 117, 125, 0.8);
+    border: 1px solid rgba(108, 117, 125, 0.5);
+}
+
+.top-btn.clear-btn:hover {
+    background: rgba(108, 117, 125, 1);
+    border-color: rgba(108, 117, 125, 1);
+}
+
+/* Adatta layout quando il menu è visibile */
+body.editor-active {
+    padding-top: 70px;
+}
+
+body.editor-active #sidebar {
+    top: 70px;
+    height: calc(100vh - 70px);
+}
+
+body.editor-active #editor {
+    margin-top: 0;
+}
+
+body.editor-active #sidebar-toggle {
+    top: 80px;
+}
+
+
 #sidebar.collapsed {
     left: -250px;
 }
@@ -210,11 +654,36 @@ a {
     cursor: pointer;
     z-index: 101;
 }
-#sidebar h3 { color: #ffab66; }
+#sidebar h3 { 
+    color: rgba(255,255,255,0.9); 
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    font-weight: 600;
+}
 #sidebar button { width: 100%; margin-bottom: 10px; }
 #sidebar input[type="file"] { margin-bottom: 10px; }
 #editor { margin-left: 280px; }
 #sidebar.collapsed ~ #editor { margin-left: 0; }
+
+/* Fix dimensioni editor per occupare tutta la pagina */
+#editor {
+  height: calc(100vh - 40px);
+  min-height: 600px;
+}
+
+.wising-section {
+  height: 100%;
+  width: 100%;
+}
+
+/* Assicura che l'editor markdown occupi tutto lo spazio */
+.editormd {
+  height: 100% !important;
+  min-height: 600px !important;
+}
+
+.editormd-preview {
+  height: 100% !important;
+}
 .sidebar-btn {
     margin-top: 10px;
     width: 100%;
@@ -693,3 +1162,313 @@ figcaption::before {
   .no-print {
     display: none !important;
   }
+
+/* ================== FILE TREE STYLES ================== */
+
+/* Container con scroll per la lista file */
+#file-list-container {
+  max-height: 400px;
+  overflow-y: auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  background: #fafafa;
+  margin: 8px 0;
+  padding: 4px;
+}
+
+/* ================== IMAGE LIST STYLES ================== */
+
+/* Container per la lista immagini - simile ai file */
+#image-list-container {
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  background: #fafafa;
+  margin: 8px 0;
+  padding: 4px;
+}
+
+#image-list-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+#image-list-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+#image-list-container::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+#image-list-container::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Lista immagini */
+#image-list-ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Stili per ogni immagine */
+.image-item {
+  list-style: none;
+  margin: 1px 0;
+  padding: 0;
+}
+
+.image-item-content {
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  background: #ffffff;
+  border: 1px solid #ecf0f1;
+  border-radius: 3px;
+  margin: 1px 0;
+  transition: all 0.2s ease;
+  font-size: 12px;
+}
+
+
+
+.image-item-content:hover {
+  background: linear-gradient(135deg, #ff9ff3 0%, #f368e0 100%);
+  color: white;
+  border-color: #f368e0;
+  box-shadow: 0 2px 6px rgba(243, 104, 224, 0.3);
+}
+
+.image-icon {
+  margin-right: 8px;
+  font-size: 14px;
+  flex-shrink: 0;
+  min-width: 16px;
+  text-align: center;
+}
+
+.image-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  color: #2c3e50 !important;
+}
+
+.image-actions {
+  display: flex;
+  gap: 4px;
+  margin-left: 8px;
+}
+
+.image-btn {
+  background: none;
+  border: none;
+  padding: 2px 6px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s ease;
+  color: #666;
+}
+
+.image-btn:hover {
+  background: rgba(255,255,255,0.2);
+  color: white;
+}
+
+.image-btn.zoom {
+  color: #007acc;
+}
+
+.image-btn.copy {
+  color: #28a745;
+}
+
+.image-btn:hover.zoom {
+  background: #007acc;
+  color: white;
+}
+
+.image-btn:hover.copy {
+  background: #28a745;
+  color: white;
+}
+
+#file-list-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+#file-list-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+#file-list-container::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+#file-list-container::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Rimuovi stili di lista predefiniti per l'albero file */
+#file-list-ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Stili per le cartelle */
+.folder-item {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.folder-header {
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin: 1px 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 13px;
+}
+
+.folder-header:hover {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transform: translateY(-1px);
+}
+
+.folder-icon {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+.folder-name {
+  flex: 1;
+  font-size: 14px;
+}
+
+.folder-toggle {
+  margin-left: auto;
+  font-size: 12px;
+  transition: transform 0.2s ease;
+}
+
+/* Contenuto delle cartelle */
+.folder-content {
+  list-style: none;
+  padding-left: 15px;
+  margin: 0;
+  border-left: 2px solid #e0e0e0;
+  margin-left: 8px;
+}
+
+/* Stili per i file */
+.file-item {
+  list-style: none;
+  margin: 1px 0;
+  padding: 0;
+}
+
+.file-item a {
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  text-decoration: none;
+  color: #2c3e50 !important;
+  background: #ffffff;
+  border: 1px solid #ecf0f1;
+  border-radius: 3px;
+  margin: 1px 0;
+  transition: all 0.2s ease;
+  font-size: 12px;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.file-name {
+  color: #2c3e50 !important;
+}
+
+.file-item a:hover {
+  background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+  color: white;
+  border-color: #0984e3;
+  box-shadow: 0 2px 6px rgba(116, 185, 255, 0.3);
+  transform: translateX(3px);
+}
+
+.file-icon {
+  margin-right: 8px;
+  font-size: 14px;
+  flex-shrink: 0;
+  min-width: 16px;
+  text-align: center;
+}
+
+.file-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Animazioni per l'espansione delle cartelle */
+.folder-content {
+  overflow: hidden;
+}
+
+/* Evidenziazione file attivo */
+.file-item a.active {
+  background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+  color: white;
+  border-color: #00a085;
+  font-weight: 600;
+}
+
+.file-item a.active .file-icon {
+  color: white;
+}
+
+.file-item a.active .file-name {
+  color: white;
+  font-weight: 600;
+}
+
+/* Responsive per schermi piccoli */
+@media (max-width: 768px) {
+  .folder-header {
+    padding: 6px 8px;
+    font-size: 13px;
+  }
+  
+  .file-item a {
+    padding: 5px 8px;
+    font-size: 12px;
+  }
+  
+  .file-icon {
+    margin-right: 6px;
+    font-size: 13px;
+  }
+  
+  .folder-content {
+    padding-left: 15px;
+  }
+}

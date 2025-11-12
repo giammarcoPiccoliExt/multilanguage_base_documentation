@@ -25,4 +25,44 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
     });
+
+    // Funzione per trasformare i link del menu laterale da index/index.html a solo index
+    function fixSidebarIndexLinks() {
+        // Seleziona il menu laterale principale (sidebar primario)
+        let primarySidebar = document.querySelector('.md-sidebar--primary');
+        if (!primarySidebar) return;
+
+        // Trova tutti i link nel menu laterale
+        let sidebarLinks = primarySidebar.querySelectorAll('a[href*="index/index.html"]');
+        
+        sidebarLinks.forEach(link => {
+            let href = link.getAttribute('href');
+            if (href && href.includes('index/index.html')) {
+                // Trasforma index/index.html in solo index
+                let newHref = href.replace('index/index.html', 'index.html');
+                link.setAttribute('href', newHref);
+                console.log('Fixed sidebar link:', href, '->', newHref);
+            }
+        });
+    }
+
+    // Funzione per sostituire il "." del logo con index.html
+    function fixLogoLink() {
+        // Cerca il logo con href="."
+        let logoLinks = document.querySelectorAll('a.md-nav__button');
+        
+        logoLinks.forEach(logo => {
+            let href = logo.getAttribute('href');
+            if (href === '.' || href === '..') {
+                // Sostituisce "." con "index.html"
+                logo.setAttribute('href', 'index.html');
+                console.log('Fixed logo link from "." to "index.html"');
+            }
+        });
+    }
+
+
+    // Esegui le funzioni
+    fixSidebarIndexLinks();
+    fixLogoLink();
 });

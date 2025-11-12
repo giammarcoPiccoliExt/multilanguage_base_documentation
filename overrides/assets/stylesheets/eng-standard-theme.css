@@ -107,6 +107,21 @@
     table {
         width: 100% !important;
         border-collapse: collapse !important;
+        margin: 20px auto !important; /* Centra la tabella orizzontalmente */
+    }
+    
+    /* Contenitore delle tabelle per centramento */
+    .md-typeset table,
+    .md-typeset__table {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    
+    /* Wrapper della tabella per gestire overflow e centratura */
+    .md-typeset__scrollwrap {
+        display: flex !important;
+        justify-content: center !important;
+        width: 100% !important;
     }
     
     th, td {

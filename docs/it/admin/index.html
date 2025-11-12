@@ -28,6 +28,33 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/editor.md@1.5.0/editormd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/editor.md@1.5.0/languages/en.js"></script>
+  
+  <!-- Moduli in ordine di dipendenza -->
+  <script src="./modules/core.js"></script>
+  <script src="./modules/images.js"></script>
+  <script src="./modules/repository.js"></script>
+  <script src="./modules/files.js"></script>
+  <script src="./modules/versions.js"></script>
+  <script src="./modules/deploy.js"></script>
+  <script src="./modules/events.js"></script>
+  
+  <!-- Entry point finale -->
+  <script src="./app.js"></script>
+  <script>
+    // Alias per accesso diretto alle variabili globali nell'HTML
+    let currentUsername, currentRepo, currentToken, ghPagesVersions;
+
+    // Funzione per sincronizzare le variabili  
+    function syncVars() {
+      currentUsername = window.currentUsername;
+      currentRepo = window.currentRepo;
+      currentToken = window.currentToken;
+      ghPagesVersions = window.ghPagesVersions;
+    }
+
+    // Sincronizza le variabili ogni volta che app.js le aggiorna
+    setInterval(syncVars, 50);
+  </script>
 </head>
 <body>
 
@@ -38,23 +65,49 @@
   <input type="password" id="token" placeholder="Personal Access Token" />
   <button id="startBtn" class="action-btn">Avvia Editor</button>
 </div>
+
+<!-- Indicatore di caricamento immagini -->
+<div id="images-loading-indicator" style="display: none; position: fixed; top: 10px; right: 10px; background: #007acc; color: white; padding: 8px 15px; border-radius: 20px; z-index: 1000; font-size: 12px;">
+  🖼️ Caricamento immagini: <span id="images-progress">0/0</span>
+</div>
+
+<!-- Menu superiore - visibile solo quando editor è attivo -->
+<div id="top-menu" style="display: none;">
+  <div class="top-menu-content">
+    <div class="menu-group">
+      <button id="newFileBtn" class="top-btn create-btn">📝 Nuovo File</button>
+      <button id="uploadImageBtn" class="top-btn create-btn">📤 Nuova Immagine</button>
+    </div>
+    <div class="menu-group">
+      <button id="deleteFileBtn" class="top-btn delete-btn">�️ Elimina File</button>
+      <button id="deleteImageBtn" class="top-btn delete-btn">�️ Elimina Img</button>
+      <button id="versionEditorBtn" class="top-btn delete-btn">�️ Elimina Versioni</button>
+    </div>
+    <div class="menu-group">
+      <button id="commitAllBtn" class="top-btn commit-btn">💾 Commit All</button>
+      <button id="clearStagingBtn" class="top-btn clear-btn">🧹 Clear</button>
+    </div>
+  </div>
+</div>
+
 <button id="sidebar-toggle">☰</button>
 <div id="sidebar">
   <h3>File disponibili:</h3>
+  <div id="file-list-container">
+    <ul id="file-list-ul"></ul>
+  </div>
+  
+  <h3>Immagini disponibili:</h3>
+  <div id="image-list-container">
+    <ul id="image-list-ul"></ul>
+  </div>
 
-    <button id="refreshRepoBtn" class="sidebar-btn">Aggiorna repo</button>
-  <ul id="file-list-ul"></ul>
-    <button id="newFileBtn" class="sidebar-btn">Nuovo file Markdown</button>
-      <button id="pushAllBtn" class="sidebar-btn">Push All Changes</button>
-    <button id="deployBtn" class="sidebar-btn">Esegui Deploy Docs</button>
-    <button id="versionEditorBtn" class="sidebar-btn">Version Editor</button>
-    <button id="deleteFileBtn" class="sidebar-btn delete-btn">Elimina file</button>
-  <div id="uploadBox" class="upload-box">
-    <label class="upload-label">Carica Immagine:</label><br>
-    <input type="file" id="uploadImage" accept="image/*" class="upload-input" />
-    <button id="uploadBtn" class="sidebar-btn">Carica Immagine</button>
-    <button id="showImagesBtn" class="sidebar-btn">Vedi Immagini</button>
-    <button id="deleteImageBtn" class="sidebar-btn delete-btn">Elimina immagine</button>
+  <!-- Pannello Staging Locale -->
+  <div id="stagingPanel" class="staging-panel" style="display: none;">
+    <h4>📦 Modifiche in Staging</h4>
+    <div id="stagingCount" class="staging-count">0 elementi</div>
+    <div id="stagingList" class="staging-list"></div>
+  </div>
 <!-- Modale elimina immagine -->
 <div id="deleteImageModal" class="modal-bg">
     <div class="modal-box delete-modal">
@@ -66,6 +119,34 @@
 </div>
   </div>
 </div>
+<!-- Modale Carica Immagine -->
+<div id="uploadImageModal" class="modal-bg">
+  <div class="modal-box">
+    <button id="closeUploadImageModal" class="modal-close">&times;</button>
+    <h3>📤 Carica Nuova Immagine</h3>
+    
+    <div style="margin-bottom: 15px;">
+      <label style="display: block; margin-bottom: 10px; font-weight: bold;">Seleziona immagine:</label>
+      <input type="file" id="imageFileInput" accept="image/*" 
+             style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+    </div>
+    
+    <div id="imagePreviewContainer" style="display: none; margin-bottom: 15px; text-align: center;">
+      <img id="imagePreview" style="max-width: 100%; max-height: 200px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" />
+      <div id="imageInfo" style="font-size: 12px; color: #666; margin-top: 8px;"></div>
+    </div>
+    
+    <div style="display: flex; gap: 10px;">
+      <button id="confirmUploadImageBtn" class="modal-btn" style="background: #28a745; color: white;" disabled>
+        📤 Carica in Staging
+      </button>
+      <button id="cancelUploadImageBtn" class="modal-btn" style="background: #6c757d; color: white;">
+        ❌ Annulla
+      </button>
+    </div>
+  </div>
+</div>
+
 <!-- Modale elimina file -->
 <div id="deleteFileModal" class="modal-bg">
   <div class="modal-box delete-modal">
@@ -73,6 +154,36 @@
     <h3>Elimina file Markdown</h3>
     <div id="deleteFileList" class="modal-list"></div>
     <button id="confirmDeleteFileBtn" class="modal-btn delete-btn">Conferma eliminazione</button>
+  </div>
+</div>
+
+<!-- Modale Nuovo File -->
+<div id="newFileModal" class="modal-bg">
+  <div class="modal-box">
+    <button id="closeNewFileModal" class="modal-close">&times;</button>
+    <h3>📝 Crea Nuovo File Markdown</h3>
+    
+    <div style="margin-bottom: 15px;">
+      <label style="display: block; margin-bottom: 5px; font-weight: bold;">Nome File:</label>
+      <input type="text" id="newFileName" placeholder="es. nuovo-documento.md" 
+             style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+    </div>
+    
+    <div style="margin-bottom: 20px;">
+      <label style="display: block; margin-bottom: 10px; font-weight: bold;">📁 Seleziona Directory:</label>
+      <div id="pathOptions" style="max-height: 200px; overflow-y: auto; border: 1px solid #eee; padding: 10px; border-radius: 4px;">
+        <!-- Opzioni path caricate dinamicamente -->
+      </div>
+    </div>
+    
+    <div style="margin-bottom: 15px;">
+      <label style="display: block; margin-bottom: 5px; font-weight: bold;">Path Completo:</label>
+      <input type="text" id="fullFilePath" readonly 
+             style="width: 100%; padding: 8px; background: #f5f5f5; border: 1px solid #ccc; border-radius: 4px;" 
+             placeholder="Seleziona directory e inserisci nome file..." />
+    </div>
+    
+    <button id="confirmCreateFileBtn" class="modal-btn">📝 Crea File</button>
   </div>
 </div>
 
@@ -107,13 +218,7 @@
   </div>
 </div>
 
-<div id="imagesModal" class="modal-bg">
-  <div class="modal-box images-modal">
-    <button id="closeImagesModal" class="modal-close">&times;</button>
-    <h3>Immagini disponibili</h3>
-    <div id="imagesList"></div>
-  </div>
-</div>
+
 
 <div id="editor" class="wising-section">
   <textarea style="display:none;"># Benvenuto nel tuo editor Markdown</textarea>
@@ -123,789 +228,31 @@
 
 <script>
 /* ================== VARIABILI GLOBALI ================== */
-let editor, currentFileContent = null;
-let currentFilePath = null, currentSha = null;
-let currentUsername = null, currentRepo = null, currentToken = null;
-let branch = "main";
-let cachedImages = [], lastLoadedFiles = [];
-let selectedFileToDelete = null, selectedImageToDelete = null;
-let pendingChanges = [];
+// Moved to app.js
 
 /* ================== FUNZIONI UTILI ================== */
-function decodeBase64Utf8(base64Str) {
-  const binary = atob(base64Str.replace(/\s/g, ""));
-  return new TextDecoder("utf-8").decode(Uint8Array.from(binary, c => c.charCodeAt(0)));
-}
-function encodeUtf8Base64(str) {
-  return btoa(unescape(encodeURIComponent(str)));
-}
+// Moved to app.js
 
 /* ================== EDITOR ================== */
-function initEditor() {
-  editor = editormd("editor", {
-    width: "100%",
-    height: 640,
-    path: "https://cdn.jsdelivr.net/npm/editor.md@1.5.0/lib/",
-    toolbar: true,
-    imageUpload: false,
-    htmlDecode: true,
-    setMarkdown: "# Benvenuto nel tuo editor Markdown",
-    onload: updatePreviewImages,
-    onchange: updatePreviewImages
-  });
-}
-function updatePreviewImages() {
-  setTimeout(() => {
-    $(".editormd-preview-container img").each(function() {
-      const src = $(this).attr("src");
-      const found = cachedImages.find(img => src === img.local || src.endsWith("/" + img.name));
-      if (found?.dataUrl) $(this).attr("src", found.dataUrl);
-    });
-  }, 300);
-}
+// Moved to app.js
 
 /* ================== GESTIONE FILE ================== */
-let allFilesCache = {}; // Cache per tutti i file scaricati
-
-function loadFiles(username, repo, token) {
-  $("#file-list-ul").empty();
-  lastLoadedFiles = [];
-  allFilesCache = {}; // Reset cache
-
-  function fetchFolder(path = "") {
-    $.ajax({
-      url: `https://api.github.com/repos/${username}/${repo}/contents/${path}`,
-      headers: { Authorization: `token ${token}` },
-      success: files => {
-        files.forEach(file => {
-          if (file.type === "dir" && (file.path === "documentation" || file.path.startsWith("documentation/"))) {
-            fetchFolder(file.path);
-          } else if (file.type === "file" && file.name.endsWith(".md") && !file.path.startsWith("documentation/site/")) {
-            if (path.startsWith("documentation")) {
-              $("#file-list-ul").append(`<li><a href="#" class="open-md-file" data-path="${file.path}">${file.path}</a></li>`);
-              lastLoadedFiles.push(file.path);
-              // Scarica subito il contenuto del file
-              downloadFileContent(file.path, username, repo, token);
-            }
-          }
-        });
-      },
-      error: err => console.error("Errore caricamento file:", err)
-    });
-  }
-  fetchFolder();
-}
-
-// Scarica il contenuto di un singolo file e lo mette in cache
-function downloadFileContent(path, username, repo, token) {
-  $.ajax({
-    url: `https://api.github.com/repos/${username}/${repo}/contents/${path}?ref=${branch}`,
-    headers: { Authorization: `token ${token}` },
-    success: file => {
-      if (file?.content) {
-        const content = decodeBase64Utf8(file.content);
-        allFilesCache[path] = { content, sha: file.sha };
-      }
-    },
-    error: err => console.error("Errore download file:", path, err)
-  });
-}
-function loadFile(path, username, repo, token) {
-  // Prima controlla se ci sono modifiche non salvate nel file corrente
-  if (currentFilePath && editor && editor.getMarkdown() !== currentFileContent) {
-    saveCurrentFileToMemory();
-  }
-
-  // Carica il file: prima da pendingChanges, poi da cache, infine da GitHub
-  const pending = pendingChanges.find(f => f.path === path);
-  if (pending) {
-    // File modificato in memoria
-    currentFileContent = pending.content;
-    editor.setMarkdown(pending.content);
-    currentFilePath = path; currentSha = pending.sha;
-    currentUsername = username; currentRepo = repo; currentToken = token;
-    console.log("Caricato da pendingChanges:", path);
-  } else if (allFilesCache[path]) {
-    // File in cache (scaricato all'inizio)
-    currentFileContent = allFilesCache[path].content;
-    editor.setMarkdown(allFilesCache[path].content);
-    currentFilePath = path; currentSha = allFilesCache[path].sha;
-    currentUsername = username; currentRepo = repo; currentToken = token;
-    console.log("Caricato da cache:", path);
-  } else {
-    // Fallback: scarica da GitHub
-    $.ajax({
-      url: `https://api.github.com/repos/${username}/${repo}/contents/${path}?ref=${branch}`,
-      headers: { Authorization: `token ${token}` },
-      success: file => {
-        if (!file?.content) return;
-        const content = decodeBase64Utf8(file.content);
-        currentFileContent = content;
-        editor.setMarkdown(content);
-        currentFilePath = path; currentSha = file.sha;
-        currentUsername = username; currentRepo = repo; currentToken = token;
-        // Salva in cache per prossimi usi
-        allFilesCache[path] = { content, sha: file.sha };
-        console.log("Caricato da GitHub:", path);
-      },
-      error: err => alert("Errore nel caricamento del file.")
-    });
-    return; // Exit early per evitare di eseguire il resto
-  }
-
-  loadImagesList(updatePreviewImages);
-  setTimeout(() => {
-    const baseUrl = `https://raw.githubusercontent.com/${username}/${repo}/${branch}/documentation/docs/`;
-    $(".editormd-preview-container img").each(function() {
-      const src = $(this).attr("src");
-      if (src?.startsWith("images/")) $(this).attr("src", baseUrl + src.replace(/^\/+/, ""));
-    });
-  }, 500);
-}
-
-// Funzione per creare nuovo file
-function createNewFile() {
-  const fileName = prompt("Nome del nuovo file (senza estensione .md):");
-  if (!fileName) return;
-  
-  const filePath = `documentation/docs/it/${fileName}.md`;
-  const defaultContent = `# ${fileName}\n\nContenuto del nuovo file...`;
-  
-  // Aggiungi alla lista file
-  $("#file-list-ul").append(`<li><a href="#" class="open-md-file" data-path="${filePath}">${filePath}</a></li>`);
-  
-  // Aggiungi a cache e pendingChanges
-  allFilesCache[filePath] = { content: defaultContent, sha: null };
-  pendingChanges.push({ path: filePath, content: defaultContent, sha: null });
-  
-  // Carica il nuovo file nell'editor
-  currentFileContent = defaultContent;
-  editor.setMarkdown(defaultContent);
-  currentFilePath = filePath;
-  currentSha = null;
-  
-  alert("Nuovo file creato! Ricordati di fare Push All per salvarlo su GitHub.");
-}
-
-// Salva il file corrente in memoria (pendingChanges + cache)
-function saveCurrentFileToMemory() {
-  if (!currentFilePath || !editor) return;
-  let content = editor.getMarkdown();
-  content = content.replace(/!\[(.*?)\]\(https:\/\/raw\.githubusercontent\.com\/[^\/]+\/[^\/]+\/[^\/]+\/documentation\/docs\/images\/([^)]+)\)/g, "![$1](images/$2)");
-  pendingChanges = pendingChanges.filter(f => f.path !== currentFilePath);
-  pendingChanges.push({ path: currentFilePath, content, sha: currentSha });
-  currentFileContent = content;
-  if (allFilesCache[currentFilePath]) {
-    allFilesCache[currentFilePath].content = content;
-  } else {
-    allFilesCache[currentFilePath] = { content, sha: currentSha };
-  }
-  console.log("[MEM] salvato:", currentFilePath);
-}
-
-function saveFile() {
-  // Only update pendingChanges - keep manual save functionality
-  saveCurrentFileToMemory();
-  alert("Modifica salvata localmente. Verrà inviata con Push All.");
-}
-
-function pushAllChanges() {
-  if (!currentUsername || !currentRepo || !currentToken) return alert("Credenziali mancanti.");
-  if (pendingChanges.length === 0) return alert("Nessuna modifica da inviare.");
-
-  alert(`Avvio push di ${pendingChanges.length} file...`);
-  let completed = 0, errors = 0;
-
-  // Helper per assicurare lo SHA (solo se file esiste già)
-  function ensureSha(change, done) {
-    if (change.sha) return done(change.sha);
-    $.ajax({
-      url: `https://api.github.com/repos/${currentUsername}/${currentRepo}/contents/${change.path}?ref=${branch}`,
-      headers: { Authorization: `token ${currentToken}` },
-      success: file => {
-        done(file.sha);
-      },
-      error: () => {
-        // Se 404, è un nuovo file: sha rimane null
-        done(null);
-      }
-    });
-  }
-
-  function pushNext(index) {
-    if (index >= pendingChanges.length) {
-      alert(`Push terminato. OK: ${completed}, Errori: ${errors}`);
-      if (errors === 0) pendingChanges = [];
-      return;
-    }
-    const change = pendingChanges[index];
-    ensureSha(change, sha => {
-      const body = {
-        message: `Update ${change.path} (batch wising)`,
-        content: encodeUtf8Base64(change.content)
-      };
-      if (sha) body.sha = sha;
-      $.ajax({
-        url: `https://api.github.com/repos/${currentUsername}/${currentRepo}/contents/${change.path}`,
-        type: "PUT",
-        headers: { Authorization: `token ${currentToken}` },
-        data: JSON.stringify(body),
-        success: res => {
-          completed++;
-          allFilesCache[change.path] = { content: change.content, sha: res.content.sha };
-          console.log(`[PUSH OK] ${change.path}`);
-          pushNext(index + 1);
-        },
-        error: (xhr) => {
-          errors++;
-          console.error(`[PUSH ERR] ${change.path} status=${xhr.status} resp=`, xhr.responseText);
-          // Retry once if conflict (409) or SHA mismatch (422)
-          if (xhr.status === 409 || xhr.status === 422) {
-            console.log(`[RETRY] ${change.path}`);
-            ensureSha(change, newSha => {
-              const retryBody = {
-                message: `Retry update ${change.path}`,
-                content: encodeUtf8Base64(change.content)
-              };
-              if (newSha) retryBody.sha = newSha;
-              $.ajax({
-                url: `https://api.github.com/repos/${currentUsername}/${currentRepo}/contents/${change.path}`,
-                type: "PUT",
-                headers: { Authorization: `token ${currentToken}` },
-                data: JSON.stringify(retryBody),
-                success: res2 => {
-                  completed++;
-                  console.log(`[RETRY OK] ${change.path}`);
-                  allFilesCache[change.path] = { content: change.content, sha: res2.content.sha };
-                  pushNext(index + 1);
-                },
-                error: (xhr2) => {
-                  errors++;
-                  console.error(`[RETRY FAIL] ${change.path} status=${xhr2.status} resp=`, xhr2.responseText);
-                  pushNext(index + 1);
-                }
-              });
-            });
-          } else {
-            pushNext(index + 1);
-          }
-        }
-      });
-    });
-  }
-
-  pushNext(0);
-}
+// File management functions moved to app.js
 
 /* ================== GESTIONE IMMAGINI ================== */
-function loadImagesList(callback) {
-  $.ajax({
-    url: `https://api.github.com/repos/${currentUsername}/${currentRepo}/contents/documentation/docs/images/media`,
-    headers: { Authorization: `token ${currentToken}` },
-    success: files => {
-      cachedImages = files.filter(f => f.type === "file").map(f => ({
-        name: f.name, local: "images/media/" + f.name, download_url: f.download_url, dataUrl: null
-      }));
-      let pending = cachedImages.length;
-      cachedImages.forEach((img, idx) => {
-        $.ajax({
-          url: img.download_url, xhrFields: { responseType: "blob" },
-          success: blob => {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-              cachedImages[idx].dataUrl = reader.result;
-              if (--pending === 0 && callback) callback(cachedImages);
-            };
-            reader.readAsDataURL(blob);
-          },
-          error: () => { if (--pending === 0 && callback) callback(cachedImages); }
-        });
-      });
-    },
-    error: () => { cachedImages = []; if (callback) callback([]); }
-  });
-}
-function uploadImage(file) {
-  const reader = new FileReader();
-  reader.onload = e => {
-    const base64 = e.target.result.split(",")[1];
-    $.ajax({
-      url: `https://api.github.com/repos/${currentUsername}/${currentRepo}/contents/documentation/docs/images/media/${file.name}`,
-      type: "PUT",
-      headers: { Authorization: `token ${currentToken}` },
-      data: JSON.stringify({ message: "Aggiunta immagine da editor web", content: base64 }),
-      success: () => alert("Immagine caricata!"),
-      error: () => alert("Errore nel caricamento immagine.")
-    });
-  };
-  reader.readAsDataURL(file);
-}
+// Image management functions moved to app.js
 
 /* ================== VERSION EDITOR ================== */
-let ghPagesVersions = [];
-
-function loadGhPagesVersions() {
-  if (!currentUsername || !currentRepo || !currentToken) {
-    return Promise.reject("Credenziali mancanti");
-  }
-
-  return new Promise((resolve, reject) => {
-    $.ajax({
-      url: `https://api.github.com/repos/${currentUsername}/${currentRepo}/contents/?ref=gh-pages`,
-      headers: { Authorization: `token ${currentToken}` },
-      success: function(contents) {
-        // Filtra solo le directory, escludendo file come .nojekyll, README.md, ecc.
-        const directories = contents.filter(item => 
-          item.type === "dir" && 
-          !item.name.startsWith('.') && 
-          item.name !== "README.md"
-        );
-        
-        ghPagesVersions = directories.map(dir => ({
-          name: dir.name,
-          path: dir.path,
-          isProtected: dir.name === "latest",
-          sha: dir.sha
-        }));
-        
-        resolve(ghPagesVersions);
-      },
-      error: function(xhr) {
-        const errorMsg = xhr.status === 404 ? 
-          "Branch gh-pages non trovato" : 
-          `Errore ${xhr.status}: ${xhr.responseJSON?.message || 'Errore sconosciuto'}`;
-        reject(errorMsg);
-      }
-    });
-  });
-}
-
-function showVersionEditor() {
-  // Mostra la modale
-  $("#versionEditorModal").css("display", "block");
-  
-  // Reset UI
-  $("#versionLoadingIndicator").show();
-  $("#versionsList").hide();
-  $("#versionsError").hide();
-  
-  // Carica le versioni
-  loadGhPagesVersions()
-    .then(versions => {
-      $("#versionLoadingIndicator").hide();
-      
-      if (versions.length === 0) {
-        $("#versionsError").html("📭 Nessuna versione trovata nel branch gh-pages").show();
-        return;
-      }
-      
-      // Genera la lista delle versioni
-      let html = "";
-      versions.forEach(version => {
-        const isProtected = version.isProtected;
-        const checkboxDisabled = isProtected ? "disabled" : "";
-        const itemClass = isProtected ? "version-item protected" : "version-item";
-        
-        html += `
-          <div class="${itemClass}">
-            <input type="checkbox" 
-                   class="version-checkbox" 
-                   value="${version.name}" 
-                   ${checkboxDisabled}
-                   data-path="${version.path}">
-            <span class="version-name">${version.name}</span>
-            ${isProtected ? '<span class="version-protected">PROTETTA</span>' : ''}
-            <span class="version-info">📁 Directory</span>
-          </div>
-        `;
-      });
-      
-      $("#versionsCheckboxList").html(html);
-      $("#versionsList").show();
-    })
-    .catch(error => {
-      $("#versionLoadingIndicator").hide();
-      $("#versionsError").html(`❌ ${error}`).show();
-    });
-}
-
-function deleteGhPagesDirectory(dirPath) {
-  return new Promise((resolve, reject) => {
-    // Prima otteniamo tutti i file nella directory dal branch gh-pages
-    $.ajax({
-      url: `https://api.github.com/repos/${currentUsername}/${currentRepo}/contents/${dirPath}?ref=gh-pages`,
-      headers: { Authorization: `token ${currentToken}` },
-      success: function(contents) {
-        console.log(`📁 Elaborazione directory: ${dirPath} (${contents.length} elementi)`);
-        
-        if (contents.length === 0) {
-          resolve();
-          return;
-        }
-        
-        let errors = [];
-        
-        // Funzione per eliminare gli elementi uno per uno (sequenziale)
-        function deleteItemSequentially(items, index = 0) {
-          if (index >= items.length) {
-            if (errors.length > 0) {
-              reject(`Alcuni file non sono stati eliminati: ${errors.join(', ')}`);
-            } else {
-              resolve();
-            }
-            return;
-          }
-          
-          const item = items[index];
-          console.log(`🗑️ Eliminazione [${index + 1}/${items.length}]: ${item.path}`);
-          
-          if (item.type === "file") {
-            // Elimina il file
-            $.ajax({
-              url: `https://api.github.com/repos/${currentUsername}/${currentRepo}/contents/${item.path}`,
-              method: "DELETE",
-              headers: { Authorization: `token ${currentToken}` },
-              data: JSON.stringify({
-                message: `Delete ${item.path} (Version Editor)`,
-                sha: item.sha,
-                branch: "gh-pages"
-              }),
-              success: function() {
-                console.log(`✅ Eliminato file: ${item.path}`);
-                // Piccola pausa per evitare rate limiting
-                setTimeout(() => deleteItemSequentially(items, index + 1), 100);
-              },
-              error: function(xhr) {
-                console.error(`❌ Errore eliminazione ${item.path}: ${xhr.status}`);
-                if (xhr.status === 409) {
-                  // Conflitto: proviamo a recuperare l'SHA aggiornato
-                  console.log(`🔄 Retry con SHA aggiornato: ${item.path}`);
-                  $.ajax({
-                    url: `https://api.github.com/repos/${currentUsername}/${currentRepo}/contents/${item.path}?ref=gh-pages`,
-                    headers: { Authorization: `token ${currentToken}` },
-                    success: function(updatedFile) {
-                      $.ajax({
-                        url: `https://api.github.com/repos/${currentUsername}/${currentRepo}/contents/${item.path}`,
-                        method: "DELETE",
-                        headers: { Authorization: `token ${currentToken}` },
-                        data: JSON.stringify({
-                          message: `Delete ${item.path} (Version Editor - Retry)`,
-                          sha: updatedFile.sha,
-                          branch: "gh-pages"
-                        }),
-                        success: function() {
-                          console.log(`✅ Eliminato file (retry): ${item.path}`);
-                          setTimeout(() => deleteItemSequentially(items, index + 1), 200);
-                        },
-                        error: function(xhr2) {
-                          errors.push(`${item.path}: ${xhr2.status}`);
-                          setTimeout(() => deleteItemSequentially(items, index + 1), 200);
-                        }
-                      });
-                    },
-                    error: function() {
-                      errors.push(`${item.path}: ${xhr.status}`);
-                      setTimeout(() => deleteItemSequentially(items, index + 1), 200);
-                    }
-                  });
-                } else {
-                  errors.push(`${item.path}: ${xhr.status}`);
-                  setTimeout(() => deleteItemSequentially(items, index + 1), 200);
-                }
-              }
-            });
-          } else if (item.type === "dir") {
-            // Per le directory, chiamata ricorsiva
-            deleteGhPagesDirectory(item.path)
-              .then(() => {
-                console.log(`✅ Eliminata directory: ${item.path}`);
-                setTimeout(() => deleteItemSequentially(items, index + 1), 200);
-              })
-              .catch(error => {
-                console.error(`❌ Errore directory ${item.path}: ${error}`);
-                errors.push(`${item.path}: ${error}`);
-                setTimeout(() => deleteItemSequentially(items, index + 1), 200);
-              });
-          } else {
-            // Elemento sconosciuto, salta
-            setTimeout(() => deleteItemSequentially(items, index + 1), 50);
-          }
-        }
-        
-        // Inizia l'eliminazione sequenziale
-        deleteItemSequentially(contents);
-      },
-      error: function(xhr) {
-        reject(`Errore nel recupero contenuti directory: ${xhr.status} - ${xhr.responseJSON?.message || 'Errore sconosciuto'}`);
-      }
-    });
-  });
-}
-
-function deleteSelectedVersions() {
-  const selectedVersions = [];
-  $(".version-checkbox:checked").each(function() {
-    selectedVersions.push({
-      name: $(this).val(),
-      path: $(this).data("path")
-    });
-  });
-  
-  if (selectedVersions.length === 0) {
-    alert("⚠️ Seleziona almeno una versione da eliminare.");
-    return;
-  }
-  
-  const versionNames = selectedVersions.map(v => v.name).join(", ");
-  const confirmed = confirm(
-    `🗑️ ATTENZIONE!\n\n` +
-    `Stai per eliminare DEFINITIVAMENTE le seguenti versioni:\n${versionNames}\n\n` +
-    `Questa operazione NON può essere annullata.\n\n` +
-    `Sei sicuro di voler continuare?`
-  );
-  
-  if (!confirmed) return;
-  
-  // Mostra indicatore di caricamento con progresso
-  $("#versionsCheckboxList").html(`
-    <div style="text-align: center; padding: 20px;">
-      <div class="loading-spinner">🗑️</div>
-      <h4>Eliminazione in corso...</h4>
-      <div id="deletionProgress">
-        <p id="currentVersion">Preparazione...</p>
-        <div style="background: #f0f0f0; border-radius: 10px; padding: 3px; margin: 10px 0;">
-          <div id="progressBar" style="background: #dc3545; height: 20px; width: 0%; border-radius: 8px; transition: width 0.3s;"></div>
-        </div>
-        <p id="progressText">0 di ${selectedVersions.length} versioni elaborate</p>
-      </div>
-      <div id="deletionLog" style="max-height: 200px; overflow-y: auto; text-align: left; font-size: 12px; margin-top: 10px; background: #f8f9fa; padding: 10px; border-radius: 5px;"></div>
-    </div>
-  `);
-  
-  // Elimina le versioni una per una (sequenziale)
-  let completed = 0;
-  let errors = [];
-  
-  function logMessage(message, type = 'info') {
-    const timestamp = new Date().toLocaleTimeString();
-    const icon = type === 'success' ? '✅' : type === 'error' ? '❌' : 'ℹ️';
-    $("#deletionLog").append(`<div>[${timestamp}] ${icon} ${message}</div>`);
-    $("#deletionLog").scrollTop($("#deletionLog")[0].scrollHeight);
-  }
-  
-  function updateProgress() {
-    const percentage = Math.round((completed / selectedVersions.length) * 100);
-    $("#progressBar").css("width", percentage + "%");
-    $("#progressText").text(`${completed} di ${selectedVersions.length} versioni elaborate`);
-  }
-  
-  function deleteVersionSequentially(index) {
-    if (index >= selectedVersions.length) {
-      // Operazione completata
-      if (errors.length === 0) {
-        logMessage(`Eliminazione completata con successo! ${completed} versioni eliminate.`, 'success');
-        setTimeout(() => {
-          alert(`✅ Eliminazione completata con successo!\n\nVersioni eliminate: ${completed}`);
-          $("#versionEditorModal").css("display", "none");
-        }, 2000);
-      } else {
-        logMessage(`Eliminazione completata con ${errors.length} errori.`, 'error');
-        setTimeout(() => {
-          const errorDetails = errors.slice(0, 5).join('\n') + (errors.length > 5 ? `\n... e altri ${errors.length - 5} errori` : '');
-          alert(`⚠️ Eliminazione completata con errori:\n\nSuccesso: ${completed}\nErrori: ${errors.length}\n\nPrimi errori:\n${errorDetails}`);
-          showVersionEditor();
-        }, 2000);
-      }
-      return;
-    }
-    
-    const version = selectedVersions[index];
-    $("#currentVersion").text(`Eliminazione versione: ${version.name} (${index + 1}/${selectedVersions.length})`);
-    logMessage(`Inizio eliminazione versione: ${version.name}`);
-    
-    deleteGhPagesDirectory(version.path)
-      .then(() => {
-        completed++;
-        updateProgress();
-        logMessage(`Versione "${version.name}" eliminata con successo`, 'success');
-        console.log(`✅ Eliminata versione: ${version.name}`);
-        
-        // Pausa di 1 secondo tra le versioni per evitare rate limiting
-        setTimeout(() => deleteVersionSequentially(index + 1), 1000);
-      })
-      .catch(error => {
-        completed++; // Conta anche gli errori come "completati"
-        updateProgress();
-        const errorMsg = `${version.name}: ${error}`;
-        errors.push(errorMsg);
-        logMessage(`Errore eliminazione "${version.name}": ${error}`, 'error');
-        console.error(`❌ Errore eliminazione ${version.name}:`, error);
-        
-        // Pausa più lunga in caso di errore
-        setTimeout(() => deleteVersionSequentially(index + 1), 2000);
-      });
-  }
-  
-  logMessage(`Avvio eliminazione di ${selectedVersions.length} versioni...`);
-  deleteVersionSequentially(0);
-}
+// All Version Editor functions moved to app.js
 
 /* ================== DEPLOY ================== */
-function editAutomationYaml(setTrue, callback) {
-  const url = `https://api.github.com/repos/${currentUsername}/${currentRepo}/contents/.github/workflows/Automation.yml`;
-  $.ajax({
-    url, headers: { Authorization: `token ${currentToken}` },
-    success: file => {
-      let content = decodeBase64Utf8(file.content)
-        .replace(/RUN_DEPLOY_DOCS: '(true|false)'/, `RUN_DEPLOY_DOCS: '${setTrue}'`);
-      $.ajax({
-        url, type: "PUT", headers: { Authorization: `token ${currentToken}` },
-        data: JSON.stringify({ message: setTrue ? "Abilita deploy docs" : "Disabilita deploy docs", content: encodeUtf8Base64(content), sha: file.sha }),
-        success: res => callback?.(res.content.sha),
-        error: () => alert("Errore nel salvataggio di Automation.yml.")
-      });
-    },
-    error: () => alert("Errore nel caricamento di Automation.yml.")
-  });
-}
+// Deploy functions moved to app.js
 
 /* ================== STATO REPO ================== */
-function updateRepoStatusBox(state, msg) {
-  const indicator = $("#repo-status-indicator"), text = $("#repo-status-text");
-  if (state === "updating") indicator.css("background", "#fd6c35"), text.html("Stato repository: <b>In aggiornamento...</b>");
-  else if (state === "ok") indicator.css("background", "#16c784"), text.html("Stato repository: <b>Aggiornata</b>");
-  else indicator.css("background", "#ccc"), text.html("Stato repository: <b>?</b>");
-  if (msg) text.append("<br><small>" + msg + "</small>");
-}
-function checkRepoStatus() {
-  if (!currentUsername || !currentRepo || !currentToken) return updateRepoStatusBox("unknown");
-  $.ajax({
-    url: `https://api.github.com/repos/${currentUsername}/${currentRepo}/commits?per_page=1`,
-    headers: { Authorization: `token ${currentToken}` },
-    success: commits => {
-      if (commits?.length) {
-        const lastDate = new Date(commits[0].commit.committer.date);
-        const diff = (new Date() - lastDate) / 1000;
-        updateRepoStatusBox(diff < 30 ? "updating" : "ok", "Ultima modifica: " + lastDate.toLocaleTimeString());
-      }
-    },
-    error: () => updateRepoStatusBox("unknown")
-  });
-}
-setInterval(checkRepoStatus, 5000);
+// Repository status functions moved to app.js
 
 /* ================== EVENTI ================== */
-$(document).on("click", ".open-md-file", function(e) {
-  e.preventDefault();
-  const path = $(this).data("path");
-  loadFile(path, currentUsername, currentRepo, currentToken);
-});
-$("#pushAllBtn").on("click", pushAllChanges);
-$("#refreshRepoBtn").on("click", () => {
-  if (currentUsername && currentRepo && currentToken) {
-    loadFiles(currentUsername, currentRepo, currentToken);
-    alert("📂 Lista file aggiornata!");
-  } else {
-    alert("⚠️ Effettua prima il login per aggiornare la repository.");
-  }
-});
-$("#newFileBtn").on("click", createNewFile);
-$("#uploadBtn").on("click", () => { const file = $("#uploadImage")[0].files[0]; if (file) uploadImage(file); });
-$("#deployBtn").on("click", () => { editAutomationYaml(true, () => setTimeout(() => editAutomationYaml(false), 5000)); });
-$("#versionEditorBtn").on("click", showVersionEditor);
-$("#startBtn").on("click", () => {
-  currentUsername = $("#username").val(); currentRepo = $("#repo").val(); currentToken = $("#token").val();
-  if (!currentUsername || !currentRepo || !currentToken) return alert("Compila tutti i campi!");
-  $("#configurator").hide(); $("#editor,#file-list").show(); initEditor(); loadFiles(currentUsername, currentRepo, currentToken);
-});
-$("#sidebar-toggle").on("click", function() {
-  $("#sidebar").toggleClass("collapsed");
-  if($("#sidebar").hasClass("collapsed")) {
-    $("#sidebar").css("left", "-280px");
-    $("#editor").css("margin-left", "0");
-  } else {
-    $("#sidebar").css("left", "0");
-    $("#editor").css("margin-left", "280px");
-  }
-});
-// Mostra modale elimina immagine
-$("#deleteImageBtn").on("click", function() {
-  loadImagesList(function(files) {
-    if (!files || files.length === 0) {
-      alert("Nessuna immagine disponibile da eliminare.");
-      return;
-    }
-    let html = '<ul class="delete-image-list">';
-    files.forEach(f => {
-      html += `<li class='delete-image-item'><label><input type='radio' name='deleteImageRadio' value='${f.local}' class='delete-image-radio'>${f.local}</label></li>`;
-    });
-    html += '</ul>';
-    $("#deleteImageList").html(html);
-    window.selectedImageToDelete = null;
-    $("#deleteImageModal").css("display", "block");
-  });
-});
-// Chiudi modale elimina immagine
-$("#closeDeleteImageModal").on("click", function() {
-  $("#deleteImageModal").css("display", "none");
-});
-// Mostra modale immagini come accordion
-$("#showImagesBtn").on("click", function() {
-  loadImagesList(function(files) {
-    let html = '<div id="images-accordion">';
-    files.forEach((f, idx) => {
-      html += `
-        <div class="img-accordion">
-          <span class="img-title" data-idx="${idx}" style="cursor:pointer;">${f.name}</span>
-          <button class="img-btn copy-img-name" data-name="${f.name}" title="Copia nome">📋</button>
-        </div>
-        <div class="img-panel" style="display:none;">
-          <img src='${f.dataUrl || f.download_url}' alt='${f.name}' class="img-preview-large">
-        </div>
-      `;
-    });
-    html += '</div>';
-    $("#imagesList").html(html);
-    $("#imagesModal").css("display", "block");
-  });
-});
-// Toggle accordion
-$(document).on("click", ".img-title", function() {
-  $(this).closest('.img-accordion').next('.img-panel').slideToggle(180);
-});
-// Copia nome immagine
-$(document).on("click", ".copy-img-name", function() {
-  const name = $(this).data("name");
-  navigator.clipboard.writeText(name);
-  $(this).text('✔️');
-  setTimeout(() => $(this).text('📋'), 900);
-});
-// Chiudi modale immagini
-$("#closeImagesModal").on("click", function() {
-  $("#imagesModal").css("display", "none");
-});
-
-// Version Editor Modal Events
-$("#closeVersionEditorModal").on("click", function() {
-  $("#versionEditorModal").css("display", "none");
-});
-
-$("#selectAllVersionsBtn").on("click", function() {
-  $(".version-checkbox:not(:disabled)").prop("checked", true);
-});
-
-$("#unselectAllVersionsBtn").on("click", function() {
-  $(".version-checkbox").prop("checked", false);
-});
-
-$("#deleteSelectedVersionsBtn").on("click", deleteSelectedVersions);
-
-// Chiudi modali cliccando fuori
-$(document).on("click", ".modal-bg", function(e) {
-  if (e.target === this) {
-    $(this).css("display", "none");
-  }
-});
+// All event handlers moved to app.js
 </script>
 
 </body>
