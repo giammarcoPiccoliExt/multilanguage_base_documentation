@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug File Tree</title>
+    <link rel="stylesheet" href="editor.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+</head>
+<body style="padding: 20px;">
+    <h2>🔍 Debug File Tree Structure</h2>
+    
+    <div style="display: flex; gap: 20px;">
+        <div style="flex: 1;">
+            <h3>Struttura Corretta</h3>
+            <div id="file-list-container">
+                <ul id="file-list-ul"></ul>
+            </div>
+        </div>
+        
+        <div style="flex: 1;">
+            <h3>Debug Info</h3>
+            <pre id="debug-info" style="background: #f4f4f4; padding: 10px; font-size: 11px;"></pre>
+        </div>
+    </div>
+
+    <script>
+        // Simula i dati che ricevi dal server
+        const sampleFiles = [
+            "docs/en/Administration.md",
+            "docs/en/Authentication.md", 
+            "docs/en/Dashboard.md",
+            "docs/it/Administration.md",
+            "docs/it/Authentication.md",
+            "docs/it/Dashboard.md",
+            "docs/it/admin/README-local-assets.md"
+        ];
+
+        const fileTree = {};
+
+        function addFileToTree(tree, filePath) {
+            console.log("📁 Aggiungendo:", filePath);
+            const parts = filePath.split('/');
+            let current = tree;
+            
+            // Naviga attraverso le cartelle (escludi l'ultimo elemento che è il file)
+            for (let i = 0; i < parts.length - 1; i++) {
+                const folder = parts[i];
+                if (!current[folder]) {
+                    current[folder] = { isFolder: true, children: {}, files: [] };
+                }
+                current = current[folder];
+            }
+            
+            // Aggiunge il file alla cartella finale
+            const fileName = parts[parts.length - 1];
+            current.files.push({ name: fileName, path: filePath });
+            console.log("✅ File aggiunto:", fileName, "in", current);
+        }
+
+        function buildFileTree() {
+            let html = '';
+            
+            function renderFolder(folderData, folderName, level = 0) {
+                const folderId = `folder-${folderName.replace(/[^a-zA-Z0-9]/g, '-')}-${level}`;
+                
+                html += `
+                    <li class="folder-item">
+                        <div class="folder-header" data-folder="${folderId}">
+                            <span class="folder-icon">📁</span>
+                            <span class="folder-name">${folderName}</span>
+                            <span class="folder-toggle">▼</span>
+                        </div>
+                        <ul class="folder-content" id="${folderId}" style="display: block;">
+                `;
+                
+                // Renderizza i file nella cartella
+                folderData.files.forEach(file => {
+                    html += `
+                        <li class="file-item">
+                            <span class="file-icon">📄</span>
+                            <a href="#" class="open-repo-file" data-path="${file.path}">${file.name}</a>
+                        </li>
+                    `;
+                });
+                
+                // Renderizza le sottocartelle
+                Object.keys(folderData).forEach(key => {
+                    if (key !== 'isFolder' && key !== 'files' && folderData[key].isFolder) {
+                        renderFolder(folderData[key], key, level + 1);
+                    }
+                });
+                
+                html += `
+                        </ul>
+                    </li>
+                `;
+            }
+            
+            // Inizia il rendering dall'albero principale
+            Object.keys(fileTree).forEach(folderName => {
+                if (fileTree[folderName] && fileTree[folderName].isFolder) {
+                    renderFolder(fileTree[folderName], folderName);
+                }
+            });
+            
+            $("#file-list-ul").html(html);
+            setupFolderToggle();
+        }
+
+        function setupFolderToggle() {
+            $(".folder-header").off("click").on("click", function() {
+                const folderId = $(this).data("folder");
+                const folderContent = $(`#${folderId}`);
+                const toggle = $(this).find(".folder-toggle");
+                const icon = $(this).find(".folder-icon");
+                
+                if (folderContent.is(":visible")) {
+                    folderContent.slideUp(200);
+                    toggle.text("▶");
+                    icon.text("📁");
+                } else {
+                    folderContent.slideDown(200);
+                    toggle.text("▼");
+                    icon.text("📂");
+                }
+            });
+        }
+
+        $(document).ready(function() {
+            console.log("🚀 Inizializzazione debug...");
+            
+            // Processa i file di esempio
+            sampleFiles.forEach(file => {
+                addFileToTree(fileTree, file);
+            });
+            
+            console.log("🌳 Struttura finale:", fileTree);
+            
+            // Mostra debug info
+            $("#debug-info").text(JSON.stringify(fileTree, null, 2));
+            
+            // Costruisci l'albero
+            buildFileTree();
+            
+            // Test click sui file
+            $(document).on("click", ".open-repo-file", function() {
+                const filePath = $(this).data("path");
+                $(".file-item a").removeClass("active");
+                $(this).addClass("active");
+                console.log("📄 Selezionato:", filePath);
+            });
+        });
+    </script>
+</body>
+</html>

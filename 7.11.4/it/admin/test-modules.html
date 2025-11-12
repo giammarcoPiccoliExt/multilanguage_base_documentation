@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Moduli JavaScript</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Test Architettura Modulare</h1>
+    <div id="results"></div>
+
+    <!-- Carica moduli in sequenza -->
+    <script src="./modules/core.js"></script>
+    <script src="./modules/images.js"></script>
+    <script src="./modules/repository.js"></script>
+    <script src="./modules/files.js"></script>
+    <script src="./modules/versions.js"></script>
+    <script src="./modules/deploy.js"></script>
+    <script src="./modules/events.js"></script>
+    <script src="./app.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            console.log("🧪 Test architettura modulare avviato...");
+            
+            // Test functions availability
+            const testResults = [];
+            const functions = [
+                'handleStartClick', 'initEditor', 'getCurrentCredentials',
+                'loadImagesList', 'uploadImage',
+                'updateRepoStatusBox', 'checkRepoStatus',
+                'loadFiles', 'loadFile', 'pushAllChanges',
+                'showVersionEditor', 'deleteSelectedVersions',
+                'editAutomationYaml',
+                'setupEventHandlers'
+            ];
+
+            functions.forEach(fn => {
+                const available = typeof window[fn] === 'function';
+                testResults.push(`${available ? '✅' : '❌'} ${fn}: ${available ? 'DISPONIBILE' : 'MANCANTE'}`);
+                console.log(`${available ? '✅' : '❌'} ${fn}:`, available);
+            });
+
+            // Mostra risultati
+            $('#results').html(`
+                <h2>Risultati Test Moduli:</h2>
+                <pre style="background: #f4f4f4; padding: 10px;">
+${testResults.join('\n')}
+
+🎯 Core variables test:
+${window.currentUsername !== undefined ? '✅' : '❌'} window.currentUsername: ${typeof window.currentUsername}
+${window.currentRepo !== undefined ? '✅' : '❌'} window.currentRepo: ${typeof window.currentRepo}
+${window.currentToken !== undefined ? '✅' : '❌'} window.currentToken: ${typeof window.currentToken}
+${window.cachedImages !== undefined ? '✅' : '❌'} window.cachedImages: ${typeof window.cachedImages}
+${window.pendingChanges !== undefined ? '✅' : '❌'} window.pendingChanges: ${typeof window.pendingChanges}
+${window.allFilesCache !== undefined ? '✅' : '❌'} window.allFilesCache: ${typeof window.allFilesCache}
+                </pre>
+            `);
+
+            console.log("🎉 Test architettura modulare completato!");
+        });
+    </script>
+</body>
+</html>

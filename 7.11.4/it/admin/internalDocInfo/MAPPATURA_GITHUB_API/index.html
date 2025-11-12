@@ -1,0 +1,817 @@
+
+<!doctype html>
+<html lang="it" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>🔍 MAPPATURA COMPLETA CHIAMATE GITHUB API - Documentazione Super Progetto</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/print-site.css">
+    
+      <link rel="stylesheet" href="../../../css/print-site-material.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/eng-standard-theme.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/fabric.min.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/toc.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/language-switcher.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mappatura-completa-chiamate-github-api" class="md-skip">
+          Vai al contenuto
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Intestazione">
+    <a href="../../.." title="Documentazione Super Progetto" class="md-header__button md-logo" aria-label="Documentazione Super Progetto" data-md-component="logo">
+      
+  <img src="../../../assets/images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Documentazione Super Progetto
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              🔍 MAPPATURA COMPLETA CHIAMATE GITHUB API
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Cancella" aria-label="Cancella" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inizializza la ricerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigazione" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Documentazione Super Progetto" class="md-nav__button md-logo" aria-label="Documentazione Super Progetto" data-md-component="logo">
+      
+  <img src="../../../assets/images/logo.png" alt="logo">
+
+    </a>
+    Documentazione Super Progetto
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../developers/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sviluppatori
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Amministrazione
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SCMP_SUM_it.pdf" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PDF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Indice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Indice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#panoramica-generale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 Panoramica Generale
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modulo-images-modulesimagesjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🖼️ MODULO IMAGES (modules/images.js)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🖼️ MODULO IMAGES (modules/images.js)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-loadimageslist-critica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. loadImagesList() - CRITICA ⭐⭐⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-uploadimagefile-critica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. uploadImage(file) - CRITICA ⭐⭐⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modulo-files-modulesfilesjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📁 MODULO FILES (modules/files.js)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📁 MODULO FILES (modules/files.js)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3-fetchfolderpath-critica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. fetchFolder(path) - CRITICA ⭐⭐⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-downloadfilecontentpath-critica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. downloadFileContent(path) - CRITICA ⭐⭐⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-loadfilecontentpath-utile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. loadFileContent(path) - UTILE ⭐⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-saveallchanges-critica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. saveAllChanges() - CRITICA ⭐⭐⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modulo-versions-modulesversionsjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔄 MODULO VERSIONS (modules/versions.js)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔄 MODULO VERSIONS (modules/versions.js)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#7-loadversions-opzionale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. loadVersions() - OPZIONALE ⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-loadversioncontentdirpath-opzionale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. loadVersionContent(dirPath) - OPZIONALE ⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-deleteversionitemitem-opzionale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. deleteVersionItem(item) - OPZIONALE ⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modulo-repository-modulesrepositoryjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 MODULO REPOSITORY (modules/repository.js)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📊 MODULO REPOSITORY (modules/repository.js)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#10-checkrepostatus-utile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. checkRepoStatus() - UTILE ⭐⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modulo-deploy-modulesdeployjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 MODULO DEPLOY (modules/deploy.js)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 MODULO DEPLOY (modules/deploy.js)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-deploydocs-opzionale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. deployDocs() - OPZIONALE ⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#risposta-alla-tua-domanda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 RISPOSTA ALLA TUA DOMANDA:
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 RISPOSTA ALLA TUA DOMANDA:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quando-premi-carica-immagine-succede-questo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quando premi "Carica Immagine" succede questo:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funzioni-essenziali-vs-opzionali" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚨 FUNZIONI ESSENZIALI vs OPZIONALI:
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚨 FUNZIONI ESSENZIALI vs OPZIONALI:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#critiche-senza-queste-leditor-non-funziona" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔴 CRITICHE (Senza queste l'editor non funziona):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utili-migliorano-ux-ma-non-bloccanti" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟡 UTILI (Migliorano UX ma non bloccanti):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opzionali-feature-avanzate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟢 OPZIONALI (Feature avanzate):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="mappatura-completa-chiamate-github-api">🔍 <strong>MAPPATURA COMPLETA CHIAMATE GITHUB API</strong></h1>
+<h2 id="panoramica-generale">📊 <strong>Panoramica Generale</strong></h2>
+<p>Ecco <strong>TUTTE</strong> le funzioni che accedono a GitHub API nel nostro editor, divise per modulo e criticità:</p>
+<hr />
+<h2 id="modulo-images-modulesimagesjs">🖼️ <strong>MODULO IMAGES (<code>modules/images.js</code>)</strong></h2>
+<h3 id="1-loadimageslist-critica"><strong>1. <code>loadImagesList()</code> - CRITICA ⭐⭐⭐</strong></h3>
+<p><div class="highlight"><pre><span></span><code><span class="c1">// Chiamata: GET /repos/{owner}/{repo}/contents/overrides/assets/images/extract/media</span>
+<span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="sb">`https://api.github.com/repos/</span><span class="si">${</span><span class="nb">window</span><span class="p">.</span><span class="nx">currentUsername</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nb">window</span><span class="p">.</span><span class="nx">currentRepo</span><span class="si">}</span><span class="sb">/contents/overrides/assets/images/extract/media`</span>
+</code></pre></div>
+<strong>Quando viene chiamata:</strong>
+- ✅ <strong>Startup dell'editor</strong> (automatico)
+- ✅ <strong>Dopo upload nuova immagine</strong> (refresh cache)
+- ✅ <strong>Click pulsante "Mostra Immagini"</strong> se cache vuota (fallback)</p>
+<p><strong>Cosa fa:</strong>
+- Scarica la lista di tutte le immagini dalla directory GitHub
+- Scarica ogni immagine come blob e la converte in dataURL per la cache
+- <strong>ESSENZIALE</strong>: Senza questa funzione non funziona niente delle immagini</p>
+<h3 id="2-uploadimagefile-critica"><strong>2. <code>uploadImage(file)</code> - CRITICA ⭐⭐⭐</strong></h3>
+<p><div class="highlight"><pre><span></span><code><span class="c1">// Chiamata: PUT /repos/{owner}/{repo}/contents/overrides/assets/images/extract/media/{filename}</span>
+<span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="sb">`https://api.github.com/repos/</span><span class="si">${</span><span class="nb">window</span><span class="p">.</span><span class="nx">currentUsername</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nb">window</span><span class="p">.</span><span class="nx">currentRepo</span><span class="si">}</span><span class="sb">/contents/overrides/assets/images/extract/media/</span><span class="si">${</span><span class="nx">file</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb">`</span>
+</code></pre></div>
+<strong>Trigger:</strong> Click pulsante "Carica Immagine" + selezione file
+<strong>Cosa fa:</strong>
+- Converte immagine in base64
+- Carica l'immagine su GitHub nella directory assets
+- <strong>ESSENZIALE</strong>: Unico modo per aggiungere immagini al repository</p>
+<hr />
+<h2 id="modulo-files-modulesfilesjs">📁 <strong>MODULO FILES (<code>modules/files.js</code>)</strong></h2>
+<h3 id="3-fetchfolderpath-critica"><strong>3. <code>fetchFolder(path)</code> - CRITICA ⭐⭐⭐</strong></h3>
+<p><div class="highlight"><pre><span></span><code><span class="c1">// Chiamata: GET /repos/{owner}/{repo}/contents/{path}</span>
+<span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="sb">`https://api.github.com/repos/</span><span class="si">${</span><span class="nx">username</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">repo</span><span class="si">}</span><span class="sb">/contents/</span><span class="si">${</span><span class="nx">path</span><span class="si">}</span><span class="sb">`</span>
+</code></pre></div>
+<strong>Quando viene chiamata:</strong>
+- ✅ <strong>Startup dell'editor</strong> (carica struttura file)
+- ✅ <strong>Espansione cartelle</strong> nel file tree
+- <strong>ESSENZIALE</strong>: Costruisce tutta la navigazione file</p>
+<h3 id="4-downloadfilecontentpath-critica"><strong>4. <code>downloadFileContent(path)</code> - CRITICA ⭐⭐⭐</strong></h3>
+<p><div class="highlight"><pre><span></span><code><span class="c1">// Chiamata: GET /repos/{owner}/{repo}/contents/{path}?ref={branch}  </span>
+<span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="sb">`https://api.github.com/repos/</span><span class="si">${</span><span class="nx">username</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">repo</span><span class="si">}</span><span class="sb">/contents/</span><span class="si">${</span><span class="nx">path</span><span class="si">}</span><span class="sb">?ref=</span><span class="si">${</span><span class="nx">branchName</span><span class="si">}</span><span class="sb">`</span>
+</code></pre></div>
+<strong>Trigger:</strong> Click su file nel file tree
+<strong>Cosa fa:</strong>
+- Scarica il contenuto di un singolo file markdown
+- <strong>ESSENZIALE</strong>: Senza questa non si può aprire nessun file per editare</p>
+<h3 id="5-loadfilecontentpath-utile"><strong>5. <code>loadFileContent(path)</code> - UTILE ⭐⭐</strong></h3>
+<p><div class="highlight"><pre><span></span><code><span class="c1">// Chiamata: GET /repos/{owner}/{repo}/contents/{path}?ref=main</span>
+<span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="sb">`https://api.github.com/repos/</span><span class="si">${</span><span class="nx">username</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">repo</span><span class="si">}</span><span class="sb">/contents/</span><span class="si">${</span><span class="nx">path</span><span class="si">}</span><span class="sb">?ref=main`</span>
+</code></pre></div>
+<strong>Quando:</strong> Caricamento contenuto file per preview
+<strong>Criticità:</strong> Utile ma non essenziale</p>
+<h3 id="6-saveallchanges-critica"><strong>6. <code>saveAllChanges()</code> - CRITICA ⭐⭐⭐</strong></h3>
+<p><div class="highlight"><pre><span></span><code><span class="c1">// Chiamata 1: GET per ottenere SHA corrente</span>
+<span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="sb">`https://api.github.com/repos/</span><span class="si">${</span><span class="nb">window</span><span class="p">.</span><span class="nx">currentUsername</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nb">window</span><span class="p">.</span><span class="nx">currentRepo</span><span class="si">}</span><span class="sb">/contents/</span><span class="si">${</span><span class="nx">change</span><span class="p">.</span><span class="nx">path</span><span class="si">}</span><span class="sb">?ref=main`</span>
+
+<span class="c1">// Chiamata 2: PUT per salvare il file  </span>
+<span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="sb">`https://api.github.com/repos/</span><span class="si">${</span><span class="nb">window</span><span class="p">.</span><span class="nx">currentUsername</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nb">window</span><span class="p">.</span><span class="nx">currentRepo</span><span class="si">}</span><span class="sb">/contents/</span><span class="si">${</span><span class="nx">change</span><span class="p">.</span><span class="nx">path</span><span class="si">}</span><span class="sb">`</span>
+</code></pre></div>
+<strong>Trigger:</strong> Click pulsante "Salva Modifiche" 
+<strong>Cosa fa:</strong>
+- Ottiene SHA corrente del file (per evitare conflitti)
+- Salva il contenuto modificato su GitHub
+- <strong>ESSENZIALE</strong>: Unico modo per salvare i cambiamenti</p>
+<hr />
+<h2 id="modulo-versions-modulesversionsjs">🔄 <strong>MODULO VERSIONS (<code>modules/versions.js</code>)</strong></h2>
+<h3 id="7-loadversions-opzionale"><strong>7. <code>loadVersions()</code> - OPZIONALE ⭐</strong></h3>
+<p><div class="highlight"><pre><span></span><code><span class="c1">// Chiamata: GET /repos/{owner}/{repo}/contents/?ref=gh-pages</span>
+<span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="sb">`https://api.github.com/repos/</span><span class="si">${</span><span class="nx">username</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">repo</span><span class="si">}</span><span class="sb">/contents/?ref=gh-pages`</span>
+</code></pre></div>
+<strong>Trigger:</strong> Click pulsante "Gestisci Versioni"
+<strong>Criticità:</strong> Feature avanzata, non essenziale per editing base</p>
+<h3 id="8-loadversioncontentdirpath-opzionale"><strong>8. <code>loadVersionContent(dirPath)</code> - OPZIONALE ⭐</strong></h3>
+<p><div class="highlight"><pre><span></span><code><span class="c1">// Chiamata: GET /repos/{owner}/{repo}/contents/{dirPath}?ref=gh-pages  </span>
+<span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="sb">`https://api.github.com/repos/</span><span class="si">${</span><span class="nx">username</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">repo</span><span class="si">}</span><span class="sb">/contents/</span><span class="si">${</span><span class="nx">dirPath</span><span class="si">}</span><span class="sb">?ref=gh-pages`</span>
+</code></pre></div>
+<strong>Quando:</strong> Navigazione versioni in gh-pages branch
+<strong>Criticità:</strong> Feature avanzata per gestione versioni</p>
+<h3 id="9-deleteversionitemitem-opzionale"><strong>9. <code>deleteVersionItem(item)</code> - OPZIONALE ⭐</strong></h3>
+<p><div class="highlight"><pre><span></span><code><span class="c1">// Chiamate multiple per eliminare file/cartelle da gh-pages</span>
+<span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="sb">`https://api.github.com/repos/</span><span class="si">${</span><span class="nx">username</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">repo</span><span class="si">}</span><span class="sb">/contents/</span><span class="si">${</span><span class="nx">item</span><span class="p">.</span><span class="nx">path</span><span class="si">}</span><span class="sb">`</span>
+</code></pre></div>
+<strong>Trigger:</strong> Eliminazione versioni
+<strong>Criticità:</strong> Gestione avanzata versioni</p>
+<hr />
+<h2 id="modulo-repository-modulesrepositoryjs">📊 <strong>MODULO REPOSITORY (<code>modules/repository.js</code>)</strong></h2>
+<h3 id="10-checkrepostatus-utile"><strong>10. <code>checkRepoStatus()</code> - UTILE ⭐⭐</strong></h3>
+<p><div class="highlight"><pre><span></span><code><span class="c1">// Chiamata: GET /repos/{owner}/{repo}/commits?per_page=1</span>
+<span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="sb">`https://api.github.com/repos/</span><span class="si">${</span><span class="nb">window</span><span class="p">.</span><span class="nx">currentUsername</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nb">window</span><span class="p">.</span><span class="nx">currentRepo</span><span class="si">}</span><span class="sb">/commits?per_page=1`</span>
+</code></pre></div>
+<strong>Quando:</strong> Startup dell'editor (verifica stato repo)<br />
+<strong>Cosa fa:</strong> Controlla ultimo commit per verificare stato repository
+<strong>Criticità:</strong> Utile per feedback ma non blocca funzionalità</p>
+<hr />
+<h2 id="modulo-deploy-modulesdeployjs">🚀 <strong>MODULO DEPLOY (<code>modules/deploy.js</code>)</strong></h2>
+<h3 id="11-deploydocs-opzionale"><strong>11. <code>deployDocs()</code> - OPZIONALE ⭐</strong></h3>
+<p><div class="highlight"><pre><span></span><code><span class="c1">// Chiamata: GET /repos/{owner}/{repo}/contents/.github/workflows/Automation.yml</span>
+<span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="sb">`https://api.github.com/repos/</span><span class="si">${</span><span class="nx">username</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">repo</span><span class="si">}</span><span class="sb">/contents/.github/workflows/Automation.yml`</span>
+</code></pre></div>
+<strong>Trigger:</strong> Click pulsante "Deploy"
+<strong>Criticità:</strong> Feature di deployment, non essenziale per editing</p>
+<hr />
+<h2 id="risposta-alla-tua-domanda">🎯 <strong>RISPOSTA ALLA TUA DOMANDA:</strong></h2>
+<h3 id="quando-premi-carica-immagine-succede-questo"><strong>Quando premi "Carica Immagine" succede questo:</strong></h3>
+<ol>
+<li><strong>📎 Selezione File</strong> → Trigger evento upload</li>
+<li><strong>🔄 <code>uploadImage(file)</code></strong> → Conversione in base64  </li>
+<li><strong>📤 GitHub API PUT</strong> → <code>PUT /contents/overrides/assets/images/extract/media/{filename}</code></li>
+<li><strong>✅ Successo</strong> → Alert "Immagine caricata!"</li>
+<li><strong>🔄 <code>loadImagesList()</code></strong> → Refresh automatico cache immagini</li>
+</ol>
+<hr />
+<h2 id="funzioni-essenziali-vs-opzionali">🚨 <strong>FUNZIONI ESSENZIALI vs OPZIONALI:</strong></h2>
+<h3 id="critiche-senza-queste-leditor-non-funziona"><strong>🔴 CRITICHE (Senza queste l'editor non funziona):</strong></h3>
+<ul>
+<li><code>loadImagesList()</code> - Cache immagini</li>
+<li><code>uploadImage()</code> - Upload immagini  </li>
+<li><code>fetchFolder()</code> - Navigazione file</li>
+<li><code>downloadFileContent()</code> - Apertura file</li>
+<li><code>saveAllChanges()</code> - Salvataggio</li>
+</ul>
+<h3 id="utili-migliorano-ux-ma-non-bloccanti"><strong>🟡 UTILI (Migliorano UX ma non bloccanti):</strong></h3>
+<ul>
+<li><code>checkRepoStatus()</code> - Stato repository</li>
+<li><code>loadFileContent()</code> - Preview file</li>
+</ul>
+<h3 id="opzionali-feature-avanzate"><strong>🟢 OPZIONALI (Feature avanzate):</strong></h3>
+<ul>
+<li>Tutte le funzioni di <code>versions.js</code> (gestione versioni)</li>
+<li><code>deployDocs()</code> (deployment automatico)</li>
+</ul>
+<p><strong>Conclusione: Le prime 6 funzioni sono ESSENZIALI, le altre sono enhancement!</strong> 🎯</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Torna su
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.top", "search.highlight", "search.suggest"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copiato", "clipboard.copy": "Copia", "search.result.more.one": "1 altro in questa pagina", "search.result.more.other": "# altri in questa pagina", "search.result.none": "Nessun documento trovato", "search.result.one": "1 documento trovato", "search.result.other": "# documenti trovati", "search.result.placeholder": "Scrivi per iniziare a cercare", "search.result.term.missing": "Non presente", "select.version": "Seleziona la versione"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="../../../js/print-site.js"></script>
+      
+        <script src="../../../assets/js/toc.js"></script>
+      
+        <script src="../../../assets/js/language-switcher.js"></script>
+      
+    
+  </body>
+</html>
