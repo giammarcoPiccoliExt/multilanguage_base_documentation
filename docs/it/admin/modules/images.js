@@ -225,7 +225,81 @@ function fallbackCopyTextToClipboard(text) {
   document.body.removeChild(textArea);
 }
 
+// Mostra modal per eliminare immagini
+function showDeleteImageModal() {
+  if (!window.cachedImages || window.cachedImages.length === 0) {
+    alert("Nessuna immagine disponibile da eliminare.");
+    return;
+  }
+  
+  let html = '';
+  window.cachedImages.forEach(img => {
+    const fileName = img.name || img.local;
+    const sizeInfo = img.size ? ` (${(img.size / 1024).toFixed(1)} KB)` : '';
+    html += `
+      <div style="margin-bottom: 8px;">
+        <label style="cursor: pointer; display: flex; align-items: center; padding: 8px; border: 1px solid #e0e0e0; border-radius: 4px; transition: background 0.2s;">
+          <input type="checkbox" class="delete-image-checkbox" value="${fileName}" style="margin-right: 10px;">
+          <div style="flex-grow: 1;">
+            <strong>${fileName}</strong>
+            <div style="color: #999; font-size: 11px; margin-top: 2px;">${sizeInfo}</div>
+          </div>
+        </label>
+      </div>
+    `;
+  });
+  
+  $("#deleteImageList").html(html);
+  $("#deleteImageModal").css("display", "block");
+}
+
+// Conferma eliminazione immagini - aggiunge allo staging
+function confirmDeleteImage() {
+  const selectedCheckboxes = $('.delete-image-checkbox:checked');
+  
+  if (selectedCheckboxes.length === 0) {
+    alert("⚠️ Seleziona almeno un'immagine da eliminare.");
+    return;
+  }
+  
+  const imagesToDelete = [];
+  selectedCheckboxes.each(function() {
+    imagesToDelete.push($(this).val());
+  });
+  
+  const imageNames = imagesToDelete.join(', ');
+  
+  if (!confirm(`🗑️ Confermi l'eliminazione di ${imagesToDelete.length} immagini?\n\n${imageNames}\n\nLe immagini verranno aggiunte allo staging per l'eliminazione e rimosse su GitHub al prossimo commit.`)) {
+    return;
+  }
+  
+  imagesToDelete.forEach(imageName => {
+    const imagePath = `overrides/assets/images/extract/media/${imageName}`;
+    
+    // Aggiungi il file al set dei file da eliminare nello staging
+    window.localStaging.deleted.add(imagePath);
+    console.log("🗑️ Immagine marcata per eliminazione:", imagePath);
+    
+    // Rimuovi dalla cache locale
+    const imgIndex = window.cachedImages.findIndex(img => img.name === imageName);
+    if (imgIndex > -1) {
+      window.cachedImages.splice(imgIndex, 1);
+    }
+  });
+  
+  // Aggiorna UI
+  updateStagingUI();
+  buildImageList();
+  
+  // Chiudi modal
+  $("#deleteImageModal").css("display", "none");
+  
+  alert(`✅ ${imagesToDelete.length} immagini marcate per eliminazione nello staging.\n\nUsa "Commit All" per rimuoverle definitivamente da GitHub.`);
+}
+
 // === ESPORTAZIONI GLOBALI ===
 window.enlargeImage = enlargeImage;
 window.copyImageMarkdown = copyImageMarkdown;
 window.buildImageList = buildImageList;
+window.showDeleteImageModal = showDeleteImageModal;
+window.confirmDeleteImage = confirmDeleteImage;

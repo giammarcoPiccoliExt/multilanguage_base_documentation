@@ -111,37 +111,30 @@ function setupEventHandlers() {
   // Sidebar toggle
   $("#sidebar-toggle").on("click", function() {
     $("#sidebar").toggleClass("collapsed");
-    if($("#sidebar").hasClass("collapsed")) {
-      $("#sidebar").css("left", "-280px");
-      $("#editor").css("margin-left", "0");
-    } else {
-      $("#sidebar").css("left", "0");
-      $("#editor").css("margin-left", "280px");
-    }
+    // Aggiunge classe al body per gestire il layout quando sidebar è collapsed
+    $("body").toggleClass("sidebar-collapsed");
   });
 
   // Delete image modal
   $("#deleteImageBtn").on("click", function() {
-    // Usa la cache per mostrare le immagini da eliminare
-    if (!window.cachedImages || window.cachedImages.length === 0) {
-      alert("Nessuna immagine disponibile da eliminare.");
-      return;
-    }
-    
-    let html = '<ul class="delete-image-list">';
-    window.cachedImages.forEach(f => {
-      const fileName = f.name || f.local;
-      html += `<li class='delete-image-item'><label><input type='radio' name='deleteImageRadio' value='${fileName}' class='delete-image-radio'>${fileName}</label></li>`;
-    });
-    html += '</ul>';
-    $("#deleteImageList").html(html);
-    window.selectedImageToDelete = null;
-    $("#deleteImageModal").css("display", "block");
+    showDeleteImageModal();
   });
 
   // Close delete image modal
   $("#closeDeleteImageModal").on("click", function() {
     $("#deleteImageModal").css("display", "none");
+  });
+
+  $("#selectAllImagesBtn").on("click", function() {
+    $(".delete-image-checkbox").prop("checked", true);
+  });
+
+  $("#unselectAllImagesBtn").on("click", function() {
+    $(".delete-image-checkbox").prop("checked", false);
+  });
+
+  $("#confirmDeleteImageBtn").on("click", function() {
+    confirmDeleteImage();
   });
 
   // Version Editor Modal Events
@@ -182,6 +175,27 @@ function setupEventHandlers() {
   // Aggiorna path quando si digita il nome file
   $("#newFileName").on("input", function() {
     updateFullPath();
+  });
+
+  // Delete File Modal Events
+  $("#deleteFileBtn").on("click", function() {
+    showDeleteFileModal();
+  });
+
+  $("#closeDeleteFileModal").on("click", function() {
+    $("#deleteFileModal").css("display", "none");
+  });
+
+  $("#selectAllFilesBtn").on("click", function() {
+    $(".delete-file-checkbox").prop("checked", true);
+  });
+
+  $("#unselectAllFilesBtn").on("click", function() {
+    $(".delete-file-checkbox").prop("checked", false);
+  });
+
+  $("#confirmDeleteFileBtn").on("click", function() {
+    confirmDeleteFile();
   });
 }
 

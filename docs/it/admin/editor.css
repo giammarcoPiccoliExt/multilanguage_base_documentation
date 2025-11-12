@@ -56,6 +56,18 @@
     50% { transform: scale(1.02); }
 }
 
+/* =================== AUTO-SAVE NOTIFICATION =================== */
+@keyframes slideIn {
+    0% {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
 /* =================== IMAGE MODAL OVERLAY =================== */
 .image-modal-overlay {
     position: fixed;
@@ -206,6 +218,11 @@
 .staging-item-type.modified {
     background: #ffc107;
     color: #000;
+}
+
+.staging-item-type.deleted {
+    background: #dc3545;
+    color: white;
 }
 
 .staging-item-remove {
@@ -413,14 +430,36 @@
     word-break: break-all;
     text-align: center;
 }
-/* CSS custom per l'editor markdown, estratto da index.html */
+/* CSS custom per l'editor markdown - DOCKABLE LAYOUT 
+   
+   Layout Structure (Dockable):
+   ┌──────────────────────────────────────────────┐
+   │ [SIDEBAR]  │  [TOP MENU (70px)]             │
+   │   280px    │───────────────────────────────────
+   │   (LEFT    │  [EDITOR AREA]                 │
+   │   DOCK)    │  (CENTER-RIGHT DOCK)           │
+   │            │                                 │
+   │            │                                 │
+   └──────────────────────────────────────────────┘
+   
+   Sidebar: Ancorato a sinistra (z-index: 100)
+   Top Menu: Ancorato in alto a destra del sidebar (z-index: 90)
+   Editor: Ancorato al centro-destra (sotto menu, a destra del sidebar)
+   
+   Collapsed Mode: Sidebar esce a sinistra, menu/editor si estendono
+*/
 
-body { font-family: sans-serif; margin: 20px; }
-#editor { width: 90%; margin: auto; display: none; }
-#file-list { width: 90%; margin: 20px auto; display: none; }
-#configurator { width: 400px; margin: 50px auto; border: 1px solid #ccc; padding: 20px; border-radius: 8px; }
-#configurator input { width: 100%; margin-bottom: 10px; padding: 8px; }
-#configurator button { padding: 10px 20px; }
+html, body { 
+  font-family: sans-serif; 
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+
+/* =================== SIDEBAR SINISTRO (DOCK LEFT) =================== */
 #sidebar {
     position: fixed;
     left: 0;
@@ -431,12 +470,89 @@ body { font-family: sans-serif; margin: 20px; }
     color: #fff;
     border-right: 2px solid #5a67d8;
     padding: 20px 10px 10px 10px;
-    transition: left 0.3s;
+    transition: left 0.3s ease;
     z-index: 100;
     overflow-y: auto;
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+}
+
+#sidebar.collapsed {
+    left: -280px;
+}
+
+/* =================== TOP MENU (DOCK TOP-RIGHT) =================== */
+#top-menu {
+    position: fixed;
+    top: 0;
+    left: 280px;
+    right: 0;
+    height: 70px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-bottom: 2px solid #5a67d8;
+    z-index: 90;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: left 0.3s ease;
+    display: none;
+    box-sizing: border-box;
+}
+
+/* Quando sidebar è collassato, menu parte da sinistra */
+body.sidebar-collapsed #top-menu {
+    left: 0;
+}
+
+/* =================== EDITOR CENTRALE =================== */
+/* Editor incollato ai bordi: sotto il menu superiore e a destra del sidebar */
+#editor {
+    display: none;
+    position: fixed;
+    top: 70px; /* Altezza del menu superiore */
+    left: 270px; /* Larghezza del sidebar */
+    right: 0;
+    bottom: 0;
+    max-width: calc(100vw - 270px); /* Non uscire a destra */
+    max-height: calc(100vh - 70px); /* Non uscire in basso */
+    overflow: hidden; /* Previene overflow del container */
+    transition: left 0.3s ease;
+}
+
+body.editor-active #editor {
+    display: block;
+}
+
+/* Quando sidebar è collassato, editor parte da sinistra */
+body.sidebar-collapsed #editor {
+    left: 0;
+    max-width: 100vw; /* Usa tutta la larghezza quando sidebar è chiuso */
+}
+
+/* =================== ALTRI ELEMENTI =================== */
+#file-list { 
+    width: 90%; 
+    margin: 20px auto; 
+    display: none; 
+}
+
+#configurator { 
+    width: 400px; 
+    margin: 50px auto; 
+    border: 1px solid #ccc; 
+    padding: 20px; 
+    border-radius: 8px; 
+}
+
+#configurator input { 
+    width: 100%; 
+    margin-bottom: 10px; 
+    padding: 8px; 
+}
+
+#configurator button { 
+    padding: 10px 20px; 
 }
 
 /* Contenitori scrollabili nel sidebar */
@@ -497,16 +613,25 @@ body { font-family: sans-serif; margin: 20px; }
 }
 
 /* ================== TOP MENU ================== */
+/* =================== TOP MENU STYLES =================== */
 #top-menu {
     position: fixed;
     top: 0;
-    left: 0;
+    left: 280px;
     right: 0;
     height: 70px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     border-bottom: 2px solid #5a67d8;
-    z-index: 200;
+    z-index: 90;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: left 0.3s ease;
+    display: none;
+    box-sizing: border-box;
+}
+
+/* Quando sidebar è collassato, menu parte da sinistra */
+#sidebar.collapsed ~ #top-menu {
+    left: 0;
 }
 
 .top-menu-content {
@@ -516,8 +641,8 @@ body { font-family: sans-serif; margin: 20px; }
     gap: 30px;
     padding: 0 20px;
     height: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
+    max-width: none;
+    margin: 0;
     overflow-x: auto;
     flex-wrap: wrap;
 }
@@ -616,32 +741,7 @@ body { font-family: sans-serif; margin: 20px; }
     border-color: rgba(108, 117, 125, 1);
 }
 
-/* Adatta layout quando il menu è visibile */
-body.editor-active {
-    padding-top: 70px;
-}
-
-body.editor-active #sidebar {
-    top: 70px;
-    height: calc(100vh - 70px);
-}
-
-body.editor-active #editor {
-    margin-top: 0;
-}
-
-body.editor-active #sidebar-toggle {
-    top: 80px;
-}
-
-
-#sidebar.collapsed {
-    left: -250px;
-}
-a {
-    color: #ffab66;
-    text-decoration: none;
-}
+/* =================== SIDEBAR TOGGLE BUTTON =================== */
 #sidebar-toggle {
     position: fixed;
     left: 0;
@@ -652,7 +752,22 @@ a {
     border-radius: 0 8px 8px 0;
     padding: 8px 12px;
     cursor: pointer;
-    z-index: 101;
+    z-index: 110;
+    transition: top 0.3s, left 0.3s;
+}
+
+body.editor-active #sidebar-toggle {
+    top: 80px;
+}
+
+#sidebar.collapsed ~ #sidebar-toggle {
+    left: 0;
+}
+
+/* =================== LINKS =================== */
+a {
+    color: #ffab66;
+    text-decoration: none;
 }
 #sidebar h3 { 
     color: rgba(255,255,255,0.9); 
@@ -661,8 +776,6 @@ a {
 }
 #sidebar button { width: 100%; margin-bottom: 10px; }
 #sidebar input[type="file"] { margin-bottom: 10px; }
-#editor { margin-left: 280px; }
-#sidebar.collapsed ~ #editor { margin-left: 0; }
 
 /* Fix dimensioni editor per occupare tutta la pagina */
 #editor {
@@ -670,20 +783,12 @@ a {
   min-height: 600px;
 }
 
-.wising-section {
-  height: 100%;
-  width: 100%;
-}
+/* =================== EDITOR MARKDOWN INTERNO =================== */
+/* Lasciato vuoto - editor.md gestisce tutto internamente senza CSS custom */
 
-/* Assicura che l'editor markdown occupi tutto lo spazio */
-.editormd {
-  height: 100% !important;
-  min-height: 600px !important;
-}
+/* NON toccare overflow o dimensioni - gestito internamente da editor.md per sync scroll */
 
-.editormd-preview {
-  height: 100% !important;
-}
+/* =================== SIDEBAR BUTTONS =================== */
 .sidebar-btn {
     margin-top: 10px;
     width: 100%;
@@ -795,6 +900,11 @@ a {
 }
 .modal-list {
     margin-bottom: 16px;
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #e0e0e0;
+    padding: 10px;
+    border-radius: 4px;
 }
 .sidebar-btn.delete-btn {
     background: #ff6666;
@@ -863,6 +973,9 @@ a {
     
     figcaption {
         color: var(--md-accent-fg-color) !important;
+        text-align: center !important;
+        font-style: italic;
+        margin-top: 8px;
     }
     
     /* ===================================================
@@ -916,6 +1029,21 @@ a {
     table {
         width: 100% !important;
         border-collapse: collapse !important;
+        margin: 20px auto !important; /* Centra la tabella orizzontalmente */
+    }
+    
+    /* Contenitore delle tabelle per centramento */
+    .md-typeset table,
+    .md-typeset__table {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    
+    /* Wrapper della tabella per gestire overflow e centratura */
+    .md-typeset__scrollwrap {
+        display: flex !important;
+        justify-content: center !important;
+        width: 100% !important;
     }
     
     th, td {
@@ -1159,6 +1287,93 @@ a {
 figcaption::before {
   content: none !important;
 }
+
+/* Nasconde i tag anchor vuoti <a id="xxx"></a> */
+.editormd-preview-container a[id]:empty,
+.editormd-preview-container a[id]:not([href]) {
+  display: none !important;
+}
+
+/* Centra le immagini nel preview */
+.editormd-preview-container img {
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  max-width: 100% !important;
+}
+
+/* Centra le didascalie delle immagini generate da alt text */
+.editormd-preview-container p > img + em,
+.editormd-preview-container figure figcaption {
+  display: block;
+  text-align: center !important;
+  font-style: italic;
+  color: #666;
+  margin-top: 8px;
+  font-size: 0.9em;
+}
+
+/* Wrapper per centrare le tabelle */
+.editormd-preview-container table {
+  width: auto !important;
+  max-width: 90% !important;
+  border-collapse: collapse !important;
+  margin: 20px auto !important;
+  background-color: transparent !important;
+  border: none !important;
+  display: table !important;
+}
+
+/* Header trasparente con testo bianco */
+.editormd-preview-container thead,
+.editormd-preview-container table thead {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+.editormd-preview-container thead th,
+.editormd-preview-container table thead th {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  padding: 12px 16px !important;
+  text-align: left !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+/* Righe body trasparenti con testo bianco */
+.editormd-preview-container tbody tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+  background-color: transparent !important;
+}
+
+.editormd-preview-container tbody tr:nth-child(even) {
+  background-color: transparent !important;
+}
+
+.editormd-preview-container tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.editormd-preview-container tbody td {
+  padding: 10px 16px !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+}
+
+/* Link nelle tabelle con colori chiari */
+.editormd-preview-container table a {
+  color: #80d4ff !important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+}
+
+.editormd-preview-container table a:hover {
+  color: #ffab66 !important;
+  text-decoration: underline !important;
+}
+
   .no-print {
     display: none !important;
   }

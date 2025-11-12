@@ -37,8 +37,13 @@ function loadFiles(username, repo, token) {
             return;
           }
 
+          // ❌ ESCLUDI la cartella admin
+          if (file.path.includes("admin/")) {
+            return;
+          }
+
           const isDocsFile = file.path.startsWith("docs/") && file.name.endsWith(".md") && !file.path.startsWith("docs/site/");
-          const isPreConfigFile = file.path.startsWith("preConfiguration/");
+          const isPreConfigFile = file.path.startsWith("preConfiguration/") && (file.name.endsWith(".json") || file.name.endsWith(".yaml") || file.name.endsWith(".yml"));
 
           if (!isDocsFile && !isPreConfigFile) {
             return;
@@ -76,10 +81,7 @@ function loadFiles(username, repo, token) {
 function addFileToTree(tree, filePath) {
   let parts = filePath.split('/');
 
-  // Visualizza preConfiguration come sottocartella di docs mantenendo i percorsi reali
-  if (filePath.startsWith('preConfiguration/')) {
-    parts = ['docs', 'preConfiguration', ...parts.slice(1)];
-  }
+  // ✅ preConfiguration è al livello root, non sottocartella di docs
   let current = tree;
   
   // Naviga attraverso le cartelle (escludi l'ultimo elemento che è il file)
@@ -109,7 +111,9 @@ function buildFileTree() {
     const indent = '  '.repeat(level);
     const currentPath = parentPath ? `${parentPath}/${folderName}` : folderName;
     const folderId = `folder-${currentPath.replace(/[^a-zA-Z0-9]/g, '-')}`;
-    const isPreConfigFolder = currentPath === 'docs/preConfiguration';
+    
+    // ✅ preConfiguration è chiusa di default, docs è aperta
+    const isPreConfigFolder = folderName === 'preConfiguration';
     const isOpen = !isPreConfigFolder;
     const displayStyle = isOpen ? 'block' : 'none';
     const toggleSymbol = isOpen ? '▼' : '▶';
@@ -212,6 +216,12 @@ function loadFile(path, username, repo, token) {
     alert("Errore: parametri di configurazione mancanti");
     return;
   }
+  
+  // 🔄 Cancella il timer di auto-save del file precedente
+  if (window.cancelAutoSaveTimer) {
+    window.cancelAutoSaveTimer();
+  }
+  
   // Prima controlla se ci sono modifiche non salvate nel file corrente
   if (currentFilePath && editor && editor.getMarkdown() !== currentFileContent) {
     saveCurrentFileToMemory();
@@ -228,6 +238,11 @@ function loadFile(path, username, repo, token) {
     highlightActiveFile(path);
     updatePreviewImages();
     console.log("Caricato da pendingChanges:", path);
+    
+    // 🔄 Inizializza auto-save per il nuovo file
+    if (window.lastSavedContent !== undefined) {
+      window.lastSavedContent = pending.content;
+    }
   } else if (window.allFilesCache[path]) {
     // File in cache (scaricato all'inizio)
     currentFileContent = window.allFilesCache[path].content;
@@ -237,6 +252,11 @@ function loadFile(path, username, repo, token) {
     highlightActiveFile(path);
     updatePreviewImages();
     console.log("Caricato da cache:", path);
+    
+    // 🔄 Inizializza auto-save per il nuovo file
+    if (window.lastSavedContent !== undefined) {
+      window.lastSavedContent = window.allFilesCache[path].content;
+    }
   } else {
     // Fallback: scarica da GitHub
     $.ajax({
@@ -254,6 +274,11 @@ function loadFile(path, username, repo, token) {
         // Salva in cache per prossimi usi
         window.allFilesCache[path] = { content, sha: file.sha };
         console.log("Caricato da GitHub:", path);
+        
+        // 🔄 Inizializza auto-save per il nuovo file
+        if (window.lastSavedContent !== undefined) {
+          window.lastSavedContent = content;
+        }
       },
       error: err => alert("Errore nel caricamento del file.")
     });
@@ -437,6 +462,110 @@ function confirmCreateFile() {
   document.getElementById('newFileModal').style.display = 'none';
   
   alert('✅ Nuovo file creato e aggiunto al staging! Ricordati di fare Commit All per salvarlo su GitHub.');
+}
+
+// Mostra modal per eliminare file
+function showDeleteFileModal() {
+  if (!lastLoadedFiles || lastLoadedFiles.length === 0) {
+    alert("Nessun file disponibile da eliminare.");
+    return;
+  }
+  
+  // ❌ FILTRA i file: escludi admin, per preConfiguration mostra solo .json e .yaml
+  const filteredFiles = lastLoadedFiles.filter(filePath => {
+    // Escludi cartella admin
+    if (filePath.includes("admin/")) {
+      return false;
+    }
+    
+    // Per preConfiguration: solo .json e .yaml
+    if (filePath.startsWith("preConfiguration/")) {
+      return filePath.endsWith(".json") || filePath.endsWith(".yaml") || filePath.endsWith(".yml");
+    }
+    
+    return true;
+  });
+  
+  if (filteredFiles.length === 0) {
+    alert("Nessun file disponibile da eliminare.");
+    return;
+  }
+  
+  let html = '';
+  filteredFiles.forEach(filePath => {
+    const fileName = filePath.split('/').pop();
+    html += `
+      <div style="margin-bottom: 8px;">
+        <label style="cursor: pointer; display: flex; align-items: center; padding: 8px; border: 1px solid #e0e0e0; border-radius: 4px; transition: background 0.2s;">
+          <input type="checkbox" class="delete-file-checkbox" value="${filePath}" style="margin-right: 10px;">
+          <div style="flex-grow: 1;">
+            <strong>${fileName}</strong>
+            <div style="color: #999; font-size: 11px; margin-top: 2px;">${filePath}</div>
+          </div>
+        </label>
+      </div>
+    `;
+  });
+  
+  $("#deleteFileList").html(html);
+  $("#deleteFileModal").css("display", "block");
+}
+
+// Conferma eliminazione file - aggiunge allo staging
+function confirmDeleteFile() {
+  const selectedCheckboxes = $('.delete-file-checkbox:checked');
+  
+  if (selectedCheckboxes.length === 0) {
+    alert("⚠️ Seleziona almeno un file da eliminare.");
+    return;
+  }
+  
+  const filesToDelete = [];
+  selectedCheckboxes.each(function() {
+    filesToDelete.push($(this).val());
+  });
+  
+  const fileNames = filesToDelete.map(path => path.split('/').pop()).join(', ');
+  
+  if (!confirm(`🗑️ Confermi l'eliminazione di ${filesToDelete.length} file?\n\n${fileNames}\n\nI file verranno aggiunti allo staging per l'eliminazione e rimossi su GitHub al prossimo commit.`)) {
+    return;
+  }
+  
+  filesToDelete.forEach(filePath => {
+    // Aggiungi il file al set dei file da eliminare nello staging
+    window.localStaging.deleted.add(filePath);
+    console.log("🗑️ File marcato per eliminazione:", filePath);
+    
+    // Rimuovi dalla cache locale
+    if (window.allFilesCache && window.allFilesCache[filePath]) {
+      delete window.allFilesCache[filePath];
+    }
+    
+    // Rimuovi dalla lista dei file caricati
+    const index = lastLoadedFiles.indexOf(filePath);
+    if (index > -1) {
+      lastLoadedFiles.splice(index, 1);
+    }
+    
+    // Se è il file correntemente aperto, chiudi l'editor
+    if (currentFilePath === filePath) {
+      currentFilePath = null;
+      currentFileContent = null;
+      currentSha = null;
+      if (editor && editor.setMarkdown) {
+        editor.setMarkdown("# File eliminato\n\nSeleziona un altro file dal pannello laterale.");
+      }
+    }
+  });
+  
+  // Aggiorna UI
+  updateStagingUI();
+  buildFileTree();
+  
+  // Chiudi modal
+  $("#deleteFileModal").css("display", "none");
+  
+  alert(`✅ ${filesToDelete.length} file marcati per eliminazione nello staging.\n\nUsa "Commit All" per rimuoverli definitivamente da GitHub.`);
 }
 
 // Salva il file corrente in memoria (pendingChanges + cache)

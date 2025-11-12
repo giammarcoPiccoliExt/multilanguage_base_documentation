@@ -110,14 +110,26 @@
   </div>
 <!-- Modale elimina immagine -->
 <div id="deleteImageModal" class="modal-bg">
-    <div class="modal-box delete-modal">
-        <button id="closeDeleteImageModal" class="modal-close delete-close">&times;</button>
-        <h3>Elimina immagine</h3>
-        <div id="deleteImageList" class="modal-list"></div>
-        <button id="confirmDeleteImageBtn" class="modal-btn delete-btn">Conferma eliminazione</button>
+  <div class="modal-box version-editor-modal">
+    <button id="closeDeleteImageModal" class="modal-close">&times;</button>
+    <h3>🖼️ Elimina Immagine</h3>
+    <div style="margin-bottom: 15px; padding: 10px; background: #fff3cd; border-radius: 5px;">
+      <p><strong>⚠️ Attenzione:</strong></p>
+      <ul style="margin: 5px 0; padding-left: 20px; font-size: 14px;">
+        <li>Seleziona una o più immagini da eliminare</li>
+        <li>Le immagini selezionate verranno aggiunte allo staging per l'eliminazione</li>
+        <li>Usa "Commit All" per rimuoverle definitivamente da GitHub</li>
+      </ul>
     </div>
-</div>
+    <div id="deleteImageList" class="modal-list"></div>
+    <div style="margin-top: 20px; text-align: center;">
+      <button id="selectAllImagesBtn" class="modal-btn" style="margin-right: 10px;">Seleziona tutto</button>
+      <button id="unselectAllImagesBtn" class="modal-btn" style="margin-right: 10px;">Deseleziona tutto</button>
+      <button id="confirmDeleteImageBtn" class="modal-btn delete-btn">🗑️ Elimina immagini selezionate</button>
+    </div>
   </div>
+</div>
+
 </div>
 <!-- Modale Carica Immagine -->
 <div id="uploadImageModal" class="modal-bg">
@@ -149,11 +161,23 @@
 
 <!-- Modale elimina file -->
 <div id="deleteFileModal" class="modal-bg">
-  <div class="modal-box delete-modal">
-    <button id="closeDeleteFileModal" class="modal-close delete-close">&times;</button>
-    <h3>Elimina file Markdown</h3>
+  <div class="modal-box version-editor-modal">
+    <button id="closeDeleteFileModal" class="modal-close">&times;</button>
+    <h3>📄 Elimina File Markdown</h3>
+    <div style="margin-bottom: 15px; padding: 10px; background: #fff3cd; border-radius: 5px;">
+      <p><strong>⚠️ Attenzione:</strong></p>
+      <ul style="margin: 5px 0; padding-left: 20px; font-size: 14px;">
+        <li>Seleziona uno o più file da eliminare</li>
+        <li>I file selezionati verranno aggiunti allo staging per l'eliminazione</li>
+        <li>Usa "Commit All" per rimuoverli definitivamente da GitHub</li>
+      </ul>
+    </div>
     <div id="deleteFileList" class="modal-list"></div>
-    <button id="confirmDeleteFileBtn" class="modal-btn delete-btn">Conferma eliminazione</button>
+    <div style="margin-top: 20px; text-align: center;">
+      <button id="selectAllFilesBtn" class="modal-btn" style="margin-right: 10px;">Seleziona tutto</button>
+      <button id="unselectAllFilesBtn" class="modal-btn" style="margin-right: 10px;">Deseleziona tutto</button>
+      <button id="confirmDeleteFileBtn" class="modal-btn delete-btn">🗑️ Elimina file selezionati</button>
+    </div>
   </div>
 </div>
 

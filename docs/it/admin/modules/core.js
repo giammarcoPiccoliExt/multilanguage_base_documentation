@@ -32,6 +32,81 @@ window.ghPagesVersions = [];
 let lastLoadedFiles = [];
 let selectedFileToDelete = null, selectedImageToDelete = null;
 
+// =================== AUTO-SAVE SYSTEM ===================
+let autoSaveTimer = null;
+let lastSavedContent = null;
+const AUTO_SAVE_DELAY = 60000; // 1 minuto in millisecondi
+
+// Resetta il timer di auto-save
+function resetAutoSaveTimer() {
+  if (autoSaveTimer) {
+    clearTimeout(autoSaveTimer);
+  }
+  
+  autoSaveTimer = setTimeout(() => {
+    performAutoSave();
+  }, AUTO_SAVE_DELAY);
+}
+
+// Esegue il salvataggio automatico nello staging
+function performAutoSave() {
+  if (!editor || !currentFilePath) {
+    console.log("⏭️ Auto-save: nessun file aperto");
+    return;
+  }
+  
+  const currentContent = editor.getMarkdown();
+  
+  // Verifica se ci sono modifiche
+  if (currentContent === lastSavedContent || currentContent === currentFileContent) {
+    console.log("⏭️ Auto-save: nessuna modifica rilevata");
+    return;
+  }
+  
+  console.log("💾 Auto-save: salvataggio automatico in corso...");
+  
+  // Salva nello staging
+  if (window.stageFileLocally) {
+    const isNewFile = !currentSha;
+    window.stageFileLocally(currentFilePath, currentContent, currentSha, isNewFile);
+    lastSavedContent = currentContent;
+    
+    // Mostra notifica temporanea
+    showAutoSaveNotification();
+    
+    console.log("✅ Auto-save completato:", currentFilePath);
+  }
+}
+
+// Mostra una notifica di auto-save
+function showAutoSaveNotification() {
+  const notification = $(`
+    <div style="position: fixed; top: 80px; right: 20px; background: #28a745; color: white; 
+                padding: 12px 20px; border-radius: 8px; z-index: 9999; 
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                animation: slideIn 0.3s ease-out;">
+      💾 Modifiche salvate automaticamente nello staging
+    </div>
+  `);
+  
+  $('body').append(notification);
+  
+  // Rimuovi dopo 3 secondi
+  setTimeout(() => {
+    notification.fadeOut(300, function() {
+      $(this).remove();
+    });
+  }, 3000);
+}
+
+// Annulla il timer quando necessario
+function cancelAutoSaveTimer() {
+  if (autoSaveTimer) {
+    clearTimeout(autoSaveTimer);
+    autoSaveTimer = null;
+  }
+}
+
 // Helper per accesso diretto alle variabili globali window
 function getCurrentCredentials() {
   return {
@@ -108,21 +183,61 @@ function updatePreviewImages() {
         }
       }
     });
+    
+    // 🖼️ Converti alt text in didascalie (figcaption)
+    convertImageCaptions();
+    
+    // 🔒 Nascondi i tag anchor vuoti
+    hideEmptyAnchors();
+    
   }, 100); // Ridotto timeout per essere più veloce
+}
+
+// Converte l'alt text delle immagini in didascalie visibili
+function convertImageCaptions() {
+  $(".editormd-preview-container img").each(function() {
+    const $img = $(this);
+    const alt = $img.attr("alt");
+    
+    // Se l'immagine ha un alt text e non è già dentro un figure
+    if (alt && alt.trim() !== "" && !$img.parent().is("figure")) {
+      // Verifica se non c'è già una didascalia
+      if ($img.next("figcaption").length === 0 && $img.next("em").length === 0) {
+        // Crea una didascalia sotto l'immagine
+        $img.after(`<figcaption style="text-align: center; font-style: italic; color: #666; margin-top: 8px; font-size: 0.9em;">${alt}</figcaption>`);
+      }
+    }
+  });
+}
+
+// Nasconde i tag anchor vuoti <a id="xxx"></a>
+function hideEmptyAnchors() {
+  $(".editormd-preview-container a[id]").each(function() {
+    const $anchor = $(this);
+    // Nascondi se è vuoto o non ha href
+    if ($anchor.is(":empty") || !$anchor.attr("href")) {
+      $anchor.hide();
+    }
+  });
 }
 
 // Inizializzazione editor
 function initEditor() {
   editor = editormd("editor", {
     width: "100%",
-    height: 640,
+    height: "100%",
     path: "https://cdn.jsdelivr.net/npm/editor.md@1.5.0/lib/",
     toolbar: true,
     imageUpload: false,
     htmlDecode: true,
+    syncScrolling: true,
     setMarkdown: "# Benvenuto nel tuo editor Markdown",
     onload: updatePreviewImages,
-    onchange: updatePreviewImages
+    onchange: function() {
+      updatePreviewImages();
+      // 🔄 Resetta il timer di auto-save ad ogni modifica
+      resetAutoSaveTimer();
+    }
   });
 }
 
@@ -282,13 +397,21 @@ function unstageItem(path, type) {
   } else if (type === 'image') {
     window.localStaging.images.delete(path);
     console.log("🗑️ Rimossa immagine da staging:", path);
+  } else if (type === 'deleted') {
+    window.localStaging.deleted.delete(path);
+    console.log("♻️ Rimossa eliminazione da staging:", path);
+    // Ripristina il file nell'albero
+    if (!lastLoadedFiles.includes(path)) {
+      lastLoadedFiles.push(path);
+      buildFileTree();
+    }
   }
   updateStagingUI();
 }
 
 // Conta elementi nello staging
 function getStagingCount() {
-  return window.localStaging.files.size + window.localStaging.images.size;
+  return window.localStaging.files.size + window.localStaging.images.size + window.localStaging.deleted.size;
 }
 
 // Pulisce tutto lo staging
@@ -350,145 +473,210 @@ function updateStagingUI() {
     `;
   });
   
+  // Deleted files
+  window.localStaging.deleted.forEach(path => {
+    const fileName = path.split('/').pop();
+    html += `
+      <div class="staging-item">
+        <span class="staging-item-icon">🗑️</span>
+        <span class="staging-item-path" title="${path}">${fileName}</span>
+        <span class="staging-item-type deleted">DELETE</span>
+        <button class="staging-item-remove" onclick="unstageItem('${path}', 'deleted')" title="Rimuovi">×</button>
+      </div>
+    `;
+  });
+  
   $list.html(html);
 }
 
 // Commit batch di tutti gli elementi nello staging
-function commitAllStaging() {
+async function commitAllStaging() {
   const fileCount = window.localStaging.files.size;
   const imageCount = window.localStaging.images.size;
-  const totalCount = fileCount + imageCount;
+  const deletedCount = window.localStaging.deleted.size;
+  const totalCount = fileCount + imageCount + deletedCount;
   
   if (totalCount === 0) {
     alert("Nessuna modifica nello staging da committare.");
     return;
   }
   
-  const confirmMsg = `🚀 Commit di ${totalCount} elementi:\n• ${fileCount} file\n• ${imageCount} immagini\n\nProcedere?`;
+  const confirmMsg = `🚀 Commit di ${totalCount} elementi:\n• ${fileCount} file\n• ${imageCount} immagini\n• ${deletedCount} eliminazioni\n\nProcedere?`;
   if (!confirm(confirmMsg)) return;
   
-  console.log("🚀 Avvio commit batch staging...");
-  showLoadingOverlay("🚀 Commit in corso...", "Inizializzazione...");
-  
-  let completed = 0;
-  let errors = 0;
-  
-  // Funzione per aggiornare progress
-  function updateProgress() {
-    completed++;
-    const progressText = `Completato ${completed}/${totalCount} (${errors} errori)`;
-    updateLoadingProgress(progressText);
+  console.log("🚀 Avvio commit batch staging (singolo push)...");
+  showLoadingOverlay("🚀 Commit in corso...", "Preparazione dati...");
+
+  const branch = window.branch || "main";
+  const apiBase = `https://api.github.com/repos/${window.currentUsername}/${window.currentRepo}`;
+  const stagedFiles = Array.from(window.localStaging.files.entries());
+  const stagedImages = Array.from(window.localStaging.images.entries());
+  const stagedDeleted = Array.from(window.localStaging.deleted);
+
+  try {
+    updateLoadingProgress("Recupero stato repository...");
+    const refData = await githubApiRequest("GET", `${apiBase}/git/ref/heads/${branch}`);
+    const latestCommitSha = refData?.object?.sha;
+    if (!latestCommitSha) throw new Error("Commit principale non trovato");
+
+    updateLoadingProgress("Recupero commit di base...");
+    const commitData = await githubApiRequest("GET", `${apiBase}/git/commits/${latestCommitSha}`);
+    const baseTreeSha = commitData?.tree?.sha;
+    if (!baseTreeSha) throw new Error("Tree di base non disponibile");
+
+    const treeEntries = [];
+    const allItems = [];
+
+    stagedFiles.forEach(([path, fileData]) => {
+      allItems.push({
+        path,
+        label: path.split('/').pop(),
+        contentBase64: encodeUtf8Base64(fileData.content),
+        mode: "100644",
+        operation: 'create/update'
+      });
+    });
+
+    stagedImages.forEach(([filename, imageData]) => {
+      allItems.push({
+        path: `overrides/assets/images/extract/media/${filename}`,
+        label: filename,
+        contentBase64: imageData.base64,
+        mode: "100644",
+        operation: 'create/update'
+      });
+    });
     
-    if (completed >= totalCount) {
-      hideLoadingOverlay();
-      
-      if (errors === 0) {
-        alert(`✅ Commit completato con successo!\n${totalCount} elementi caricati su GitHub.`);
-        clearStaging();
-        
-        // Ricarica cache immagini se necessario
-        if (imageCount > 0) {
-          loadImagesList();
-        }
+    stagedDeleted.forEach(path => {
+      allItems.push({
+        path,
+        label: path.split('/').pop(),
+        operation: 'delete'
+      });
+    });
+
+    let processed = 0;
+    for (const item of allItems) {
+      processed++;
+      if (item.operation === 'delete') {
+        updateLoadingProgress(`Eliminazione file ${processed}/${allItems.length}: ${item.label}`);
+        treeEntries.push({
+          path: item.path,
+          mode: "100644",
+          type: "blob",
+          sha: null  // null SHA indica eliminazione
+        });
       } else {
-        alert(`⚠️ Commit completato con ${errors} errori su ${totalCount} elementi.`);
+        updateLoadingProgress(`Creazione blob ${processed}/${allItems.length}: ${item.label}`);
+        const blob = await githubApiRequest("POST", `${apiBase}/git/blobs`, {
+          content: item.contentBase64,
+          encoding: "base64"
+        });
+        if (!blob?.sha) throw new Error(`Blob non creato per ${item.path}`);
+        treeEntries.push({
+          path: item.path,
+          mode: item.mode,
+          type: "blob",
+          sha: blob.sha
+        });
       }
     }
-  }
-  
-  // Commit files
-  let fileIndex = 0;
-  window.localStaging.files.forEach((fileData, path) => {
-    setTimeout(() => {
-      updateLoadingProgress(`Caricamento file: ${path.split('/').pop()}`);
-      commitSingleFile(path, fileData, updateProgress, () => {
-        errors++;
-        updateProgress();
-      });
-    }, fileIndex * 100); // Delay per evitare rate limiting
-    fileIndex++;
-  });
-  
-  // Commit images
-  let imageIndex = 0;
-  window.localStaging.images.forEach((imageData, filename) => {
-    setTimeout(() => {
-      updateLoadingProgress(`Caricamento immagine: ${filename}`);
-      commitSingleImage(filename, imageData, updateProgress, () => {
-        errors++;
-        updateProgress();
-      });
-    }, (fileIndex + imageIndex) * 100);
-    imageIndex++;
-  });
-}
 
-// Helper: commit singolo file
-function commitSingleFile(path, fileData, onSuccess, onError) {
-  // Se ha SHA, deve prima ottenere quello corrente per evitare conflitti
-  if (fileData.originalSha) {
+    updateLoadingProgress("Creazione tree...");
+    const newTree = await githubApiRequest("POST", `${apiBase}/git/trees`, {
+      base_tree: baseTreeSha,
+      tree: treeEntries
+    });
+    if (!newTree?.sha) throw new Error("Creazione tree fallita");
+
+    const commitMessage = buildBatchCommitMessage(fileCount, imageCount, deletedCount);
+    updateLoadingProgress("Creazione commit...");
+    const newCommit = await githubApiRequest("POST", `${apiBase}/git/commits`, {
+      message: commitMessage,
+      tree: newTree.sha,
+      parents: [latestCommitSha]
+    });
+    if (!newCommit?.sha) throw new Error("Creazione commit fallita");
+
+    updateLoadingProgress("Aggiornamento branch...");
+    await githubApiRequest("PATCH", `${apiBase}/git/refs/heads/${branch}`, {
+      sha: newCommit.sha
+    });
+
+    updateLoadingProgress("Allineamento cache locale...");
+    await refreshCommittedFiles(stagedFiles, branch, apiBase);
+
+    hideLoadingOverlay();
+    alert(`✅ Commit completato con successo!\n${totalCount} elementi caricati su GitHub con un'unica commit.`);
+    clearStaging();
+
+    if (imageCount > 0) {
+      loadImagesList();
+    }
+  } catch (error) {
+    console.error("❌ Errore durante il commit batch:", error);
+    hideLoadingOverlay();
+    alert("❌ Errore durante il commit. Controlla la console per maggiori dettagli.");
+  }
+}function githubApiRequest(method, url, payload = null) {
+  return new Promise((resolve, reject) => {
     $.ajax({
-      url: `https://api.github.com/repos/${window.currentUsername}/${window.currentRepo}/contents/${path}?ref=main`,
+      url,
+      type: method,
       headers: { Authorization: `token ${window.currentToken}` },
-      success: file => {
-        // Usa SHA corrente
-        uploadFileToGitHub(path, fileData.content, file.sha, onSuccess, onError);
-      },
-      error: () => {
-        // File eliminato nel frattempo, carica come nuovo
-        uploadFileToGitHub(path, fileData.content, null, onSuccess, onError);
+      data: payload ? JSON.stringify(payload) : null,
+      contentType: payload ? "application/json" : undefined,
+      success: resolve,
+      error: xhr => {
+        console.error(`GitHub API ${method} ${url} ➜`, xhr.status, xhr.responseText);
+        reject(xhr);
       }
     });
-  } else {
-    // Nuovo file
-    uploadFileToGitHub(path, fileData.content, null, onSuccess, onError);
-  }
-}
-
-// Helper: upload file su GitHub
-function uploadFileToGitHub(path, content, sha, onSuccess, onError) {
-  const data = {
-    message: `Aggiornamento da editor web: ${path.split('/').pop()}`,
-    content: btoa(unescape(encodeURIComponent(content)))
-  };
-  
-  if (sha) data.sha = sha;
-  
-  $.ajax({
-    url: `https://api.github.com/repos/${window.currentUsername}/${window.currentRepo}/contents/${path}`,
-    type: "PUT",
-    headers: { Authorization: `token ${window.currentToken}` },
-    data: JSON.stringify(data),
-    success: onSuccess,
-    error: (xhr) => {
-      console.error("Errore upload file:", path, xhr.status);
-      onError();
-    }
   });
 }
 
-// Helper: commit singola immagine
-function commitSingleImage(filename, imageData, onSuccess, onError) {
-  $.ajax({
-    url: `https://api.github.com/repos/${window.currentUsername}/${window.currentRepo}/contents/overrides/assets/images/extract/media/${filename}`,
-    type: "PUT",
-    headers: { Authorization: `token ${window.currentToken}` },
-    data: JSON.stringify({ 
-      message: `Aggiunta immagine da editor web: ${filename}`, 
-      content: imageData.base64 
-    }),
-    success: onSuccess,
-    error: (xhr) => {
-      console.error("Errore upload immagine:", filename, xhr.status);
-      onError();
+function buildBatchCommitMessage(fileCount, imageCount, deletedCount = 0) {
+  const parts = [];
+  if (fileCount > 0) parts.push(`${fileCount} file`);
+  if (imageCount > 0) parts.push(`${imageCount} immagini`);
+  if (deletedCount > 0) parts.push(`${deletedCount} eliminazioni`);
+  const summary = parts.length ? parts.join(" + ") : "nessuna modifica";
+  return `Aggiornamento editor (${summary})`;
+}
+
+async function refreshCommittedFiles(stagedFiles, branch, apiBase) {
+  if (!stagedFiles || stagedFiles.length === 0) return;
+
+  const refreshPromises = stagedFiles.map(async ([path, fileData]) => {
+    try {
+      const file = await githubApiRequest("GET", `${apiBase}/contents/${path}?ref=${branch}`);
+      if (!file?.sha) return;
+      if (!window.allFilesCache) window.allFilesCache = {};
+      window.allFilesCache[path] = {
+        content: fileData?.content ?? null,
+        sha: file.sha
+      };
+      if (currentFilePath === path) {
+        currentSha = file.sha;
+      }
+    } catch (err) {
+      console.warn("⚠️ Impossibile aggiornare cache locale per", path, err);
     }
   });
+
+  await Promise.all(refreshPromises);
 }
 
 // === ESPORTAZIONI GLOBALI ===
 
 // Espone updateStagingPanel globalmente
 window.updateStagingPanel = updateStagingUI;
+
+// 🔄 Espone funzioni auto-save globalmente
+window.resetAutoSaveTimer = resetAutoSaveTimer;
+window.cancelAutoSaveTimer = cancelAutoSaveTimer;
+window.performAutoSave = performAutoSave;
+window.lastSavedContent = lastSavedContent;
 
 // Espone funzioni per gestione albero file globalmente (definite in files.js)
 window.addFileToTree = window.addFileToTree || function(tree, filePath) {
