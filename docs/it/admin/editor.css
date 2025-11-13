@@ -84,15 +84,17 @@
 }
 
 .image-modal-content {
-    max-width: 90%;
-    max-height: 90%;
+    max-width: none; /* Rimuove il limite di larghezza */
+    max-height: none; /* Rimuove il limite di altezza */
     position: relative;
     animation: imageZoomIn 0.3s ease-out;
 }
 
 .image-modal-content img {
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 800px; /* Larghezza massima */
+    max-height: 600px; /* Altezza massima */
+    width: auto; /* Mantiene proporzioni */
+    height: auto; /* Mantiene proporzioni */
     border-radius: 8px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
@@ -129,6 +131,65 @@
     to {
         transform: scale(1);
         opacity: 1;
+    }
+}
+
+/* =================== TOAST NOTIFICATIONS =================== */
+.toast-container {
+    position: fixed;
+    top: 90px;
+    right: 20px;
+    z-index: 10001;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    pointer-events: none;
+}
+
+.toast {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 250px;
+    max-width: 400px;
+    animation: slideInRight 0.3s ease-out, fadeOut 0.3s ease-in 2.7s;
+    pointer-events: auto;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.toast-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.toast-message {
+    flex: 1;
+    word-break: break-word;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
     }
 }
 
@@ -1320,19 +1381,23 @@ figcaption::before {
   border-collapse: collapse !important;
   margin: 20px auto !important;
   background-color: transparent !important;
+  background: transparent !important;
   border: none !important;
   display: table !important;
 }
 
-/* Header trasparente con testo bianco */
+/* Header trasparente con testo bianco - massima priorità */
 .editormd-preview-container thead,
-.editormd-preview-container table thead {
+.editormd-preview-container table thead,
+.editormd-preview-container > table > thead {
   background-color: transparent !important;
   background: transparent !important;
+  background-image: none !important;
 }
 
 .editormd-preview-container thead th,
-.editormd-preview-container table thead th {
+.editormd-preview-container table thead th,
+.editormd-preview-container > table > thead > tr > th {
   color: #ffffff !important;
   font-weight: 600 !important;
   padding: 12px 16px !important;
@@ -1340,6 +1405,7 @@ figcaption::before {
   border: 1px solid rgba(255, 255, 255, 0.3) !important;
   background-color: transparent !important;
   background: transparent !important;
+  background-image: none !important;
 }
 
 /* Righe body trasparenti con testo bianco */

@@ -118,7 +118,7 @@ function buildImageList() {
 
 
 function uploadImage(file) {
-  console.log("� Staging immagine locale:", file.name);
+  console.log("📤 Staging immagine locale:", file.name);
   
   // Controlla se già presente nello staging
   if (window.localStaging.images.has(file.name)) {
@@ -129,12 +129,31 @@ function uploadImage(file) {
   const reader = new FileReader();
   reader.onload = e => {
     const base64 = e.target.result.split(",")[1];
+    const dataUrl = e.target.result; // Data URL completo per la preview
     
-    // Aggiungi allo staging locale invece di caricare subito
+    // Aggiungi allo staging locale
     stageImageLocally(file.name, file, base64);
     
-    // Aggiorna la lista immagini per mostrare l'immagine in staging (opzionale)
-    // buildImageList();
+    // Aggiungi alla cache delle immagini per mostrarla nella lista
+    if (!window.cachedImages) {
+      window.cachedImages = [];
+    }
+    
+    // Verifica se non esiste già nella cache
+    const existsInCache = window.cachedImages.some(img => img.name === file.name);
+    if (!existsInCache) {
+      window.cachedImages.push({
+        name: file.name,
+        local: `images/extract/media/${file.name}`,
+        dataUrl: dataUrl,
+        size: file.size,
+        isNewUpload: true // Flag per identificare nuovi upload
+      });
+      
+      // Aggiorna la lista visibile
+      buildImageList();
+      console.log(`✅ Immagine aggiunta alla cache e lista: ${file.name}`);
+    }
     
     alert(`📦 Immagine "${file.name}" aggiunta allo staging locale!\nUsa "Commit All" per caricare tutto su GitHub.`);
     console.log("✅ Immagine staged:", file.name);
@@ -171,31 +190,21 @@ function copyImageMarkdown(imageName) {
     navigator.clipboard.writeText(markdownPath).then(() => {
       console.log("📋 Percorso Markdown copiato:", markdownPath);
       
-      // Feedback visivo temporaneo
-      const btn = event.target;
-      const originalText = btn.innerHTML;
-      btn.innerHTML = '✅';
-      btn.style.background = '#28a745';
-      btn.style.color = 'white';
-      
-      setTimeout(() => {
-        btn.innerHTML = originalText;
-        btn.style.background = '';
-        btn.style.color = '';
-      }, 1000);
+      // Mostra toast di conferma
+      showToast(`Percorso copiato: ${imageName}`, '📋');
       
     }).catch(err => {
       console.error("❌ Errore copia negli appunti:", err);
-      fallbackCopyTextToClipboard(markdownPath);
+      fallbackCopyTextToClipboard(markdownPath, imageName);
     });
   } else {
     // Fallback per browser che non supportano clipboard API
-    fallbackCopyTextToClipboard(markdownPath);
+    fallbackCopyTextToClipboard(markdownPath, imageName);
   }
 }
 
 // Funzione fallback per copiare negli appunti
-function fallbackCopyTextToClipboard(text) {
+function fallbackCopyTextToClipboard(text, imageName) {
   const textArea = document.createElement("textarea");
   textArea.value = text;
   textArea.style.top = "0";
@@ -212,14 +221,14 @@ function fallbackCopyTextToClipboard(text) {
     console.log(`📋 Copia negli appunti ${msg}:`, text);
     
     if (successful) {
-      // Feedback visivo
-      alert(`✅ Percorso Markdown copiato!\n${text}`);
+      // Mostra toast di conferma
+      showToast(`Percorso copiato: ${imageName}`, '📋');
     } else {
-      alert(`❌ Impossibile copiare automaticamente.\nCopia manualmente:\n${text}`);
+      showToast(`Impossibile copiare: ${imageName}`, '❌');
     }
   } catch (err) {
     console.error('❌ Errore comando copia:', err);
-    alert(`❌ Impossibile copiare automaticamente.\nCopia manualmente:\n${text}`);
+    showToast(`Errore durante la copia`, '❌');
   }
   
   document.body.removeChild(textArea);
