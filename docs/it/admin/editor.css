@@ -193,6 +193,55 @@
     }
 }
 
+/* =================== EDITOR MARKDOWN - NEUTRALIZZA COLORI TESTO =================== */
+/* Rimuovi colorazione per testo enfatizzato (corsivo, grassetto) */
+.CodeMirror .cm-em,
+.CodeMirror .cm-strong,
+.CodeMirror .cm-italic,
+.CodeMirror .cm-bold {
+    color: inherit !important;
+}
+
+/* Mantieni colori per elementi strutturali importanti */
+.CodeMirror .cm-link {
+    color: #80d4ff !important; /* Link in blu */
+}
+
+.CodeMirror .cm-url {
+    color: #80d4ff !important; /* URL in blu */
+}
+
+.CodeMirror .cm-image,
+.CodeMirror .cm-image-marker {
+    color: #ffab66 !important; /* Immagini in arancione */
+}
+
+.CodeMirror .cm-tag {
+    color: #28a745 !important; /* Tag HTML in verde */
+}
+
+.CodeMirror .cm-attribute {
+    color: #ffc107 !important; /* Attributi HTML in giallo */
+}
+
+.CodeMirror .cm-header {
+    color: #ffab66 !important; /* Header # in arancione */
+    font-weight: bold !important;
+}
+
+.CodeMirror .cm-comment {
+    color: #6c757d !important; /* Commenti in grigio */
+    font-style: italic !important;
+}
+
+/* Testo normale senza colori speciali */
+.CodeMirror .cm-variable-2,
+.CodeMirror .cm-variable-3,
+.CodeMirror .cm-keyword,
+.CodeMirror .cm-quote {
+    color: inherit !important;
+}
+
 .img-preview-large {
     max-width: 320px;
     max-height: 240px;
@@ -1382,22 +1431,43 @@ figcaption::before {
   margin: 20px auto !important;
   background-color: transparent !important;
   background: transparent !important;
+  background-image: none !important;
   border: none !important;
   display: table !important;
+  box-shadow: none !important;
 }
 
-/* Header trasparente con testo bianco - massima priorità */
-.editormd-preview-container thead,
+/* FORZA tutti gli elementi interni della tabella ad essere trasparenti */
+.editormd-preview-container table *,
+.editormd-preview-container table tr,
 .editormd-preview-container table thead,
-.editormd-preview-container > table > thead {
+.editormd-preview-container table tbody,
+.editormd-preview-container table tfoot {
   background-color: transparent !important;
   background: transparent !important;
   background-image: none !important;
+  box-shadow: none !important;
+}
+
+/* Header trasparente con testo bianco - massima priorità con OGNI possibile selettore */
+.editormd-preview-container thead,
+.editormd-preview-container table thead,
+.editormd-preview-container > table > thead,
+.editormd-preview-container thead tr,
+.editormd-preview-container table thead tr,
+.editormd-preview-container > table > thead > tr {
+  background-color: transparent !important;
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
 }
 
 .editormd-preview-container thead th,
 .editormd-preview-container table thead th,
-.editormd-preview-container > table > thead > tr > th {
+.editormd-preview-container > table > thead > tr > th,
+.editormd-preview-container thead > tr > th,
+.editormd-preview-container table > thead > tr > th,
+.editormd-preview-container th {
   color: #ffffff !important;
   font-weight: 600 !important;
   padding: 12px 16px !important;
@@ -1406,6 +1476,7 @@ figcaption::before {
   background-color: transparent !important;
   background: transparent !important;
   background-image: none !important;
+  box-shadow: none !important;
 }
 
 /* Righe body trasparenti con testo bianco */
