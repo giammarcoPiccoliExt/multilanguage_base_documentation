@@ -54,6 +54,12 @@
     
     figcaption {
         color: var(--md-accent-fg-color) !important;
+        text-align: center !important;
+        font-style: italic !important;
+        margin-top: 4px !important;
+        margin-bottom: 16px !important;
+        font-size: 0.9em !important;
+        display: block !important;
     }
     
     /* ===================================================
@@ -107,7 +113,7 @@
     table {
         width: 100% !important;
         border-collapse: collapse !important;
-        margin: 20px auto !important; /* Centra la tabella orizzontalmente */
+        margin: 20px auto 0 auto !important; /* Centra la tabella orizzontalmente, rimuove margine inferiore */
     }
     
     /* Contenitore delle tabelle per centramento */
@@ -122,6 +128,7 @@
         display: flex !important;
         justify-content: center !important;
         width: 100% !important;
+        margin: 1.5em -.8rem 0.2em -.8rem !important; /* Più spazio sopra (1.5em), meno sotto (0.2em) */
     }
     
     th, td {

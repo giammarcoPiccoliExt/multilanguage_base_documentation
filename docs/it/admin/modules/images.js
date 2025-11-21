@@ -8,14 +8,14 @@ function loadImagesList(callback) {
   showLoadingOverlay("📦 Caricamento immagini...", "Connessione al repository...");
   
   $.ajax({
-    url: `https://api.github.com/repos/${window.currentUsername}/${window.currentRepo}/contents/overrides/assets/images/extract/media`,
+    url: `https://api.github.com/repos/${window.currentUsername}/${window.currentRepo}/contents/overrides/assets/assets/images/extract/media`,
     headers: { Authorization: `token ${window.currentToken}` },
     success: files => {
       const imageFiles = files.filter(f => f.type === "file" && /\.(jpg|jpeg|png|gif|bmp|webp|svg)$/i.test(f.name));
       
       window.cachedImages = imageFiles.map(f => ({
         name: f.name, 
-        local: "images/extract/media/" + f.name, 
+        local: "assets/images/extract/media/" + f.name, 
         download_url: f.download_url, 
         dataUrl: null,
         sha: f.sha,
@@ -144,7 +144,7 @@ function uploadImage(file) {
     if (!existsInCache) {
       window.cachedImages.push({
         name: file.name,
-        local: `images/extract/media/${file.name}`,
+        local: `assets/images/extract/media/${file.name}`,
         dataUrl: dataUrl,
         size: file.size,
         isNewUpload: true // Flag per identificare nuovi upload
@@ -183,7 +183,7 @@ function enlargeImage(imageName) {
 
 // Copia il percorso Markdown dell'immagine negli appunti
 function copyImageMarkdown(imageName) {
-  const markdownPath = `![DIDASCALIA](assets/images/extract/media/${imageName})`;
+  const markdownPath = `![DIDASCALIA](assets/assets/images/extract/media/${imageName})`;
   
   // Usa l'API moderna degli appunti se disponibile
   if (navigator.clipboard && window.isSecureContext) {
@@ -283,7 +283,7 @@ function confirmDeleteImage() {
   }
   
   imagesToDelete.forEach(imageName => {
-    const imagePath = `overrides/assets/images/extract/media/${imageName}`;
+    const imagePath = `overrides/assets/assets/images/extract/media/${imageName}`;
     
     // Aggiungi il file al set dei file da eliminare nello staging
     window.localStaging.deleted.add(imagePath);

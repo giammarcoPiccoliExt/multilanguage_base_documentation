@@ -643,16 +643,33 @@ async function commitAllStaging() {
     await refreshCommittedFiles(stagedFiles, branch, apiBase);
 
     hideLoadingOverlay();
-    alert(`✅ Commit completato con successo!\n${totalCount} elementi caricati su GitHub con un'unica commit.`);
+    
+    // Mostra notifica di successo senza alert bloccante
+    showToast(`Commit completato! ${totalCount} elementi caricati su GitHub`, '🚀', 5000);
+    
+    // Pulisci staging solo se tutto è andato bene
     clearStaging();
 
+    // Aggiorna la cache delle immagini se necessario (senza ricaricare)
     if (imageCount > 0) {
       loadImagesList();
     }
+    
+    // Aggiorna stato repository senza ricaricare la pagina
+    if (typeof checkRepoStatus === 'function') {
+      setTimeout(() => checkRepoStatus(), 2000);
+    }
+    
   } catch (error) {
     console.error("❌ Errore durante il commit batch:", error);
     hideLoadingOverlay();
-    alert("❌ Errore durante il commit. Controlla la console per maggiori dettagli.");
+    
+    // Mostra errore dettagliato senza alert bloccante
+    const errorMsg = error.responseJSON?.message || error.statusText || error.message || 'Errore sconosciuto';
+    showToast(`Errore commit: ${errorMsg}`, '❌', 8000);
+    
+    // NON pulire lo staging in caso di errore - mantieni le modifiche
+    console.log("🔄 Modifiche mantenute nello staging a causa dell'errore");
   }
 }function githubApiRequest(method, url, payload = null) {
   return new Promise((resolve, reject) => {

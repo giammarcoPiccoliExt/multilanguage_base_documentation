@@ -136,7 +136,7 @@ Below are examples of all the different Markdown elements used in the Administra
 
 
 ### 4. Images
-![Alt text](images/extract/media/image42.png)
+![Alt text](assets/images/extract/media/image42.png)
 
 
 ### 5. Bold Text
