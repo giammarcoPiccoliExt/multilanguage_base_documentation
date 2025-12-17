@@ -1,0 +1,88 @@
+/* Yesplan Custom Styles */
+
+:root {
+  --primary-color: #007acc;
+  --secondary-color: #005a9e;
+  --accent-color: #ff6b35;
+  --text-color: #333;
+  --background-color: #f8f9fa;
+  --border-color: #e0e0e0;
+}
+
+/* Header customizations */
+.md-header {
+  background-color: var(--primary-color);
+}
+
+.md-header__title {
+  font-weight: bold;
+}
+
+/* Navigation customizations */
+.md-nav__title {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.md-nav__link--active {
+  color: var(--accent-color);
+}
+
+/* Content customizations */
+.md-content {
+  max-width: 1200px;
+}
+
+.md-typeset h1 {
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+}
+
+.md-typeset h2 {
+  color: var(--secondary-color);
+}
+
+/* Code block customizations */
+.md-typeset pre {
+  background-color: #f5f5f5;
+  border-left: 4px solid var(--primary-color);
+}
+
+.md-typeset code {
+  background-color: #f0f0f0;
+  color: var(--text-color);
+}
+
+/* Button customizations */
+.md-button {
+  background-color: var(--primary-color);
+  border: none;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.md-button:hover {
+  background-color: var(--secondary-color);
+}
+
+/* Admonition customizations */
+.md-typeset .admonition.note {
+  border-left-color: var(--primary-color);
+}
+
+.md-typeset .admonition.warning {
+  border-left-color: var(--accent-color);
+}
+
+/* Footer customizations */
+.md-footer {
+  background-color: var(--secondary-color);
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+  .md-content {
+    padding: 1rem;
+  }
+}
